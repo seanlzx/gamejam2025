@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvyivcvo038mb"]
+
+[ext_resource type="Script" uid="uid://byl43k2jxpvmr" path="res://items/weapons/bow.gd" id="1_26n2o"]
+[ext_resource type="Texture2D" uid="uid://ptbsqjohgdei" path="res://items/weapons/bow.png" id="2_26n2o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_id6xk"]
+radius = 8.42916
+height = 42.3968
+
+[sub_resource type="Animation" id="Animation_o63xl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Object/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.919239, 0.446242)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Object/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -1.64029)]
+}
+
+[sub_resource type="Animation" id="Animation_0g5w4"]
+resource_name = "draw"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Object/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.919239, 0.446242), Vector2(0.919239, 0.801941), Vector2(0.919239, 0.446242)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Object/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -28), Vector2(0, -1.64029), Vector2(0, -28)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i6wsw"]
+_data = {
+&"RESET": SubResource("Animation_o63xl"),
+&"draw": SubResource("Animation_0g5w4")
+}
+
+[node name="Bow" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_26n2o")
+
+[node name="Object" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Object"]
+position = Vector2(0, -1.64029)
+scale = Vector2(0.919239, 0.446242)
+texture = ExtResource("2_26n2o")
+offset = Vector2(1.88083, -44.9183)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object"]
+position = Vector2(1, -51)
+rotation = 1.66045
+shape = SubResource("CapsuleShape2D_id6xk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i6wsw")
+}
