@@ -1,0 +1,153 @@
+[gd_scene load_steps=13 format=3 uid="uid://djymhucupuyhm"]
+
+[ext_resource type="Script" uid="uid://chgrpo1nhpxl6" path="res://entity/player/player.gd" id="1_i5wha"]
+[ext_resource type="Texture2D" uid="uid://8ijb0nlmoopu" path="res://entity/player/morgan.png" id="2_2g53n"]
+[ext_resource type="Texture2D" uid="uid://bnuqf8o16ftxh" path="res://entity/npc/puppet/puppet.png" id="3_2g53n"]
+[ext_resource type="Texture2D" uid="uid://d2a6ickdgot17" path="res://godot_icon.svg" id="4_ukg08"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukg08"]
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_vknsq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vthes"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_1ob52"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42pk2"]
+_data = {
+&"RESET": SubResource("Animation_vknsq"),
+&"idle": SubResource("Animation_vthes"),
+&"walk": SubResource("Animation_1ob52")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vthes"]
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdw7h"]
+radius = 8.0
+height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdw7h"]
+size = Vector2(125, 127)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_i5wha")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Player"]
+collision_layer = 2
+collision_mask = 2
+mass = 335.074
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/RigidBody2D"]
+position = Vector2(43, 35)
+texture = ExtResource("2_2g53n")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/RigidBody2D"]
+position = Vector2(45, 44)
+shape = SubResource("CapsuleShape2D_ukg08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/RigidBody2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_42pk2")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(45, 44)
+shape = SubResource("CapsuleShape2D_vthes")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="TopPinJoint" type="PinJoint2D" parent="."]
+position = Vector2(45, 35)
+node_a = NodePath("../Player")
+node_b = NodePath("../Player/RigidBody2D")
+
+[node name="BottomPinJoint" type="PinJoint2D" parent="."]
+position = Vector2(45, 53)
+node_a = NodePath("../Player")
+node_b = NodePath("../Player/RigidBody2D")
+
+[node name="Puppet" type="CharacterBody2D" parent="."]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Puppet"]
+position = Vector2(440, 116)
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Puppet/RigidBody2D"]
+texture = ExtResource("3_2g53n")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Puppet/RigidBody2D/Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_42pk2")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puppet/RigidBody2D"]
+position = Vector2(-1, 11)
+rotation = -0.196642
+shape = SubResource("CapsuleShape2D_kdw7h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Puppet/RigidBody2D"]
+root_node = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Puppet"]
+position = Vector2(438, 126)
+rotation = -0.214727
+shape = SubResource("CapsuleShape2D_kdw7h")
+
+[node name="TopPinJoint" type="PinJoint2D" parent="Puppet"]
+position = Vector2(436, 117)
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody2D")
+
+[node name="BottomPinJoint" type="PinJoint2D" parent="Puppet"]
+position = Vector2(440, 135)
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody2D")
+
+[node name="tempstaticbody" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="tempstaticbody"]
+position = Vector2(265, 92)
+texture = ExtResource("4_ukg08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tempstaticbody"]
+position = Vector2(265, 92)
+shape = SubResource("RectangleShape2D_kdw7h")
