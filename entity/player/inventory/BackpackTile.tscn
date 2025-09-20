@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://q5o1paf0xquy"]
+
+[ext_resource type="Texture2D" uid="uid://b5lw6xfmju2t1" path="res://entity/player/inventory/backpack_tile.png" id="1_hteqe"]
+
+[node name="BackpackTile" type="Panel"]
+
+[node name="FrameSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_hteqe")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0

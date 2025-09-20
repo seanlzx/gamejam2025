@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckn23fmmjtbrl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7gr7g"]
+font_size = 8
+
+[node name="PickupTooltip" type="Panel"]
+offset_left = -18.0
+offset_top = -73.0
+offset_right = 22.0
+offset_bottom = -33.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 39.0
+offset_bottom = 40.0
+text = "Press `F` To Pickup"
+label_settings = SubResource("LabelSettings_7gr7g")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

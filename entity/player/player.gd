@@ -1,32 +1,31 @@
 extends CharacterBody2D
 
+@onready var inventory: CanvasLayer = $inventory
 
-var move_speed = 100
+# Stats
+@export var starting_health = ConstDefault.player_max_health
+@export var starting_energy = ConstDefault.player_max_energy
+@export var strength = ConstDefault.player_strength
 
-@export var walk_speed = ConstDefault.player_walk_speed
-@export var run_speed = ConstDefault.player_run_speed
-@export var sprint_speed = ConstDefault.player_sprint_speed
-@export var starting_health = ConstDefault.player_walk_speed
+# status  (changeable stats)
+var health : int
+var energy : int
 
+# Values to overwrite existing node properties
+# Derived on my own, Posthumously Claude agreed
+@export var property_overwrites : Dictionary = {
+	# built in const MOTION_MODE_FLOATING is 1, suitable for **topdown** games
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING,
+}
+
+func _ready():
+	carryout_property_overwrites()
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	print(run_speed)
-	move_input()
-	
-	# for the ragdoll effect that I'm going for rotation of base node characterbody2D should have no rotation
-	rotation = 0
-	
 	move_and_slide()
 
-func move_input():
-	var move_speed = run_speed
 
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	
-	if Input.is_action_pressed("sprint"):
-		move_speed = sprint_speed
-		
-	velocity = input_direction * move_speed
-	
+func carryout_property_overwrites() -> void:
+	# CharacterBody2D
+	motion_mode = property_overwrites.motion_mode

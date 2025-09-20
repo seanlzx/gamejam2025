@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmnnsfjv3csnj"]
+
+[ext_resource type="Script" uid="uid://bth8pvegidlk8" path="res://test_cursor_movement.gd" id="1_p400w"]
+
+[node name="test_cursor_movement" type="Node"]
+script = ExtResource("1_p400w")

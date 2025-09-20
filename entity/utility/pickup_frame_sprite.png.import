@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0fsrvkcgkje2"
-path="res://.godot/imported/morgan.png-c3e24b0d5daa743a295fc745619cf890.ctex"
+uid="uid://d2tmjbhr2p1tw"
+path="res://.godot/imported/pickup_frame_sprite.png-a51eb74cf66a8a32d1b8d35b6670ef38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entity/player/morgan.png"
-dest_files=["res://.godot/imported/morgan.png-c3e24b0d5daa743a295fc745619cf890.ctex"]
+source_file="res://entity/utility/pickup_frame_sprite.png"
+dest_files=["res://.godot/imported/pickup_frame_sprite.png-a51eb74cf66a8a32d1b8d35b6670ef38.ctex"]
 
 [params]
 

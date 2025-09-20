@@ -1,0 +1,330 @@
+[gd_scene load_steps=21 format=3 uid="uid://bshy7rvjsswcb"]
+
+[ext_resource type="Texture2D" uid="uid://d0fsrvkcgkje2" path="res://entity/player/morgan.png" id="2_4pl66"]
+[ext_resource type="PackedScene" uid="uid://cqit8fru4blgx" path="res://entity/utility/placeholder_collision_shape.tscn" id="3_4pl66"]
+[ext_resource type="Script" uid="uid://bsjqa2mce6hsr" path="res://entity/player/script_player_movement.gd" id="4_wjhpj"]
+[ext_resource type="Script" uid="uid://coi05qmmgci12" path="res://entity/utility/script_ragdoll.gd" id="5_2iqu4"]
+[ext_resource type="Script" uid="uid://deq2babmh4t33" path="res://entity/player/script_player_pickup.gd" id="5_4btn6"]
+[ext_resource type="Script" uid="uid://bynmbr4p8hrc5" path="res://entity/utility/script_animation.gd" id="6_4btn6"]
+[ext_resource type="Script" uid="uid://brqbj55r7fygf" path="res://entity/player/inventory.gd" id="8_4btn6"]
+[ext_resource type="Script" uid="uid://cjafl88sva5a1" path="res://entity/player/camera_2d.gd" id="8_klmji"]
+[ext_resource type="PackedScene" uid="uid://lyq125qqdttv" path="res://entity/player/inventory/HotbarTile.tscn" id="9_qa8rf"]
+[ext_resource type="PackedScene" uid="uid://q5o1paf0xquy" path="res://entity/player/inventory/BackpackTile.tscn" id="10_klmji"]
+
+[sub_resource type="GDScript" id="GDScript_qa8rf"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4pl66"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukg08"]
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_vknsq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_vthes"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_1ob52"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3, 5]
+}
+
+[sub_resource type="Animation" id="Animation_wjhpj"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_42pk2"]
+_data = {
+&"RESET": SubResource("Animation_vknsq"),
+&"idle": SubResource("Animation_vthes"),
+&"walk_left": SubResource("Animation_1ob52"),
+&"walk_right": SubResource("Animation_wjhpj")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_wjhpj"]
+font_size = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2ln0"]
+radius = 45.0
+
+[node name="Player" type="CharacterBody2D"]
+script = SubResource("GDScript_qa8rf")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_4pl66")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_4pl66")
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_ukg08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_42pk2")
+}
+
+[node name="PlaceholderCollisionShape2D" parent="." instance=ExtResource("3_4pl66")]
+
+[node name="ScriptPlayerMovement" type="Node" parent="."]
+script = ExtResource("4_wjhpj")
+
+[node name="ScriptPlayerPickup" type="Node" parent="."]
+script = ExtResource("5_4btn6")
+
+[node name="ScriptRagdoll" type="Node" parent="."]
+script = ExtResource("5_2iqu4")
+
+[node name="ScriptAnimation" type="Node" parent="."]
+script = ExtResource("6_4btn6")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ColorRect" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 112.0
+offset_bottom = -2.0
+grow_vertical = 0
+scale = Vector2(0.98373, 1.00879)
+color = Color(0, 0, 0, 1)
+
+[node name="Value" type="ColorRect" parent="HUD/HealthBar"]
+layout_mode = 0
+offset_left = 2.03308
+offset_top = 1.98258
+offset_right = 102.033
+offset_bottom = 11.9826
+color = Color(0.709804, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HUD/HealthBar"]
+layout_mode = 0
+offset_left = 6.09923
+offset_top = 0.991289
+offset_right = 65.0992
+offset_bottom = 24.9913
+text = "PLACEHOLDER KEEP ALL CAPS, BECAUSE ALL CAPS HAVE CONSTANT LINE HEIGHT"
+label_settings = SubResource("LabelSettings_wjhpj")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_t2ln0")
+
+[node name="inventory" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("8_4btn6")
+
+[node name="Backpack" type="CanvasLayer" parent="inventory"]
+
+[node name="1" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 64.0
+offset_top = 231.0
+offset_right = 64.0
+offset_bottom = 231.0
+
+[node name="2" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 140.0
+offset_top = 231.0
+offset_right = 167.0
+offset_bottom = 231.0
+
+[node name="3" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 215.0
+offset_top = 231.0
+offset_right = 215.0
+offset_bottom = 231.0
+
+[node name="4" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 294.0
+offset_top = 234.0
+offset_right = 294.0
+offset_bottom = 234.0
+
+[node name="5" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 367.0
+offset_top = 234.0
+offset_right = 367.0
+offset_bottom = 234.0
+
+[node name="6" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 449.0
+offset_top = 233.0
+offset_right = 449.0
+offset_bottom = 233.0
+
+[node name="7" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 523.0
+offset_top = 233.0
+offset_right = 523.0
+offset_bottom = 233.0
+
+[node name="8" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 603.0
+offset_top = 234.0
+offset_right = 603.0
+offset_bottom = 234.0
+
+[node name="9" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
+offset_left = 677.0
+offset_top = 233.0
+offset_right = 677.0
+offset_bottom = 233.0
+
+[node name="Hotbar" type="CanvasLayer" parent="inventory"]
+
+[node name="1" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 62.0
+offset_top = 323.0
+offset_right = 62.0
+offset_bottom = 323.0
+
+[node name="2" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 138.0
+offset_top = 322.0
+offset_right = 138.0
+offset_bottom = 322.0
+
+[node name="3" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 212.0
+offset_top = 324.0
+offset_right = 212.0
+offset_bottom = 324.0
+
+[node name="4" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 293.0
+offset_top = 321.0
+offset_right = 293.0
+offset_bottom = 321.0
+
+[node name="5" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 366.0
+offset_top = 320.0
+offset_right = 366.0
+offset_bottom = 320.0
+
+[node name="6" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 446.0
+offset_top = 318.0
+offset_right = 446.0
+offset_bottom = 318.0
+
+[node name="7" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 522.0
+offset_top = 318.0
+offset_right = 522.0
+offset_bottom = 318.0
+
+[node name="8" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 602.0
+offset_top = 319.0
+offset_right = 602.0
+offset_bottom = 319.0
+
+[node name="9" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
+offset_left = 677.0
+offset_top = 319.0
+offset_right = 677.0
+offset_bottom = 319.0
+
+[node name="Drop" type="CanvasLayer" parent="inventory"]
+
+[node name="Button" type="Button" parent="inventory/Drop"]
+offset_left = 264.0
+offset_top = 128.0
+offset_right = 480.0
+offset_bottom = 176.0
+text = "Drop"
+
+[node name="OverheadLabel" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -57.0
+offset_right = 17.0
+offset_bottom = -34.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-2, 0)
+script = ExtResource("8_klmji")

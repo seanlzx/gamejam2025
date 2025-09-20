@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b04mveu6yed4d"]
+
+[ext_resource type="Script" uid="uid://bhe4tqi1xf2bd" path="res://entity/item/tool/sword/sword.gd" id="1_oq6si"]
+[ext_resource type="Texture2D" uid="uid://dlsfi6hw782e7" path="res://entity/item/tool/sword/sword.png" id="1_vluye"]
+[ext_resource type="PackedScene" uid="uid://ckn23fmmjtbrl" path="res://entity/utility/pickup_tooltip.tscn" id="3_vywb3"]
+[ext_resource type="Script" uid="uid://ccm2rp5lftjg4" path="res://entity/item/tool/sword/pickup_state.gd" id="4_vywb3"]
+
+[node name="Sword" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_oq6si")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_vluye")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, 0, -1, -26, 3, -26, 5, -2, 6, 12, 18, 13, 17, 18, 5, 17, 2, 30, -3, 30, -2, 17, -12, 18, -13, 12, -3, 12)
+
+[node name="PickupTooltip" parent="." instance=ExtResource("3_vywb3")]
+
+[node name="States" type="Node" parent="."]
+
+[node name="PickupState" type="Node" parent="States"]
+script = ExtResource("4_vywb3")
