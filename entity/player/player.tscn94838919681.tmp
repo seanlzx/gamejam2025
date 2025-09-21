@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bshy7rvjsswcb"]
+[gd_scene load_steps=23 format=3 uid="uid://bshy7rvjsswcb"]
 
 [ext_resource type="Script" uid="uid://chgrpo1nhpxl6" path="res://entity/player/player.gd" id="1_klmji"]
 [ext_resource type="Texture2D" uid="uid://d0fsrvkcgkje2" path="res://entity/player/morgan.png" id="2_4pl66"]
@@ -13,8 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://q5o1paf0xquy" path="res://entity/player/inventory/BackpackTile.tscn" id="10_klmji"]
 [ext_resource type="Script" uid="uid://b0o7e47df507s" path="res://entity/player/hotbar.gd" id="10_wltfy"]
 [ext_resource type="Texture2D" uid="uid://gakjc4717i1m" path="res://entity/player/inventory/selected_frame_sprite.png" id="12_5afgs"]
-[ext_resource type="PackedScene" uid="uid://fou42r7imcty" path="res://entity/item/tool/bow/bow.tscn" id="14_ivlxb"]
-[ext_resource type="Script" uid="uid://ct8r12fcbiw6t" path="res://entity/player/equipped_parent.gd" id="14_n81ss"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4pl66"]
 
@@ -314,10 +312,3 @@ offset_bottom = -34.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-2, 0)
 script = ExtResource("8_klmji")
-
-[node name="equippedParent" type="Node2D" parent="."]
-rotation = -6.28319
-script = ExtResource("14_n81ss")
-
-[node name="Bow" parent="equippedParent" instance=ExtResource("14_ivlxb")]
-position = Vector2(0, -33)

@@ -12,11 +12,11 @@ const gravity_scale_overwrite: float = 0.0
 @export var angular_damp_overwrite: int = 3
 
 
-# 5. Variables
+# 5. Variables 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	offset_from_player = -35
 	change_state(ConstItemState.pickup)
 
 	

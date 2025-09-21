@@ -13,6 +13,8 @@ var prev_state : State
 	ConstItemState.pickup : $States/PickupState
 } 
 
+var offset_from_player : float
+
 
 func show_pickup_tooltip():
 	if is_pickup_show:

@@ -13,9 +13,12 @@ const gravity_scale_overwrite: float = 0.0
 
 
 # 5. Variables
+# offset from player is negative as this is going UP
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	offset_from_player = -60
 	
 	change_state(ConstItemState.pickup)
 

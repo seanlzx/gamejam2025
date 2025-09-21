@@ -31,6 +31,15 @@ func _process(delta) -> void:
 		if Input.is_action_just_pressed("hotbar_" +str(i)):
 			hotbar.selected_number(i)
 			hotbar.equip_item(hotbar.selectedSlot, self)
+			
+	if Input.is_action_just_released("hotbar_left"):
+		hotbar.selected_left()
+		hotbar.equip_item(hotbar.selectedSlot, self)
+	if Input.is_action_just_released("hotbar_right"):
+		hotbar.selected_right()
+		hotbar.equip_item(hotbar.selectedSlot, self)
+
+	hotbar.equipped_process(delta, self)
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()

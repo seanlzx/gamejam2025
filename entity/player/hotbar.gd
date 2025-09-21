@@ -17,21 +17,37 @@ var hotbar_number_array
 var number_start = 1
 var number_end = 9
 
+var equipped : Item
+
+
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	selectedSlot = hotbarDict[1]
 	hotbar_number_array = get_hotbar_number_array()
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func equipped_process(delta: float, player : CharacterBody2D) -> void:
+	pass
+	#if equipped is Item:
+		#equipped.position = player.position
 
 func selected_left():
-	#TODO
-	pass
+	var new_number = get_number_from_slot(selectedSlot) + 1
+	
+	if new_number > number_end:
+		new_number = number_start
+		
+	selected_number(new_number)
+	return new_number
 
 func selected_right():
-	#TODO
-	pass
+	var new_number = get_number_from_slot(selectedSlot) - 1
+	
+	if new_number < number_start:
+		new_number = number_end
+		
+	selected_number(new_number)
+	return new_number
 	
 func get_hotbar_number_array():
 	var number_array = []
@@ -41,6 +57,7 @@ func get_hotbar_number_array():
 	return number_array
 
 func selected_number(number: int):	
+	print(number)
 	# check that number is valid and assign selectedSlot
 	var is_number_valid = false
 	for index in hotbarDict:
@@ -56,17 +73,21 @@ func selected_number(number: int):
 	
 	selected_frame_sprite.position = selectedSlot.gui.position
 
-var previous_equipped : Item
 
 func equip_item(slot : Slot, player : CharacterBody2D):
-	if previous_equipped is Item:
-		player.remove_child(previous_equipped)
-		previous_equipped.ItemState = ConstItemState.inventory
+	if equipped is Item:
+		player.get_node("equippedParent").remove_child(equipped)
+		equipped.ItemState = ConstItemState.inventory
 	
-	player.add_child(slot.item)
-	slot.item.ItemState = ConstItemState.equiped
+	slot.item.position.y = slot.item.offset_from_player
+	slot.item.position.x = 0
+	slot.item.rotation = 0
 	
-	previous_equipped = slot.item
+	player.get_node("equippedParent").add_child(slot.item)
+	if slot.item is Item:
+		slot.item.ItemState = ConstItemState.equiped
+	
+	equipped = slot.item
 	
 	# despawn previously equipped item
 	
