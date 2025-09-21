@@ -10,6 +10,7 @@ texture = ExtResource("1_hteqe")
 [node name="ItemSprite" type="Sprite2D" parent="."]
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://fou42r7imcty"]
+
+[ext_resource type="Script" uid="uid://bag5pwougwwsg" path="res://entity/item/tool/bow/bow.gd" id="1_jow5k"]
+[ext_resource type="Texture2D" uid="uid://y3w3b83kmjl6" path="res://entity/item/tool/bow/bow.png" id="2_jow5k"]
+[ext_resource type="PackedScene" uid="uid://ckn23fmmjtbrl" path="res://entity/item/utiltity/pickup_tooltip.tscn" id="3_npllj"]
+[ext_resource type="Script" uid="uid://ccm2rp5lftjg4" path="res://entity/item/utiltity/pickup_state.gd" id="4_6o4lo"]
+
+[node name="Bow" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jow5k")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_jow5k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(3.2, 1.2)
+polygon = PackedVector2Array(-9.375, 5, -7.8125, 4.16667, -5.625, -3.33333, -3.4375, -8.33333, -0.625, -11.6667, 1.875, -10.8333, 5.3125, -5, 7.5, 4.16667, 8.75, 5, 8.75, 7.5, 7.5, 7.5, -6.875, 7.5, -9.375, 7.5)
+
+[node name="PickupTooltip" parent="." instance=ExtResource("3_npllj")]
+
+[node name="States" type="Node" parent="."]
+
+[node name="PickupState" type="Node" parent="States"]
+script = ExtResource("4_6o4lo")

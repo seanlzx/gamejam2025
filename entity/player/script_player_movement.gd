@@ -44,30 +44,9 @@ func move_input(delta):
 	var move_speed = run_speed
 
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-
+	
 	if Input.is_action_pressed("sprint"):
 		move_speed = sprint_speed
 	
 	## NOTE this function is from godot docs, and for some reason they didn't put delta here, so no need probably 
 	character.velocity = input_direction * move_speed
-
-"""
-	extends Node2D # or Control
-
-	@export var mouse_speed: float = 500.0 # Adjust this value for desired speed
-	var dead_zone: float = 0.2 # Adjust dead zone as needed
-
-	func _process(delta: float) -> void:
-		# Get the joystick input vector
-		var joystick_input = Input.get_vector("move_cursor_left", "move_cursor_right", "move_cursor_up", "move_cursor_down")
-
-		# Apply a dead zone to the input vector
-		if joystick_input.length() > dead_zone:
-			# Move the cursor based on joystick input
-			var mouse_movement = joystick_input * mouse_speed * delta
-			var current_mouse_pos = get_viewport().get_mouse_position()
-			var new_mouse_pos = current_mouse_pos + mouse_movement
-
-			# Warp the mouse position to the new location
-			Input.warp_mouse_position(new_mouse_pos)
-"""

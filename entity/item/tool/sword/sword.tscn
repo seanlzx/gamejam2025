@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bhe4tqi1xf2bd" path="res://entity/item/tool/sword/sword.gd" id="1_oq6si"]
 [ext_resource type="Texture2D" uid="uid://dlsfi6hw782e7" path="res://entity/item/tool/sword/sword.png" id="1_vluye"]
-[ext_resource type="PackedScene" uid="uid://ckn23fmmjtbrl" path="res://entity/utility/pickup_tooltip.tscn" id="3_vywb3"]
-[ext_resource type="Script" uid="uid://ccm2rp5lftjg4" path="res://entity/item/tool/sword/pickup_state.gd" id="4_vywb3"]
+[ext_resource type="PackedScene" uid="uid://ckn23fmmjtbrl" path="res://entity/item/utiltity/pickup_tooltip.tscn" id="3_vywb3"]
+[ext_resource type="Script" uid="uid://ccm2rp5lftjg4" path="res://entity/item/utiltity/pickup_state.gd" id="4_vywb3"]
 
 [node name="Sword" type="RigidBody2D"]
 collision_layer = 2
