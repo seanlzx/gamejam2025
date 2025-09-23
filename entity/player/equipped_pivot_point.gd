@@ -11,6 +11,20 @@ var Collision
 const equipped_rotation : float = PI / 2
 
 var global_equipped_offset : float
+var equipped : Item
+
+@onready var pin_joint_1: PinJoint2D = $PlaceholderCapsuleShape2D/PinJoint1
+@onready var pin_joint_2: PinJoint2D = $PlaceholderCapsuleShape2D/PinJoint2
+
+@onready var character: CharacterBody2D = $".."
+
+func InputActions(delta):
+	if Input.is_action_just_pressed("primary_action"):
+		equipped.primary_action(delta, character)
+	if Input.is_action_just_pressed("secondary_action"):
+		equipped.secondary_action(delta, character)
+	if Input.is_action_just_pressed("tertiary_action"):
+		equipped.tertiary_action(delta, character)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,10 +42,12 @@ func _ready() -> void:
 	placeholder_capsule_shape_2d.shape.height = tempItem.equipped_capsule_height
 	placeholder_capsule_shape_2d.shape.radius = tempItem.equipped_capsule_radius
 
-
 	tempItem.queue_free()
 
 func _process(delta: float) -> void:
+	if equipped is Item:
+		InputActions(delta)
+	
 	# the fix was simple, just use get_global_mouse_position() NOT get_viewport.get_mouse_position()
 	look_at(get_global_mouse_position())
 	
@@ -47,17 +63,24 @@ func _process(delta: float) -> void:
 	#if hotbar.equipped is Item:
 		#print(placeholder_capsule_shape_2d.rotation)
 
-func unequip(equipped : Item):
-	placeholder_capsule_shape_2d.remove_child(equipped)
-	equipped.change_state(ConstItemState.inventory)
+func unequip(equipped_arg : Item):
+	placeholder_capsule_shape_2d.remove_child(equipped_arg)
+	equipped_arg.change_state(ConstItemState.inventory)
+	equipped = null
 
-func equip(equipped : Item):
-	if equipped is not Item:
+func equip(equipped_arg : Item):
+	if equipped_arg is not Item:
 		return
 		
+	equipped = equipped_arg
+		
 	#NOTE This is not necessary as the sowrd is going to be child of the placeholder_capsule itself
-	equipped.position.x = 0
-	equipped.position.y = 0
+	#equipped.position.x = equipped.offset_from_player
+	#equipped.position.y = 0
+	#equipped.rotation = equipped_rotation
+	
+	#NOTE however this if sword is going to be child of the placeholder_capsule itself
+	equipped.position = Vector2.ZERO
 	equipped.rotation = 0
 	
 
@@ -72,4 +95,13 @@ func equip(equipped : Item):
 	
 	equipped.change_state(ConstItemState.equipped)
 	
+	# modify joints joints
+	
+	pin_joint_1.node_a = NodePath("../..")
+	pin_joint_1.node_b = NodePath(equipped.get_path())
+	pin_joint_2.node_a = NodePath("../..")
+	pin_joint_2.node_b = NodePath(equipped.get_path())
+	
+	pin_joint_1.position.y = equipped.pint_joint_displacement_1
+	pin_joint_2.position.y = equipped.pint_joint_displacement_2
 	

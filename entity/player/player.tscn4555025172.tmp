@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bshy7rvjsswcb"]
+[gd_scene load_steps=26 format=3 uid="uid://bshy7rvjsswcb"]
 
 [ext_resource type="Script" uid="uid://chgrpo1nhpxl6" path="res://entity/player/player.gd" id="1_klmji"]
 [ext_resource type="Texture2D" uid="uid://d0fsrvkcgkje2" path="res://entity/player/morgan.png" id="2_4pl66"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b0o7e47df507s" path="res://entity/player/hotbar.gd" id="10_wltfy"]
 [ext_resource type="Texture2D" uid="uid://gakjc4717i1m" path="res://entity/player/inventory/selected_frame_sprite.png" id="12_5afgs"]
 [ext_resource type="Script" uid="uid://cctqqr1prv3" path="res://entity/player/equipped_pivot_point.gd" id="14_ivlxb"]
+[ext_resource type="PackedScene" uid="uid://b04mveu6yed4d" path="res://entity/item/tool/sworg/sworg.tscn" id="15_n81ss"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4pl66"]
 
@@ -332,3 +333,5 @@ position = Vector2(1.52205, 2.02413)
 node_b = NodePath("../..")
 
 [node name="PinJoint2" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D"]
+
+[node name="Sworg" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D" instance=ExtResource("15_n81ss")]

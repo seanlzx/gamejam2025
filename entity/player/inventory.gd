@@ -162,7 +162,7 @@ func drag_process():
 		
 	DraggedItemSprite.position = get_viewport().get_mouse_position()
 	
-	if Input.is_action_just_released("primary"):
+	if Input.is_action_just_released("primary_action"):
 		if is_over_dropbutton:
 			dragged_item.position = player.position 
 			get_tree().root.add_child(dragged_item)

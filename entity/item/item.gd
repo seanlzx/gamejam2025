@@ -19,7 +19,7 @@ var offset_from_player : float = 50
 
 var equipped_capsule_height : float = 30
 var equipped_capsule_radius : float = 10
-var equipped_capsule_rotation : float = 90
+var equipped_capsule_rotation : float = PI / 2
 var equipped_capsule_joint1_position : float = 10
 var equipped_capsule_joint2_position : float = 20
 var pint_joint_displacement_1 : float = 5
@@ -45,3 +45,12 @@ func change_state(state):
 	ItemState = state
 	states_dict[state].enter_state()
 	prev_state = states_dict[state]
+	
+func primary_action(delta, character : CharacterBody2D):
+	pass
+
+func secondary_action(delta, character : CharacterBody2D):
+	pass
+
+func tertiary_action(delta, character : CharacterBody2D):
+	pass

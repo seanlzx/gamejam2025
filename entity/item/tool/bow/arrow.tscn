@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkku88m2ktjw"]
+
+[ext_resource type="Texture2D" uid="uid://b12fk6gykhp10" path="res://entity/item/tool/bow/arrow.png" id="1_mbqjf"]
+[ext_resource type="Script" uid="uid://ccify2xxl00yf" path="res://entity/item/tool/bow/arrow.gd" id="1_mwto4"]
+[ext_resource type="Script" uid="uid://ccm2rp5lftjg4" path="res://entity/item/utiltity/pickup_state.gd" id="3_4gu2u"]
+[ext_resource type="Script" uid="uid://cb4rthp1hyv1k" path="res://entity/item/utiltity/inventory_state.gd" id="4_hyl66"]
+[ext_resource type="Script" uid="uid://5yk8ytgxsq2l" path="res://entity/item/utiltity/equipped_state.gd" id="5_ux0eq"]
+[ext_resource type="PackedScene" uid="uid://ckn23fmmjtbrl" path="res://entity/item/utiltity/pickup_tooltip.tscn" id="6_hyl66"]
+
+[node name="Arrow" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_mwto4")
+
+[node name="ItemSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_mbqjf")
+
+[node name="PickupTooltip" parent="." instance=ExtResource("6_hyl66")]
+
+[node name="States" type="Node" parent="."]
+
+[node name="PickupState" type="Node" parent="States"]
+script = ExtResource("3_4gu2u")
+
+[node name="InventoryState" type="Node" parent="States"]
+script = ExtResource("4_hyl66")
+
+[node name="EquippedState" type="Node" parent="States"]
+script = ExtResource("5_ux0eq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-6, -21, 2, -28, 8, -19, 0, -19, -1, 18, 5, 24, -7, 23, -2, 17, 0, -20)

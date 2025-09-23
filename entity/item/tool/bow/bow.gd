@@ -11,8 +11,14 @@ const gravity_scale_overwrite: float = 0.0
 @export var linear_damp_overwrite: int = 3
 @export var angular_damp_overwrite: int = 3
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var arrow_scene : Resource = preload("res://entity/item/tool/bow/arrow.tscn")
 
 # 5. Variables 
+var arrow_speed : int = 500;
+var sweet_spot_to_avoid_player_arrow_collision : int = 80;
+# the timing in which the arrow is released
+var release : float = 0.47
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,3 +47,25 @@ func _ready() -> void:
 func _process(delta):
 	pass
 	
+func primary_action(delta, character : CharacterBody2D):
+	animation_player.play("jab")
+
+func secondary_action(delta, character : CharacterBody2D):
+	if animation_player.is_playing():
+		return
+	run_draw(character.get_node("EquippedPivotPoint"))
+	animation_player.play("draw")
+
+func tertiary_action(delta, character : CharacterBody2D):
+	pass
+
+func run_draw(character_pivot):
+	var arrow = arrow_scene.instantiate()
+	await get_tree().create_timer(release).timeout
+	
+	arrow.position	+= Vector2.UP * sweet_spot_to_avoid_player_arrow_collision
+
+	var velocity = Vector2.RIGHT
+	arrow.linear_velocity = velocity.rotated(character_pivot.rotation) * arrow_speed
+	# The arrow.read() will reparent 😎😎😎
+	add_child(arrow)
