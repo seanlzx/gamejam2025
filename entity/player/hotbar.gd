@@ -19,11 +19,14 @@ var number_end = 9
 
 var equipped : Item
 
+@onready var equipped_pivot_point: RigidBody2D = $"../../EquippedPivotPoint"
+
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	selectedSlot = hotbarDict[1]
 	hotbar_number_array = get_hotbar_number_array()
+	
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func equipped_process(delta: float, player : CharacterBody2D) -> void:
@@ -75,21 +78,17 @@ func selected_number(number: int):
 
 
 func equip_item(slot : Slot, player : CharacterBody2D):
+	# This is neccesary to deal with variables pointing to objects that are already freed 
+	if not is_instance_valid(equipped):
+		equipped = null
 	if equipped is Item:
-		player.get_node("equippedParent").remove_child(equipped)
-		equipped.ItemState = ConstItemState.inventory
-	
-	slot.item.position.y = slot.item.offset_from_player
-	slot.item.position.x = 0
-	slot.item.rotation = 0
-	
-	player.get_node("equippedParent").add_child(slot.item)
-	if slot.item is Item:
-		slot.item.ItemState = ConstItemState.equiped
+		equipped_pivot_point.unequip(equipped)
 	
 	equipped = slot.item
 	
-	# despawn previously equipped item
+	equipped_pivot_point.equip(equipped)
+
+	
 	
 func get_number_from_slot(slot : Slot) -> int:
 	var regex = RegEx.new()

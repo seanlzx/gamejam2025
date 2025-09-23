@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bshy7rvjsswcb"]
+[gd_scene load_steps=27 format=3 uid="uid://bshy7rvjsswcb"]
 
 [ext_resource type="Script" uid="uid://chgrpo1nhpxl6" path="res://entity/player/player.gd" id="1_klmji"]
 [ext_resource type="Texture2D" uid="uid://d0fsrvkcgkje2" path="res://entity/player/morgan.png" id="2_4pl66"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://gakjc4717i1m" path="res://entity/player/inventory/selected_frame_sprite.png" id="12_5afgs"]
 [ext_resource type="Script" uid="uid://cctqqr1prv3" path="res://entity/player/equipped_pivot_point.gd" id="14_ivlxb"]
 [ext_resource type="PackedScene" uid="uid://b04mveu6yed4d" path="res://entity/item/tool/sword/sword.tscn" id="15_n81ss"]
+[ext_resource type="Script" uid="uid://b53bt0yg0lawp" path="res://entity/player/deleteme.gd" id="16_b15sj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4pl66"]
 
@@ -99,7 +100,7 @@ font_size = 8
 [sub_resource type="CircleShape2D" id="CircleShape2D_t2ln0"]
 radius = 45.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivlxb"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n81ss"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_klmji")
@@ -317,24 +318,25 @@ offset_bottom = -34.0
 position = Vector2(-2, 0)
 script = ExtResource("8_klmji")
 
-[node name="EquippedPivotPoint" type="RigidBody2D" parent="."]
-rotation = -0.0317145
-collision_layer = 4
-collision_mask = 4
+[node name="EquippedPivotPoint" type="StaticBody2D" parent="."]
 script = ExtResource("14_ivlxb")
 
-[node name="PlaceholderCapsuleShape2D" type="CollisionShape2D" parent="EquippedPivotPoint"]
-position = Vector2(50, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EquippedPivotPoint"]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(32, 0)
+shape = SubResource("CircleShape2D_n81ss")
+
+[node name="Sword" parent="EquippedPivotPoint/CollisionShape2D" instance=ExtResource("15_n81ss")]
+position = Vector2(20, 0)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ivlxb")
 
-[node name="temp" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D" instance=ExtResource("15_n81ss")]
-mass_overwrite = 2.0
-linear_damp_overwrite = 3
-angular_damp_overwrite = 3
+[node name="PinJoint2D" type="PinJoint2D" parent="EquippedPivotPoint/CollisionShape2D"]
+position = Vector2(8, 0)
+node_a = NodePath("../..")
+node_b = NodePath("../Sword")
+script = ExtResource("16_b15sj")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D/temp"]
-position = Vector2(1.26837, 10.0201)
-
-[node name="PinJoint2D2" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D/temp"]
-position = Vector2(1.77571, -5.97184)
+[node name="PinJoint2D2" type="PinJoint2D" parent="EquippedPivotPoint/CollisionShape2D"]
+node_a = NodePath("../..")
+node_b = NodePath("../Sword")

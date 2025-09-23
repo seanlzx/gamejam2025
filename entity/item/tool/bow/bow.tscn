@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://fou42r7imcty"]
+[gd_scene load_steps=7 format=3 uid="uid://fou42r7imcty"]
 
 [ext_resource type="Script" uid="uid://bag5pwougwwsg" path="res://entity/item/tool/bow/bow.gd" id="1_jow5k"]
 [ext_resource type="Texture2D" uid="uid://y3w3b83kmjl6" path="res://entity/item/tool/bow/bow.png" id="2_jow5k"]
 [ext_resource type="PackedScene" uid="uid://ckn23fmmjtbrl" path="res://entity/item/utiltity/pickup_tooltip.tscn" id="3_npllj"]
 [ext_resource type="Script" uid="uid://ccm2rp5lftjg4" path="res://entity/item/utiltity/pickup_state.gd" id="4_6o4lo"]
+[ext_resource type="Script" uid="uid://cb4rthp1hyv1k" path="res://entity/item/tool/sword/inventory_state.gd" id="5_3vamo"]
+[ext_resource type="Script" uid="uid://5yk8ytgxsq2l" path="res://entity/item/tool/sword/equipped_state.gd" id="6_rx38g"]
 
 [node name="Bow" type="RigidBody2D"]
 collision_layer = 2
@@ -24,3 +26,9 @@ polygon = PackedVector2Array(-9.375, 5, -7.8125, 4.16667, -5.625, -3.33333, -3.4
 
 [node name="PickupState" type="Node" parent="States"]
 script = ExtResource("4_6o4lo")
+
+[node name="InventoryState" type="Node" parent="States"]
+script = ExtResource("5_3vamo")
+
+[node name="EquippedState" type="Node" parent="States"]
+script = ExtResource("6_rx38g")

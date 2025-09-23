@@ -11,8 +11,9 @@ const inventory_column_count = 9
 @onready var hotbar: CanvasLayer = $Hotbar
 @onready var dropInv: CanvasLayer = $Drop
 @onready var DraggedItemSprite: Sprite2D = $DraggedItem
-
 @onready var dropInvButton = dropInv.get_node("Button")
+@onready var equipped_pivot_point: RigidBody2D = $"../EquippedPivotPoint"
+
 
 var previous_slot : Slot
 var dragged_item : Item 
@@ -24,7 +25,7 @@ class Slot:
 	var id : String
 	var gui : Panel
 	var item : Item
-	
+
 
 @export var inventory = {
 	# 🥲 all the keys below are indeed ints, but to access need string?
@@ -81,6 +82,8 @@ func _ready() -> void:
 	dropInvButton.mouse_entered.connect(set_is_over_dropbutton.bind(true))
 	dropInvButton.mouse_exited.connect(set_is_over_dropbutton.bind(false))
 	
+	hotbar.selected_number(1)
+	
 	pass # Replace with function body.
 
 
@@ -92,21 +95,23 @@ func _process(delta: float) -> void:
 		toggle_inventory()
 	
 	if dragged_item: 
-		drag_process()
+		drag_process()	
 		
-func pickup_item(item : Item):
+func pickup_item(item : Item) -> Slot:
 	var ableToFindSlot = false
 	for row in [inventory.hotbar, inventory.backpack]:
 		for i in range(1, inventory_column_count + 1):
 			var slot : Slot = row[i]
 			if slot.item == null:
 				add_item(item, slot)
-				return true
+
+				return slot
+				
 				
 	if not ableToFindSlot:
 		overhead_label.text = "inventory full"
 		trigger_clear_overhead_label_timer() 
-	return false
+	return null
 
 
 func trigger_clear_overhead_label_timer():
@@ -144,6 +149,7 @@ func print_inventory():
 		
 func drag(slotObj : Slot):
 	if slotObj.item != null :
+		equipped_pivot_point.unequip(slotObj.item)
 		dragged_item = slotObj.item
 		slotObj.item = null
 		slotObj.gui.get_node("ItemSprite").texture = null
@@ -156,7 +162,6 @@ func drag_process():
 		
 	DraggedItemSprite.position = get_viewport().get_mouse_position()
 	
-	print("is_over_dropbutton" + str(is_over_dropbutton))
 	if Input.is_action_just_released("primary"):
 		if is_over_dropbutton:
 			dragged_item.position = player.position 
@@ -165,9 +170,12 @@ func drag_process():
 			remove_dragged_item()
 			return
 	
+		# This is when hovering over empty space bodoh
 		if hovered_slot == null:
 			print("dragged_item: "+str(dragged_item))
 			add_item(dragged_item, previous_slot)
+			if hotbar.selectedSlot == previous_slot:
+				hotbar.equip_item(previous_slot, player)
 			remove_dragged_item()
 			return
 		
@@ -181,14 +189,20 @@ func drag_process():
 			print("after hovered: " +str(hovered_slot.item))
 			
 			add_item(dragged_item, hovered_slot)
+			if hotbar.selectedSlot == hovered_slot:
+				hotbar.equip_item(hovered_slot, player)
+			
 			
 			add_item(previous_item, previous_slot)
-			
+			if hotbar.selectedSlot == previous_slot:
+				hotbar.equip_item(previous_slot, player)
 			remove_dragged_item()
 			
 			return 
 			
 		add_item(dragged_item, hovered_slot)
+		if hotbar.selectedSlot == hovered_slot:
+			hotbar.equip_item(hovered_slot, player)
 		remove_dragged_item()
 
 	

@@ -13,15 +13,20 @@ const gravity_scale_overwrite: float = 0.0
 
 
 # 5. Variables
-# offset from player is negative as this is going UP
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	offset_from_player = -60
+	
+	# TODO remember this 4 values should be adjusted specifically to this items collision
+	offset_from_player = 60
+	equipped_capsule_height = 30
+	equipped_capsule_radius = 10
+	equipped_capsule_rotation  = 90
+	pint_joint_displacement_1
+	pint_joint_displacement_2
 	
 	change_state(ConstItemState.pickup)
-
 	
 	pickup_tooltip = $PickupTooltip
 	

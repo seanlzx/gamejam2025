@@ -10,11 +10,20 @@ var is_pickup_show = false
 var pickup_tooltip
 var prev_state : State
 @onready var states_dict = {
-	ConstItemState.pickup : $States/PickupState
+	ConstItemState.pickup : $States/PickupState,
+	ConstItemState.inventory : $States/InventoryState,
+	ConstItemState.equipped : $States/EquippedState,
 } 
 
-var offset_from_player : float
+var offset_from_player : float = 50
 
+var equipped_capsule_height : float = 30
+var equipped_capsule_radius : float = 10
+var equipped_capsule_rotation : float = 90
+var equipped_capsule_joint1_position : float = 10
+var equipped_capsule_joint2_position : float = 20
+var pint_joint_displacement_1 : float = 5
+var pint_joint_displacement_2 : float = -5
 
 func show_pickup_tooltip():
 	if is_pickup_show:

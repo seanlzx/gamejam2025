@@ -1,7 +1,12 @@
 extends Node
 
+const Slot = preload("res://entity/player/inventory.gd").Slot
+
 @onready var player: CharacterBody2D = $".."
 @onready var PickupArea: Area2D = player.get_node("PickupArea")
+@onready var hotbar: CanvasLayer = $"../inventory/Hotbar"
+
+
 
 var Item = "res://entity/item/item.gd"
 
@@ -51,9 +56,17 @@ func _process(delta: float) -> void:
 		
 		closest_item.show_pickup_tooltip()
 		if Input.is_action_just_pressed("interact"):
-			if player.inventory.pickup_item(closest_item):
+			
+			# previous had the pickup_item() function return true and false
+			# instead now have it return available_slot, and if no slot is available it returns null
+			var available_slot = player.inventory.pickup_item(closest_item)
+			
+			if available_slot is Slot:
 				closest_item.ItemState = ConstItemState.inventory
 				# fuckery
 				closest_item.get_parent().remove_child(closest_item)
+				
+				if available_slot == hotbar.selectedSlot:
+					hotbar.equip_item(available_slot, player)
 				# TODO still have to account for situations where inventory full
 		prev_closest_item = closest_item
