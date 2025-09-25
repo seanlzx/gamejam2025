@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bshy7rvjsswcb"]
+[gd_scene load_steps=24 format=3 uid="uid://bshy7rvjsswcb"]
 
 [ext_resource type="Script" uid="uid://chgrpo1nhpxl6" path="res://entity/player/player.gd" id="1_klmji"]
 [ext_resource type="Texture2D" uid="uid://d0fsrvkcgkje2" path="res://entity/player/morgan.png" id="2_4pl66"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://deq2babmh4t33" path="res://entity/player/script_player_pickup.gd" id="5_4btn6"]
 [ext_resource type="Script" uid="uid://bynmbr4p8hrc5" path="res://entity/utility/script_animation.gd" id="6_4btn6"]
 [ext_resource type="Script" uid="uid://brqbj55r7fygf" path="res://entity/player/inventory.gd" id="8_4btn6"]
-[ext_resource type="Script" uid="uid://cjafl88sva5a1" path="res://entity/player/camera_2d.gd" id="8_klmji"]
 [ext_resource type="PackedScene" uid="uid://lyq125qqdttv" path="res://entity/player/inventory/HotbarTile.tscn" id="9_qa8rf"]
 [ext_resource type="PackedScene" uid="uid://q5o1paf0xquy" path="res://entity/player/inventory/BackpackTile.tscn" id="10_klmji"]
 [ext_resource type="Script" uid="uid://b0o7e47df507s" path="res://entity/player/hotbar.gd" id="10_wltfy"]
@@ -101,6 +100,7 @@ radius = 45.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivlxb"]
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_klmji")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
@@ -314,7 +314,6 @@ offset_bottom = -34.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-2, 0)
-script = ExtResource("8_klmji")
 
 [node name="EquippedPivotPoint" type="RigidBody2D" parent="."]
 rotation = -0.0317145

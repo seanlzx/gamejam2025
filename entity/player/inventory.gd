@@ -172,21 +172,17 @@ func drag_process():
 	
 		# This is when hovering over empty space bodoh
 		if hovered_slot == null:
-			print("dragged_item: "+str(dragged_item))
 			add_item(dragged_item, previous_slot)
 			if hotbar.selectedSlot == previous_slot:
 				hotbar.equip_item(previous_slot, player)
 			remove_dragged_item()
 			return
 		
-		print("hovered: " +str(hovered_slot.item))
 		# when the hovered slot is occupied
 		if hovered_slot.item != null: 
 			var previous_item : Item = hovered_slot.item
 			
-			print("hovered: " +str(hovered_slot.item))
 			remove_item(hovered_slot)
-			print("after hovered: " +str(hovered_slot.item))
 			
 			add_item(dragged_item, hovered_slot)
 			if hotbar.selectedSlot == hovered_slot:
@@ -211,15 +207,12 @@ func assign_drop(slotObj : Slot):
 		push_error("hovered_slot already occupied")
 		get_tree().quit()
 	hovered_slot = slotObj
-	print("func assign_drop(slotObj : Slot):
-. hovered_slot: " + str(hovered_slot))
 	
 func unassign_drop(slotObj : Slot):
 	if hovered_slot == null:
 		push_error("hovered_slot already null")
 		get_tree().quit()
 	hovered_slot = null
-	print("unassign_drop. hovered_slot: " + str(hovered_slot))
 
 func set_is_over_dropbutton(is_over_dropbutton_arg : bool):
 	is_over_dropbutton = is_over_dropbutton_arg

@@ -10,17 +10,8 @@ func _ready():
 	await get_tree().create_timer(45).timeout
 	queue_free()
 
-func _process(delta: float) -> void:
+#func _process(delta: float) -> void:
 	
-	print(
-		(
-			"arrow rotation: %s \n" +
-			"arrow position: %s \n" 
-		) % [ 
-			rotation,
-			position
-		]
-	)
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	# arrows are gonna despawn anyways, so it doesn't actually make sense for them to despawn upon leaving screen, but for performance sake just have it despawn... a little later

@@ -33,6 +33,15 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://entity/item/tool/": "yellow",
+"res://entity/player/": "purple",
+"res://global/": "green",
+"res://map/": "pink"
+}
+
 [input]
 
 up={

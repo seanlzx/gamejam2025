@@ -60,7 +60,6 @@ func get_hotbar_number_array():
 	return number_array
 
 func selected_number(number: int):	
-	print(number)
 	# check that number is valid and assign selectedSlot
 	var is_number_valid = false
 	for index in hotbarDict:
@@ -93,7 +92,6 @@ func equip_item(slot : Slot, player : CharacterBody2D):
 func get_number_from_slot(slot : Slot) -> int:
 	var regex = RegEx.new()
 	regex.compile("\\d+")
-	print(slot.id)
 	for numeric_string in regex.search_all(slot.id):
 		return int(numeric_string.get_string())
 	return -1
