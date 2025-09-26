@@ -29,6 +29,9 @@ func InputActions(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	# TODO no idea if this will work
+	equip(#TODO put sword here)
+	
 	collision_layer = ConstCollisionLayer.base
 	collision_mask = ConstCollisionLayer.base
 	

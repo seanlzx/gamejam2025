@@ -48,7 +48,8 @@ func _ready() -> void:
 	var tempItem : Item = Item.new()
 	
 	# set this initial values, or else the collision capsule within the player and send him flying
-	global_equipped_offset = tempItem.offset_from_player
+	# TODO  added offset_of_offset in phone test it ouy
+	global_equipped_offset = tempItem.offset_from_player + character.offset_of_offset
 	placeholder_capsule_shape_2d.position.x = global_equipped_offset
 	placeholder_capsule_shape_2d.shape.height = tempItem.equipped_capsule_height
 	placeholder_capsule_shape_2d.shape.radius = tempItem.equipped_capsule_radius

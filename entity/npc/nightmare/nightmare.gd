@@ -21,6 +21,9 @@ extends CharacterBody2D
 @export var max_health = ConstDefault.npc_max_health
 @export var strength = ConstDefault.npc_strength
 var health : int
+## 5.1 NPC specifc
+# TODO dont need change player offset distance in weapon rather have +- modifiers for NPCs here, then when npcs does equip, get the values from here to modify existing player_offset.
+@export var equipped_offset_to_offset: float
 
 ## 6. Built-in Methods 
 
