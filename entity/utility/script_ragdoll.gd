@@ -17,7 +17,7 @@ var rigid_body_collision_mask = ConstCollisionLayer.ragdoll
 # - value 0 is the center
 # - value 1.0 will be the very upper/bottom edge of the collisionShape
 var pin_joints_displacement_from_center = 0.5
-var pin_joints_softness = 0.1
+var pin_joints_softness = 0
 
 func _ready():
 	carryout_property_overwrites()

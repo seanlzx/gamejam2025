@@ -1,49 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://v4so162ykkpc"]
+[gd_scene load_steps=15 format=3 uid="uid://v4so162ykkpc"]
 
-[ext_resource type="Texture2D" uid="uid://d0fsrvkcgkje2" path="res://entity/player/morgan.png" id="1_iid42"]
+[ext_resource type="Texture2D" uid="uid://wlbuol5thw3k" path="res://entity/npc/nightmare/nightmare.png" id="1_iacbj"]
 [ext_resource type="PackedScene" uid="uid://cqit8fru4blgx" path="res://entity/utility/placeholder_collision_shape.tscn" id="2_vjsh6"]
-[ext_resource type="Script" uid="uid://bsjqa2mce6hsr" path="res://entity/player/script_player_movement.gd" id="3_dn5ee"]
-[ext_resource type="Script" uid="uid://deq2babmh4t33" path="res://entity/player/script_player_pickup.gd" id="4_wjfqs"]
+[ext_resource type="Script" uid="uid://6io68xeajaym" path="res://entity/npc/nightmare/script_nightmare_movement.gd" id="3_iacbj"]
 [ext_resource type="Script" uid="uid://coi05qmmgci12" path="res://entity/utility/script_ragdoll.gd" id="5_mbebr"]
 [ext_resource type="Script" uid="uid://bynmbr4p8hrc5" path="res://entity/utility/script_animation.gd" id="6_scwyk"]
-[ext_resource type="Script" uid="uid://brqbj55r7fygf" path="res://entity/player/inventory.gd" id="7_wgwxd"]
-[ext_resource type="PackedScene" uid="uid://q5o1paf0xquy" path="res://entity/player/inventory/BackpackTile.tscn" id="8_4xyod"]
-[ext_resource type="Script" uid="uid://b0o7e47df507s" path="res://entity/player/hotbar.gd" id="9_noit0"]
-[ext_resource type="PackedScene" uid="uid://lyq125qqdttv" path="res://entity/player/inventory/HotbarTile.tscn" id="10_663sn"]
-[ext_resource type="Texture2D" uid="uid://gakjc4717i1m" path="res://entity/player/inventory/selected_frame_sprite.png" id="11_4wdeh"]
-[ext_resource type="Script" uid="uid://cctqqr1prv3" path="res://entity/player/equipped_pivot_point.gd" id="12_qu6nk"]
+[ext_resource type="Script" uid="uid://344mo2tktubp" path="res://entity/npc/nightmare/nightmare_pivot_point.gd" id="6_wrgxl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u6yxl"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6gpie"]
-height = 26.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdqik"]
+radius = 16.4904
+height = 49.3731
 
 [sub_resource type="Animation" id="Animation_vknsq"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
 
 [sub_resource type="Animation" id="Animation_vthes"]
 resource_name = "idle"
@@ -52,49 +23,19 @@ resource_name = "idle"
 resource_name = "walk_left"
 length = 0.4
 loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3, 5]
-}
 
 [sub_resource type="Animation" id="Animation_wjhpj"]
 resource_name = "walk_right"
 length = 0.4
 loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 2]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_42pk2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrgxl"]
 _data = {
 &"RESET": SubResource("Animation_vknsq"),
 &"idle": SubResource("Animation_vthes"),
 &"walk_left": SubResource("Animation_1ob52"),
 &"walk_right": SubResource("Animation_wjhpj")
 }
-
-[sub_resource type="LabelSettings" id="LabelSettings_361l3"]
-font_size = 8
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_am2ah"]
-radius = 45.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bluh"]
 
@@ -105,26 +46,23 @@ motion_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_u6yxl")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("1_iid42")
-hframes = 6
+texture = ExtResource("1_iacbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_6gpie")
+position = Vector2(3, 0)
+rotation = -0.523599
+shape = SubResource("CapsuleShape2D_jdqik")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
 root_node = NodePath("../..")
 libraries = {
-&"": SubResource("AnimationLibrary_42pk2")
+&"": SubResource("AnimationLibrary_wrgxl")
 }
 
 [node name="PlaceholderCollisionShape2D" parent="." instance=ExtResource("2_vjsh6")]
 
-[node name="ScriptPlayerMovement" type="Node" parent="."]
-script = ExtResource("3_dn5ee")
-
-[node name="ScriptPlayerPickup" type="Node" parent="."]
-script = ExtResource("4_wjfqs")
+[node name="ScriptNightmareMovement" type="Node" parent="."]
+script = ExtResource("3_iacbj")
 
 [node name="ScriptRagdoll" type="Node" parent="."]
 script = ExtResource("5_mbebr")
@@ -132,192 +70,17 @@ script = ExtResource("5_mbebr")
 [node name="ScriptAnimation" type="Node" parent="."]
 script = ExtResource("6_scwyk")
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="HealthBar" type="ColorRect" parent="HUD"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -16.0
-offset_right = 112.0
-offset_bottom = -2.0
-grow_vertical = 0
-scale = Vector2(0.98373, 1.00879)
-color = Color(0, 0, 0, 1)
-
-[node name="Value" type="ColorRect" parent="HUD/HealthBar"]
-layout_mode = 0
-offset_left = 2.03308
-offset_top = 1.98258
-offset_right = 102.033
-offset_bottom = 11.9826
-color = Color(0.709804, 0, 0, 1)
-
-[node name="Label" type="Label" parent="HUD/HealthBar"]
-layout_mode = 0
-offset_left = 6.09923
-offset_top = 0.991289
-offset_right = 65.0992
-offset_bottom = 24.9913
-text = "PLACEHOLDER KEEP ALL CAPS, BECAUSE ALL CAPS HAVE CONSTANT LINE HEIGHT"
-label_settings = SubResource("LabelSettings_361l3")
-
-[node name="PickupArea" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
-shape = SubResource("CircleShape2D_am2ah")
-
-[node name="inventory" type="CanvasLayer" parent="."]
-script = ExtResource("7_wgwxd")
-
-[node name="Backpack" type="CanvasLayer" parent="inventory"]
-
-[node name="1" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 64.0
-offset_top = 231.0
-offset_right = 64.0
-offset_bottom = 231.0
-
-[node name="2" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 140.0
-offset_top = 231.0
-offset_right = 167.0
-offset_bottom = 231.0
-
-[node name="3" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 215.0
-offset_top = 231.0
-offset_right = 215.0
-offset_bottom = 231.0
-
-[node name="4" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 294.0
-offset_top = 234.0
-offset_right = 294.0
-offset_bottom = 234.0
-
-[node name="5" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 367.0
-offset_top = 234.0
-offset_right = 367.0
-offset_bottom = 234.0
-
-[node name="6" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 449.0
-offset_top = 233.0
-offset_right = 449.0
-offset_bottom = 233.0
-
-[node name="7" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 523.0
-offset_top = 233.0
-offset_right = 523.0
-offset_bottom = 233.0
-
-[node name="8" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 603.0
-offset_top = 234.0
-offset_right = 603.0
-offset_bottom = 234.0
-
-[node name="9" parent="inventory/Backpack" instance=ExtResource("8_4xyod")]
-offset_left = 677.0
-offset_top = 233.0
-offset_right = 677.0
-offset_bottom = 233.0
-
-[node name="Hotbar" type="CanvasLayer" parent="inventory"]
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
-script = ExtResource("9_noit0")
-
-[node name="1" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 400.0
-offset_top = 917.0
-offset_right = 400.0
-offset_bottom = 917.0
-
-[node name="2" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 476.0
-offset_top = 916.0
-offset_right = 476.0
-offset_bottom = 916.0
-
-[node name="3" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 550.0
-offset_top = 918.0
-offset_right = 550.0
-offset_bottom = 918.0
-
-[node name="4" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 631.0
-offset_top = 915.0
-offset_right = 631.0
-offset_bottom = 915.0
-
-[node name="5" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 704.0
-offset_top = 914.0
-offset_right = 704.0
-offset_bottom = 914.0
-
-[node name="6" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 784.0
-offset_top = 912.0
-offset_right = 784.0
-offset_bottom = 912.0
-
-[node name="7" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 860.0
-offset_top = 912.0
-offset_right = 860.0
-offset_bottom = 912.0
-
-[node name="8" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 940.0
-offset_top = 913.0
-offset_right = 940.0
-offset_bottom = 913.0
-
-[node name="9" parent="inventory/Hotbar" instance=ExtResource("10_663sn")]
-offset_left = 1015.0
-offset_top = 913.0
-offset_right = 1015.0
-offset_bottom = 913.0
-
-[node name="SelectedFrameSprite" type="Sprite2D" parent="inventory/Hotbar"]
-position = Vector2(400, 917)
-texture = ExtResource("11_4wdeh")
-
-[node name="Drop" type="CanvasLayer" parent="inventory"]
-
-[node name="Button" type="Button" parent="inventory/Drop"]
-offset_left = 264.0
-offset_top = 128.0
-offset_right = 480.0
-offset_bottom = 176.0
-text = "Drop"
-
-[node name="DraggedItem" type="Sprite2D" parent="inventory"]
-position = Vector2(8, 0)
-
 [node name="OverheadLabel" type="Label" parent="."]
 offset_left = -23.0
 offset_top = -57.0
 offset_right = 17.0
 offset_bottom = -34.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-2, 0)
-
 [node name="EquippedPivotPoint" type="RigidBody2D" parent="."]
 rotation = -0.0317145
 collision_layer = 4
 collision_mask = 4
-script = ExtResource("12_qu6nk")
+script = ExtResource("6_wrgxl")
 
 [node name="PlaceholderCapsuleShape2D" type="CollisionShape2D" parent="EquippedPivotPoint"]
 position = Vector2(50, 0)

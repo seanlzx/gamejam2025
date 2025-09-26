@@ -21,30 +21,6 @@ height = 26.0
 
 [sub_resource type="Animation" id="Animation_vknsq"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
 
 [sub_resource type="Animation" id="Animation_vthes"]
 resource_name = "idle"
@@ -53,35 +29,11 @@ resource_name = "idle"
 resource_name = "walk_left"
 length = 0.4
 loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [3, 5]
-}
 
 [sub_resource type="Animation" id="Animation_wjhpj"]
 resource_name = "walk_right"
 length = 0.4
 loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 2]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42pk2"]
 _data = {
@@ -105,10 +57,13 @@ script = ExtResource("1_klmji")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_4pl66")
+linear_damp = 3.0
+angular_damp = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("2_4pl66")
 hframes = 6
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, 1)
@@ -329,5 +284,7 @@ shape = SubResource("CapsuleShape2D_ivlxb")
 [node name="PinJoint1" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D"]
 position = Vector2(1.52205, 2.02413)
 node_b = NodePath("../..")
+softness = 14.46
 
 [node name="PinJoint2" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D"]
+softness = 11.63

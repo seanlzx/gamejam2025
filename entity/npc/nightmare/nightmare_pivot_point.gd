@@ -1,34 +1,45 @@
 extends RigidBody2D
 
-# first of this line doesn't work, secondly don't need to declared this import, class_name automatically make thes class global
-#const Item = preload("res://entity/item/item.gd").Item
+# 1. Importing Scenes 
 
-var Collision
-@onready var hotbar: CanvasLayer = $"../inventory/Hotbar"
+
+# 2. Importing other nodes ?
+@onready var character: CharacterBody2D = $".."
 
 @onready var placeholder_capsule_shape_2d: CollisionShape2D = $PlaceholderCapsuleShape2D
-
-const equipped_rotation : float = PI / 2
-
-var global_equipped_offset : float
-var equipped : Item
 
 @onready var pin_joint_1: PinJoint2D = $PlaceholderCapsuleShape2D/PinJoint1
 @onready var pin_joint_2: PinJoint2D = $PlaceholderCapsuleShape2D/PinJoint2
 
-@onready var character: CharacterBody2D = $".."
+
+
+# 3. CONSTANTS
+const EQUIPPED_ROTATION : float = PI / 2
+
+# 4. Overwrites ??
+
+
+# 5. Class ???
+var global_equipped_offset : float
+var equipped : Item
+
+
+# 6. Built-in Methods 
+
+
+# 7. Methods
+
+
+
+
 
 func InputActions(delta):
-	if Input.is_action_just_pressed("primary_action"):
-		equipped.primary_action(delta, character)
-	if Input.is_action_just_pressed("secondary_action"):
-		equipped.secondary_action(delta, character)
-	if Input.is_action_just_pressed("tertiary_action"):
-		equipped.tertiary_action(delta, character)
+	equipped.primary_action(delta, character)
+	equipped.secondary_action(delta, character)
+	equipped.tertiary_action(delta, character)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	collision_layer = ConstCollisionLayer.base
 	collision_mask = ConstCollisionLayer.base
 	
@@ -49,7 +60,6 @@ func _process(delta: float) -> void:
 		InputActions(delta)
 	
 	# the fix was simple, just use get_global_mouse_position() NOT get_viewport.get_mouse_position()
-	look_at(get_global_mouse_position())
 	
 	# IMPORTANT This is to keep the PivotPoint itself centered on player parent
 	position = Vector2.ZERO
@@ -57,9 +67,9 @@ func _process(delta: float) -> void:
 	# IMPORTANT This is to keep the placeholder_capsule steady
 	placeholder_capsule_shape_2d.position.y = 0
 	placeholder_capsule_shape_2d.position.x = global_equipped_offset
-	placeholder_capsule_shape_2d.rotation = equipped_rotation
+	placeholder_capsule_shape_2d.rotation = EQUIPPED_ROTATION
 	
-	#placeholder_capsule_shape_2d.rotation = equipped_rotation
+	#placeholder_capsule_shape_2d.rotation = EQUIPPED_ROTATION
 	#if hotbar.equipped is Item:
 		#print(placeholder_capsule_shape_2d.rotation)
 
@@ -77,7 +87,7 @@ func equip(equipped_arg : Item):
 	#NOTE This is not necessary as the sowrd is going to be child of the placeholder_capsule itself
 	#equipped.position.x = equipped.offset_from_player
 	#equipped.position.y = 0
-	#equipped.rotation = equipped_rotation
+	#equipped.rotation = EQUIPPED_ROTATION
 	
 	#NOTE however this if sword is going to be child of the placeholder_capsule itself
 	equipped.position = Vector2.ZERO

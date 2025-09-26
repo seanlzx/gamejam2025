@@ -37,7 +37,9 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://entity/item/tool/": "yellow",
+"res://entity/item/utiltity/": "gray",
 "res://entity/player/": "purple",
+"res://entity/utility/": "gray",
 "res://global/": "green",
 "res://map/": "pink"
 }

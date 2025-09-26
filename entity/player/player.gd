@@ -1,21 +1,18 @@
 extends CharacterBody2D
 
+## 1. Importing Scenes 
+
+
+## 2. Importing other nodes ⭕
 @onready var inventory: CanvasLayer = $inventory
-
-# Stats
-@export var starting_health = ConstDefault.player_max_health
-@export var starting_energy = ConstDefault.player_max_energy
-@export var strength = ConstDefault.player_strength
-
-
-
-# status  (changeable stats)
-var health : int
-var energy : int
-
 # children
 @onready var hotbar: CanvasLayer = $inventory/Hotbar
 
+
+## 3.  CONSTANTS
+
+
+## 4. Overwrites ✍️
 # Values to overwrite existing node properties
 # Derived on my own, Posthumously Claude agreed
 @export var property_overwrites : Dictionary = {
@@ -23,6 +20,23 @@ var energy : int
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING,
 }
 
+
+## 5. Class 🏗️
+# Stats
+@export var max_health = ConstDefault.player_max_health
+@export var max_energy = ConstDefault.player_max_energy
+@export var strength = ConstDefault.player_strength
+# status  (current value)
+var health : int
+var energy : int
+
+
+
+
+
+
+
+## 6. Built-in Methods 
 func _ready():
 	carryout_property_overwrites()
 
@@ -45,6 +59,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+## 7. Methods
 func carryout_property_overwrites() -> void:
 	# CharacterBody2D
 	motion_mode = property_overwrites.motion_mode
