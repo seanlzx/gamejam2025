@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://v4so162ykkpc"]
+[gd_scene load_steps=16 format=3 uid="uid://v4so162ykkpc"]
 
 [ext_resource type="Texture2D" uid="uid://wlbuol5thw3k" path="res://entity/npc/nightmare/nightmare.png" id="1_iacbj"]
+[ext_resource type="Script" uid="uid://d4xbes4u50nh" path="res://entity/npc/nightmare/nightmare.gd" id="1_wrgxl"]
 [ext_resource type="PackedScene" uid="uid://cqit8fru4blgx" path="res://entity/utility/placeholder_collision_shape.tscn" id="2_vjsh6"]
 [ext_resource type="Script" uid="uid://6io68xeajaym" path="res://entity/npc/nightmare/script_nightmare_movement.gd" id="3_iacbj"]
 [ext_resource type="Script" uid="uid://coi05qmmgci12" path="res://entity/utility/script_ragdoll.gd" id="5_mbebr"]
@@ -41,6 +42,7 @@ _data = {
 
 [node name="Nightmare" type="CharacterBody2D"]
 motion_mode = 1
+script = ExtResource("1_wrgxl")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_u6yxl")
@@ -92,3 +94,23 @@ position = Vector2(1.52205, 2.02413)
 node_b = NodePath("../..")
 
 [node name="PinJoint2" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D"]
+
+[node name="HealthBar" type="ColorRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -41.0
+offset_right = 53.0
+offset_bottom = -27.0
+grow_vertical = 0
+scale = Vector2(0.958317, 0.277756)
+color = Color(0, 0, 0, 1)
+
+[node name="Value" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_left = 1.0435
+offset_top = 3.60026
+offset_right = 101.044
+offset_bottom = 11.6003
+color = Color(0.709804, 0, 0, 1)

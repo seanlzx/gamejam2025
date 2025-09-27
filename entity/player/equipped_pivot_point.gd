@@ -30,7 +30,8 @@ func InputActions(delta):
 func _ready() -> void:
 	
 	# TODO no idea if this will work
-	equip(#TODO put sword here)
+	#TODO put sword here
+	equip(null)
 	
 	collision_layer = ConstCollisionLayer.base
 	collision_mask = ConstCollisionLayer.base
