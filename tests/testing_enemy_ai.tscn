@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk25xrpfrpjic"]
+
+[ext_resource type="Script" uid="uid://d1oeko658s64p" path="res://map/rudimentary_background.gd" id="1_xxqrr"]
+[ext_resource type="PackedScene" uid="uid://b04mveu6yed4d" path="res://entity/item/tool/sworg/sworg.tscn" id="2_7svj5"]
+[ext_resource type="PackedScene" uid="uid://fou42r7imcty" path="res://entity/item/tool/bow/bow.tscn" id="3_u1w34"]
+[ext_resource type="PackedScene" uid="uid://v4so162ykkpc" path="res://entity/npc/nightmare/nightmare.tscn" id="4_abne8"]
+[ext_resource type="PackedScene" uid="uid://bshy7rvjsswcb" path="res://entity/player/player.tscn" id="5_bxgwa"]
+
+[node name="TestingEnemyAi" type="Node2D"]
+
+[node name="RudimentaryBackgroundSettings" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_xxqrr")
+
+[node name="Sword" parent="." instance=ExtResource("2_7svj5")]
+
+[node name="Bow" parent="." instance=ExtResource("3_u1w34")]
+
+[node name="Nightmare" parent="." instance=ExtResource("4_abne8")]
+position = Vector2(254, -15)
+
+[node name="Player" parent="." instance=ExtResource("5_bxgwa")]
+position = Vector2(-140, -56)

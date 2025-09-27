@@ -15,10 +15,14 @@ const gravity_scale_overwrite: float = 0.0
 var arrow_scene : Resource = preload("res://entity/item/tool/bow/arrow.tscn")
 
 # 5. Variables 
-var arrow_speed : int = 500;
+var arrow_speed : int = 1000;
 var sweet_spot_to_avoid_player_arrow_collision : int = 80;
 # the timing in which the arrow is released
 var release : float = 0.47
+
+# 5. Variables specific to this item
+var damage : int = 5
+var character : CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,19 +48,27 @@ func _ready() -> void:
 	angular_damp = angular_damp_overwrite
 	pass # Replace with function body.
 
+	# collision detection
+	body_entered.connect(impact)
+	contact_monitor = true
+	max_contacts_reported = 10
+	
 func _process(delta):
 	pass
 	
-func primary_action(delta, character : CharacterBody2D):
+func primary_action(delta, character_arg : CharacterBody2D):
+	character = character_arg
 	animation_player.play("jab")
 
-func secondary_action(delta, character : CharacterBody2D):
+func secondary_action(delta, character_arg : CharacterBody2D):
+	character = character_arg
 	if animation_player.is_playing():
 		return
 	run_draw(character.get_node("EquippedPivotPoint"))
 	animation_player.play("draw")
 
-func tertiary_action(delta, character : CharacterBody2D):
+func tertiary_action(delta, character_arg : CharacterBody2D):
+	character = character_arg
 	pass
 
 func run_draw(character_pivot):
@@ -69,3 +81,13 @@ func run_draw(character_pivot):
 	arrow.linear_velocity = velocity.rotated(character_pivot.rotation) * arrow_speed
 	# The arrow.read() will reparent 😎😎😎
 	add_child(arrow)
+
+func impact(rigid_body):
+	var collision_point = global_position
+	var relative_velocity = linear_velocity - rigid_body.linear_velocity
+	var impact_force = relative_velocity.length() * damage * impact_damage_multiplier
+	var rigid_body_parent = rigid_body.get_parent()
+	# `rigid_body_parent != character` prevents characters from hurting themselves
+	if rigid_body_parent.has_method("take_damage") && rigid_body_parent != character :
+		var character_body = rigid_body_parent
+		character_body.take_damage(impact_force)

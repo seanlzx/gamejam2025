@@ -43,10 +43,10 @@ func right_joypad_old(delta):
 func move_input(delta):
 	var move_speed = run_speed
 
-	var input_direction = Input.get_vector("left", "right", "up", "down")
+	## TODO NPC enemy movement
+	#var input_direction = Input.get_vector("left", "right", "up", "down")
+	#
+	#if Input.is_action_pressed("sprint"):
+		#move_speed = sprint_speed
 	
-	if Input.is_action_pressed("sprint"):
-		move_speed = sprint_speed
-	
-	## NOTE this function is from godot docs, and for some reason they didn't put delta here, so no need probably 
-	character.velocity = input_direction * move_speed
+	#character.velocity = input_direction * move_speed

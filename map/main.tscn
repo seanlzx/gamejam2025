@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djymhucupuyhm"]
+[gd_scene load_steps=11 format=3 uid="uid://djymhucupuyhm"]
 
 [ext_resource type="PackedScene" uid="uid://bshy7rvjsswcb" path="res://entity/player/player.tscn" id="1_2g53n"]
 [ext_resource type="Script" uid="uid://d1oeko658s64p" path="res://map/rudimentary_background.gd" id="1_ukg08"]
@@ -6,6 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://dg2ay566pku3b" path="res://entity/item/tool/sword/sword.tscn" id="5_kdw7h"]
 [ext_resource type="PackedScene" uid="uid://b04mveu6yed4d" path="res://entity/item/tool/sworg/sworg.tscn" id="5_vthes"]
 [ext_resource type="PackedScene" uid="uid://v4so162ykkpc" path="res://entity/npc/nightmare/nightmare.tscn" id="6_vthes"]
+[ext_resource type="PackedScene" uid="uid://fou42r7imcty" path="res://entity/item/tool/bow/bow.tscn" id="7_1ob52"]
+[ext_resource type="Texture2D" uid="uid://d2a6ickdgot17" path="res://godot_icon.svg" id="8_vknsq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vknsq"]
+resource_local_to_scene = true
+radius = 195.88
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42pk2"]
+size = Vector2(118, 119)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vthes")
@@ -20,16 +29,6 @@ position = Vector2(-144, -8)
 
 [node name="Sword" parent="." instance=ExtResource("5_vthes")]
 
-[node name="Player2" parent="." instance=ExtResource("1_2g53n")]
-position = Vector2(-288, -16)
-script = null
-
-[node name="AnimationPlayer" parent="Player2/RigidBody2D" index="2"]
-root_node = NodePath("../../../Player2")
-
-[node name="ScriptPlayerMovement" parent="Player2" index="2"]
-script = null
-
 [node name="Sworg" parent="." instance=ExtResource("5_vthes")]
 
 [node name="Sword2" parent="." instance=ExtResource("5_kdw7h")]
@@ -37,5 +36,405 @@ script = null
 [node name="Nightmare" parent="." instance=ExtResource("6_vthes")]
 position = Vector2(177, -57)
 
+[node name="Bow" parent="." instance=ExtResource("7_1ob52")]
+
+[node name="Nightmare2" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(1234, -68)
+
+[node name="CollisionShape2D" parent="Nightmare2/DetectionArea" index="0"]
+shape = SubResource("CircleShape2D_vknsq")
+
+[node name="Nightmare3" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(997, -308)
+
+[node name="Nightmare4" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(1098, -119)
+
+[node name="Nightmare5" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(788, -318)
+
+[node name="Nightmare6" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(919, -98)
+
+[node name="WallTemporary4" type="StaticBody2D" parent="."]
+position = Vector2(374, -690)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary3" type="StaticBody2D" parent="WallTemporary4"]
+position = Vector2(274, 1170)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary3"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary3"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4"]
+position = Vector2(491, 57)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary"]
+position = Vector2(-267, -34)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary"]
+position = Vector2(125, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(333, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(136, 27)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(128, 69)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(128, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(136, 76)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(68, 107)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(75, 126)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-69, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(15, 88)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-1, 114)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-23, 126)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-55, 141)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-121, 45)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary4" type="StaticBody2D" parent="WallTemporary4"]
+position = Vector2(562, 1155)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4"]
+position = Vector2(491, 57)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary"]
+position = Vector2(-267, -34)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary"]
+position = Vector2(125, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(333, 38)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(136, 27)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(128, 69)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(128, 80)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(136, 76)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(68, 107)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(75, 126)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-69, 99)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(15, 88)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(-1, 114)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary7" type="StaticBody2D" parent="."]
+position = Vector2(2211, 1454)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary7"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary7"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary6" type="StaticBody2D" parent="."]
+position = Vector2(2156, 1595)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary6"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary6"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary5" type="StaticBody2D" parent="."]
+position = Vector2(2035, 1640)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary5"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary5"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary3" type="StaticBody2D" parent="."]
+position = Vector2(86, -675)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary3"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary3"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary2" type="StaticBody2D" parent="."]
+position = Vector2(428, 240)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary2"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
+[node name="WallTemporary" type="StaticBody2D" parent="."]
+position = Vector2(174, 251)
+
+[node name="Sprite2D" type="Sprite2D" parent="WallTemporary"]
+texture = ExtResource("8_vknsq")
+
+[node name="Node" type="CollisionShape2D" parent="WallTemporary"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_42pk2")
+
 [editable path="Player"]
-[editable path="Player2"]
+[editable path="Nightmare2"]

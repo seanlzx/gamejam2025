@@ -133,58 +133,129 @@ script = ExtResource("8_4btn6")
 [node name="Backpack" type="CanvasLayer" parent="inventory"]
 
 [node name="1" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 64.0
-offset_top = 231.0
-offset_right = 64.0
-offset_bottom = 231.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = -252.0
+offset_right = -278.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
 [node name="2" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 140.0
-offset_top = 231.0
-offset_right = 167.0
-offset_bottom = 231.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -255.0
+offset_right = -176.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="3" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 215.0
-offset_top = 231.0
-offset_right = 215.0
-offset_bottom = 231.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -255.0
+offset_right = -128.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="4" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 294.0
-offset_top = 234.0
-offset_right = 294.0
-offset_bottom = 234.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -252.0
+offset_right = -49.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="5" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 367.0
-offset_top = 234.0
-offset_right = 367.0
-offset_bottom = 234.0
+anchors_preset = -1
+anchor_left = 0.52
+anchor_top = 1.0
+anchor_right = 0.52
+anchor_bottom = 1.0
+offset_left = -6.10352e-05
+offset_top = -252.0
+offset_right = -6.10352e-05
+offset_bottom = -252.0
+metadata/_edit_use_anchors_ = true
 
 [node name="6" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 449.0
-offset_top = 233.0
-offset_right = 449.0
-offset_bottom = 233.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_top = -253.0
+offset_right = 106.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="7" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 523.0
-offset_top = 233.0
-offset_right = 523.0
-offset_bottom = 233.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = -253.0
+offset_right = 180.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="8" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 603.0
-offset_top = 234.0
-offset_right = 603.0
-offset_bottom = 234.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 260.0
+offset_top = -252.0
+offset_right = 260.0
+offset_bottom = -252.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="9" parent="inventory/Backpack" instance=ExtResource("10_klmji")]
-offset_left = 677.0
-offset_top = 233.0
-offset_right = 677.0
-offset_bottom = 233.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 334.0
+offset_top = -253.0
+offset_right = 334.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Hotbar" type="CanvasLayer" parent="inventory"]
 scale = Vector2(0.5, 0.5)
@@ -192,71 +263,133 @@ transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("10_wltfy")
 
 [node name="1" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 400.0
-offset_top = 917.0
-offset_right = 400.0
-offset_bottom = 917.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.018
+anchor_right = 1.0
+anchor_bottom = 2.018
+offset_left = -286.0
+offset_top = -67.9601
+offset_right = -286.0
+offset_bottom = -67.9601
+metadata/_edit_use_anchors_ = true
 
 [node name="2" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 476.0
-offset_top = 916.0
-offset_right = 476.0
-offset_bottom = 916.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.037
+anchor_right = 1.0
+anchor_bottom = 2.037
+offset_left = -210.0
+offset_top = -82.6401
+offset_right = -210.0
+offset_bottom = -82.6401
+metadata/_edit_use_anchors_ = true
 
 [node name="3" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 550.0
-offset_top = 918.0
-offset_right = 550.0
-offset_bottom = 918.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.008
+anchor_right = 1.0
+anchor_bottom = 2.008
+offset_left = -134.0
+offset_top = -59.7601
+offset_right = -134.0
+offset_bottom = -59.7601
+metadata/_edit_use_anchors_ = true
 
 [node name="4" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 631.0
-offset_top = 915.0
-offset_right = 631.0
-offset_bottom = 915.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.998
+anchor_right = 1.0
+anchor_bottom = 1.998
+offset_left = -55.0
+offset_top = -55.5601
+offset_right = -55.0
+offset_bottom = -55.5601
+metadata/_edit_use_anchors_ = true
 
 [node name="5" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 704.0
-offset_top = 914.0
-offset_right = 704.0
-offset_bottom = 914.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.003
+anchor_right = 1.0
+anchor_bottom = 2.003
+offset_left = 18.0
+offset_top = -60.16
+offset_right = 18.0
+offset_bottom = -60.16
+metadata/_edit_use_anchors_ = true
 
 [node name="6" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 784.0
-offset_top = 912.0
-offset_right = 784.0
-offset_bottom = 912.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.013
+anchor_right = 1.0
+anchor_bottom = 2.013
+offset_left = 98.0
+offset_top = -69.36
+offset_right = 98.0
+offset_bottom = -69.36
+metadata/_edit_use_anchors_ = true
 
 [node name="7" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 860.0
-offset_top = 912.0
-offset_right = 860.0
-offset_bottom = 912.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.013
+anchor_right = 1.0
+anchor_bottom = 2.013
+offset_left = 174.0
+offset_top = -69.36
+offset_right = 174.0
+offset_bottom = -69.36
+metadata/_edit_use_anchors_ = true
 
 [node name="8" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 940.0
-offset_top = 913.0
-offset_right = 940.0
-offset_bottom = 913.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 2.013
+anchor_right = 1.0
+anchor_bottom = 2.013
+offset_left = 254.0
+offset_top = -68.36
+offset_right = 254.0
+offset_bottom = -68.36
+metadata/_edit_use_anchors_ = true
 
 [node name="9" parent="inventory/Hotbar" instance=ExtResource("9_qa8rf")]
-offset_left = 1015.0
-offset_top = 913.0
-offset_right = 1015.0
-offset_bottom = 913.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.998
+anchor_right = 1.0
+anchor_bottom = 1.998
+offset_left = 329.0
+offset_top = -57.5601
+offset_right = 329.0
+offset_bottom = -57.5601
+metadata/_edit_use_anchors_ = true
 
 [node name="SelectedFrameSprite" type="Sprite2D" parent="inventory/Hotbar"]
-position = Vector2(400, 917)
+position = Vector2(914, 1385)
 texture = ExtResource("12_5afgs")
 
 [node name="Drop" type="CanvasLayer" parent="inventory"]
 
 [node name="Button" type="Button" parent="inventory/Drop"]
-offset_left = 264.0
-offset_top = 128.0
-offset_right = 480.0
-offset_bottom = 176.0
+anchors_preset = -1
+anchor_left = 0.524
+anchor_top = 1.0
+anchor_right = 0.524
+anchor_bottom = 1.0
+offset_left = -107.8
+offset_top = -358.0
+offset_right = 108.2
+offset_bottom = -310.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Drop"
+metadata/_edit_use_anchors_ = true
 
 [node name="DraggedItem" type="Sprite2D" parent="inventory"]
 position = Vector2(8, 0)

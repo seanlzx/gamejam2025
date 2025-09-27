@@ -29,10 +29,6 @@ func InputActions(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	# TODO no idea if this will work
-	#TODO put sword here
-	equip(null)
-	
 	collision_layer = ConstCollisionLayer.base
 	collision_mask = ConstCollisionLayer.base
 	
@@ -79,7 +75,7 @@ func equip(equipped_arg : Item):
 	equipped = equipped_arg
 		
 	#NOTE This is not necessary as the sowrd is going to be child of the placeholder_capsule itself
-	#equipped.position.x = equipped.offset_from_player
+	equipped.position.x = equipped.offset_from_player
 	#equipped.position.y = 0
 	#equipped.rotation = equipped_rotation
 	

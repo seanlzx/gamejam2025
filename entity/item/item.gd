@@ -1,6 +1,7 @@
 class_name Item extends RigidBody2D
 
 var State = "res://entity/utility/state.gd"
+const impact_damage_multiplier: float = 0.01
 
 
 var ItemState : String = ConstItemState.pickup

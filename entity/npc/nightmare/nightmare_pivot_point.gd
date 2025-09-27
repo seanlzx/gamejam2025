@@ -15,6 +15,7 @@ extends RigidBody2D
 
 # 3. CONSTANTS
 const EQUIPPED_ROTATION : float = PI / 2
+var RNG = RandomNumberGenerator.new()
 
 # 4. Overwrites ??
 
@@ -29,15 +30,6 @@ var equipped : Item
 
 # 7. Methods
 
-
-
-
-
-func InputActions(delta):
-	equipped.primary_action(delta, character)
-	equipped.secondary_action(delta, character)
-	equipped.tertiary_action(delta, character)
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	collision_layer = ConstCollisionLayer.base
@@ -47,19 +39,23 @@ func _ready() -> void:
 	# for some reason godot allows you to read class constants but not class vars
 	var tempItem : Item = Item.new()
 	
-	# set this initial values, or else the collision capsule within the player and send him flying
-	# TODO  added offset_of_offset in phone test it ouy
-	print(character.equipped_offset_to_offset)
-	global_equipped_offset = tempItem.offset_from_player + character.equipped_offset_to_offset
+	global_equipped_offset = tempItem.offset_from_player
 	placeholder_capsule_shape_2d.position.x = global_equipped_offset
 	placeholder_capsule_shape_2d.shape.height = tempItem.equipped_capsule_height
 	placeholder_capsule_shape_2d.shape.radius = tempItem.equipped_capsule_radius
 
 	tempItem.queue_free()
+	# TODO temporary for testing
+	#if Input.is_action_just_pressed("hotbar_0"):
+
+	if RNG.randi_range(1,10) < 3:
+		var sworg: Item = preload("res://entity/item/tool/sworg/sworg.tscn").instantiate()
+		equip(sworg)
+	else:
+		var sword: Item = preload("res://entity/item/tool/sword/sword.tscn").instantiate()
+		equip(sword)
 
 func _process(delta: float) -> void:
-	if equipped is Item:
-		InputActions(delta)
 	
 	# the fix was simple, just use get_global_mouse_position() NOT get_viewport.get_mouse_position()
 	
@@ -87,7 +83,7 @@ func equip(equipped_arg : Item):
 	equipped = equipped_arg
 		
 	#NOTE This is not necessary as the sowrd is going to be child of the placeholder_capsule itself
-	#equipped.position.x = equipped.offset_from_player
+	equipped.position.x = equipped.offset_from_player + character.equipped_offset_to_offset
 	#equipped.position.y = 0
 	#equipped.rotation = EQUIPPED_ROTATION
 	

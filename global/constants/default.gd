@@ -18,7 +18,7 @@ const player_sprint_speed : int = 200
 
 #region NPC
 # default status for NPCs
-const npc_max_health : int = 100
+const npc_max_health : int = 500
 
 # default statistics
 const npc_strength : int = 30

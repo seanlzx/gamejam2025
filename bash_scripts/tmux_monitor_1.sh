@@ -68,9 +68,9 @@ tmux split-window -h -t ${tmux_session_name}
 
 tmux send-keys -t "${tmux_session_name}:0.0" '"/mnt/c/Program Files/Git/bin/bash.exe" --login -i' C-m
 tmux send-keys -t "${tmux_session_name}:0.0" 'cd "$HOME/AppData/Roaming/Godot/app_userdata/Encephalon/" && tail -F logs/godot.log' C-m
-tmux send-keys -t "${tmux_session_name}:0.1" "while true; do clear; ./tree_gd.sh; sleep 5; ./tree_tscn.sh; sleep 5; done" C-m
-tmux send-keys -t "${tmux_session_name}:0.2" "while true; do clear; ./verify_absolutes_and_singletons.sh; sleep 5; ./tree.sh ; sleep 5; done" C-m
-tmux send-keys -t "${tmux_session_name}:0.3" "while true; do clear; ./check_todos_notes.sh ; sleep 10 ;done" C-m
+tmux send-keys -t "${tmux_session_name}:0.1" "while true; do clear; ./tree_gd.sh; sleep 15; ./tree_tscn.sh; sleep 15; done" C-m
+tmux send-keys -t "${tmux_session_name}:0.2" "while true; do clear; ./verify_absolutes_and_singletons.sh; sleep 15; ./tree.sh ; sleep 5; done" C-m
+tmux send-keys -t "${tmux_session_name}:0.3" "while true; do clear; ./check_todos_notes.sh ; sleep 15 ;done" C-m
 
 tmux select-layout -t ${tmux_session_name} even-horizontal
 

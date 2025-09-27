@@ -5,7 +5,7 @@ var timer
 
 # in seconds
 # TODO for testing purposes put as 10 seconds but ought to set to 60
-var free_duration = 60
+var free_duration = 100
 
 
 func enter_state() -> void:
