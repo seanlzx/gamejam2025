@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://djymhucupuyhm"]
+[gd_scene load_steps=10 format=3 uid="uid://djymhucupuyhm"]
 
 [ext_resource type="PackedScene" uid="uid://bshy7rvjsswcb" path="res://entity/player/player.tscn" id="1_2g53n"]
 [ext_resource type="Script" uid="uid://d1oeko658s64p" path="res://map/rudimentary_background.gd" id="1_ukg08"]
@@ -7,14 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://b04mveu6yed4d" path="res://entity/item/tool/sworg/sworg.tscn" id="5_vthes"]
 [ext_resource type="PackedScene" uid="uid://v4so162ykkpc" path="res://entity/npc/nightmare/nightmare.tscn" id="6_vthes"]
 [ext_resource type="PackedScene" uid="uid://fou42r7imcty" path="res://entity/item/tool/bow/bow.tscn" id="7_1ob52"]
-[ext_resource type="Texture2D" uid="uid://d2a6ickdgot17" path="res://godot_icon.svg" id="8_vknsq"]
+[ext_resource type="PackedScene" uid="uid://c4xktwg3dhlfs" path="res://tests/wall_temporary.tscn" id="8_vknsq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vknsq"]
 resource_local_to_scene = true
 radius = 195.88
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_42pk2"]
-size = Vector2(118, 119)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vthes")
@@ -23,6 +20,7 @@ script = ExtResource("1_vthes")
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("1_ukg08")
+metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_2g53n")]
 position = Vector2(-144, -8)
@@ -39,402 +37,2092 @@ position = Vector2(177, -57)
 [node name="Bow" parent="." instance=ExtResource("7_1ob52")]
 
 [node name="Nightmare2" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1234, -68)
+position = Vector2(1429, -215)
 
 [node name="CollisionShape2D" parent="Nightmare2/DetectionArea" index="0"]
 shape = SubResource("CircleShape2D_vknsq")
 
 [node name="Nightmare3" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(997, -308)
+position = Vector2(1192, -455)
 
 [node name="Nightmare4" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1098, -119)
+position = Vector2(1293, -266)
 
 [node name="Nightmare5" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(788, -318)
+position = Vector2(983, -465)
 
 [node name="Nightmare6" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(919, -98)
+position = Vector2(1114, -245)
 
-[node name="WallTemporary4" type="StaticBody2D" parent="."]
-position = Vector2(374, -690)
+[node name="Nightmare7" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3701, 2057)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare8" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3464, 1817)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare9" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3565, 2006)
 
-[node name="WallTemporary3" type="StaticBody2D" parent="WallTemporary4"]
-position = Vector2(274, 1170)
+[node name="Nightmare10" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3255, 1807)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary3"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare11" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3386, 2027)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary3"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare12" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2640, 3738)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4"]
-position = Vector2(491, 57)
+[node name="Nightmare13" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2403, 3498)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare14" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2504, 3687)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare15" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2194, 3488)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary"]
-position = Vector2(-267, -34)
+[node name="Nightmare16" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2325, 3708)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare17" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2240, 2068)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare18" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2003, 1828)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary"]
-position = Vector2(125, 16)
+[node name="Nightmare19" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2104, 2017)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare20" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(1794, 1818)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare21" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(1925, 2038)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(333, 38)
+[node name="Nightmare22" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3610, 3096)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare23" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3373, 2856)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare24" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3474, 3045)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(136, 27)
+[node name="Nightmare25" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3164, 2846)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare26" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3295, 3066)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare27" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3978, 4102)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(128, 69)
+[node name="Nightmare28" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3741, 3862)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare29" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3842, 4051)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare30" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3532, 3852)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(128, 80)
+[node name="Nightmare31" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3663, 4072)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare32" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2394, 4357)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare33" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2157, 4117)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(136, 76)
+[node name="Nightmare34" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2258, 4306)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare35" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(1948, 4107)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare36" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(2079, 4327)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(68, 107)
+[node name="Nightmare37" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3587, 4375)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare38" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3350, 4135)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="Nightmare39" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3451, 4324)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(75, 126)
+[node name="Nightmare40" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3141, 4125)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="Nightmare41" parent="." instance=ExtResource("6_vthes")]
+position = Vector2(3272, 4345)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="tempmap" type="Node2D" parent="."]
+scale = Vector2(0.441341, 0.502503)
+metadata/_edit_group_ = true
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-69, 99)
+[node name="WallTempGroup" type="Node2D" parent="tempmap"]
+position = Vector2(-7805, -3186)
+rotation = -0.523598
+metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary49" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(224, 4767)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary50" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(345, 4767)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(15, 88)
+[node name="WallTemporary51" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(469, 4764)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary52" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(593, 4762)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary53" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(714, 4767)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-1, 114)
+[node name="WallTemporary54" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(835, 4767)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary55" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(959, 4764)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary56" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1083, 4762)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-23, 126)
+[node name="WallTemporary57" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1197, 4763)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary58" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1318, 4763)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary59" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1442, 4760)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-55, 141)
+[node name="WallTemporary60" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1566, 4758)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary61" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1687, 4763)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary62" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1808, 4763)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-121, 45)
+[node name="WallTemporary63" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(1932, 4760)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary64" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2056, 4758)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary65" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-1732, 4777)
 
-[node name="WallTemporary4" type="StaticBody2D" parent="WallTemporary4"]
-position = Vector2(562, 1155)
+[node name="WallTemporary66" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-1611, 4777)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary67" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-1487, 4774)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary68" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-1363, 4772)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4"]
-position = Vector2(491, 57)
+[node name="WallTemporary69" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-1242, 4777)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary70" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-1121, 4777)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary71" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-997, 4774)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary"]
-position = Vector2(-267, -34)
+[node name="WallTemporary72" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-873, 4772)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary73" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-759, 4773)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary74" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-638, 4773)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary"]
-position = Vector2(125, 16)
+[node name="WallTemporary75" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-514, 4770)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary76" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-390, 4768)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary77" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-269, 4773)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(333, 38)
+[node name="WallTemporary78" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-148, 4773)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary79" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(-24, 4770)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary80" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(100, 4768)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(136, 27)
+[node name="WallTemporary81" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2161, 4747)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary82" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2282, 4747)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary83" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2406, 4744)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(128, 69)
+[node name="WallTemporary84" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2530, 4742)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary85" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2651, 4747)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary86" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2772, 4747)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(128, 80)
+[node name="WallTemporary87" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(2896, 4744)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary88" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3020, 4742)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary89" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3134, 4743)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(136, 76)
+[node name="WallTemporary90" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3255, 4743)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary91" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3379, 4740)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary92" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3503, 4738)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(68, 107)
+[node name="WallTemporary93" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3624, 4743)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary94" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3745, 4743)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary95" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3869, 4740)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(75, 126)
+[node name="WallTemporary96" parent="tempmap/WallTempGroup" instance=ExtResource("8_vknsq")]
+position = Vector2(3993, 4738)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTempGroup2" type="Node2D" parent="tempmap"]
+position = Vector2(-211, -19)
+metadata/_edit_group_ = true
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary49" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(224, 4767)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-69, 99)
+[node name="WallTemporary50" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(345, 4767)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary51" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(469, 4764)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary52" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(593, 4762)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(15, 88)
+[node name="WallTemporary53" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(714, 4767)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary54" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(835, 4767)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary55" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(959, 4764)
 
-[node name="WallTemporary" type="StaticBody2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(-1, 114)
+[node name="WallTemporary56" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1083, 4762)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary57" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1197, 4763)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary4/WallTemporary4/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary/WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary58" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1318, 4763)
 
-[node name="WallTemporary7" type="StaticBody2D" parent="."]
-position = Vector2(2211, 1454)
+[node name="WallTemporary59" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1442, 4760)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary7"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary60" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1566, 4758)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary7"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary61" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1687, 4763)
 
-[node name="WallTemporary6" type="StaticBody2D" parent="."]
-position = Vector2(2156, 1595)
+[node name="WallTemporary62" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1808, 4763)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary6"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary63" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(1932, 4760)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary6"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary64" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2056, 4758)
 
-[node name="WallTemporary5" type="StaticBody2D" parent="."]
-position = Vector2(2035, 1640)
+[node name="WallTemporary65" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1732, 4777)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary5"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary66" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1611, 4777)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary5"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary67" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1487, 4774)
 
-[node name="WallTemporary3" type="StaticBody2D" parent="."]
-position = Vector2(86, -675)
+[node name="WallTemporary68" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1363, 4772)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary3"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary69" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1242, 4777)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary3"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary70" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1121, 4777)
 
-[node name="WallTemporary2" type="StaticBody2D" parent="."]
-position = Vector2(428, 240)
+[node name="WallTemporary71" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-997, 4774)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary2"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary72" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-873, 4772)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary2"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary73" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-759, 4773)
 
-[node name="WallTemporary" type="StaticBody2D" parent="."]
-position = Vector2(174, 251)
+[node name="WallTemporary74" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-638, 4773)
 
-[node name="Sprite2D" type="Sprite2D" parent="WallTemporary"]
-texture = ExtResource("8_vknsq")
+[node name="WallTemporary75" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-514, 4770)
 
-[node name="Node" type="CollisionShape2D" parent="WallTemporary"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_42pk2")
+[node name="WallTemporary76" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-390, 4768)
+
+[node name="WallTemporary77" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-269, 4773)
+
+[node name="WallTemporary78" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-148, 4773)
+
+[node name="WallTemporary79" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(-24, 4770)
+
+[node name="WallTemporary80" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(100, 4768)
+
+[node name="WallTemporary81" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2161, 4747)
+
+[node name="WallTemporary82" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2282, 4747)
+
+[node name="WallTemporary83" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2406, 4744)
+
+[node name="WallTemporary84" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2530, 4742)
+
+[node name="WallTemporary85" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2651, 4747)
+
+[node name="WallTemporary86" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2772, 4747)
+
+[node name="WallTemporary87" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(2896, 4744)
+
+[node name="WallTemporary88" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3020, 4742)
+
+[node name="WallTemporary89" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3134, 4743)
+
+[node name="WallTemporary90" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3255, 4743)
+
+[node name="WallTemporary91" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3379, 4740)
+
+[node name="WallTemporary92" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3503, 4738)
+
+[node name="WallTemporary93" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3624, 4743)
+
+[node name="WallTemporary94" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3745, 4743)
+
+[node name="WallTemporary95" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3869, 4740)
+
+[node name="WallTemporary96" parent="tempmap/WallTempGroup2" instance=ExtResource("8_vknsq")]
+position = Vector2(3993, 4738)
+
+[node name="WallTempGroup3" type="Node2D" parent="tempmap"]
+position = Vector2(5605, 5604)
+metadata/_edit_group_ = true
+
+[node name="WallTemporary49" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(224, 4767)
+
+[node name="WallTemporary50" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(345, 4767)
+
+[node name="WallTemporary51" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(469, 4764)
+
+[node name="WallTemporary52" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(593, 4762)
+
+[node name="WallTemporary53" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(714, 4767)
+
+[node name="WallTemporary54" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(835, 4767)
+
+[node name="WallTemporary55" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(959, 4764)
+
+[node name="WallTemporary56" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1083, 4762)
+
+[node name="WallTemporary57" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1197, 4763)
+
+[node name="WallTemporary58" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1318, 4763)
+
+[node name="WallTemporary59" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1442, 4760)
+
+[node name="WallTemporary60" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1566, 4758)
+
+[node name="WallTemporary61" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1687, 4763)
+
+[node name="WallTemporary62" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1808, 4763)
+
+[node name="WallTemporary63" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(1932, 4760)
+
+[node name="WallTemporary64" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2056, 4758)
+
+[node name="WallTemporary65" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-1732, 4777)
+
+[node name="WallTemporary66" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-1611, 4777)
+
+[node name="WallTemporary67" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-1487, 4774)
+
+[node name="WallTemporary68" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-1363, 4772)
+
+[node name="WallTemporary69" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-1242, 4777)
+
+[node name="WallTemporary70" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-1121, 4777)
+
+[node name="WallTemporary71" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-997, 4774)
+
+[node name="WallTemporary72" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-873, 4772)
+
+[node name="WallTemporary73" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-759, 4773)
+
+[node name="WallTemporary74" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-638, 4773)
+
+[node name="WallTemporary75" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-514, 4770)
+
+[node name="WallTemporary76" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-390, 4768)
+
+[node name="WallTemporary77" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-269, 4773)
+
+[node name="WallTemporary78" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-148, 4773)
+
+[node name="WallTemporary79" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(-24, 4770)
+
+[node name="WallTemporary80" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(100, 4768)
+
+[node name="WallTemporary81" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2161, 4747)
+
+[node name="WallTemporary82" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2282, 4747)
+
+[node name="WallTemporary83" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2406, 4744)
+
+[node name="WallTemporary84" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2530, 4742)
+
+[node name="WallTemporary85" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2651, 4747)
+
+[node name="WallTemporary86" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2772, 4747)
+
+[node name="WallTemporary87" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(2896, 4744)
+
+[node name="WallTemporary88" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3020, 4742)
+
+[node name="WallTemporary89" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3134, 4743)
+
+[node name="WallTemporary90" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3255, 4743)
+
+[node name="WallTemporary91" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3379, 4740)
+
+[node name="WallTemporary92" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3503, 4738)
+
+[node name="WallTemporary93" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3624, 4743)
+
+[node name="WallTemporary94" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3745, 4743)
+
+[node name="WallTemporary95" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3869, 4740)
+
+[node name="WallTemporary96" parent="tempmap/WallTempGroup3" instance=ExtResource("8_vknsq")]
+position = Vector2(3993, 4738)
+
+[node name="WallTempGroup4" type="Node2D" parent="tempmap"]
+position = Vector2(-3033, -1363)
+rotation = 0.523598
+metadata/_edit_group_ = true
+
+[node name="WallTemporary49" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(224, 4767)
+
+[node name="WallTemporary50" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(345, 4767)
+
+[node name="WallTemporary51" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(469, 4764)
+
+[node name="WallTemporary52" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(593, 4762)
+
+[node name="WallTemporary53" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(714, 4767)
+
+[node name="WallTemporary54" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(835, 4767)
+
+[node name="WallTemporary55" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(959, 4764)
+
+[node name="WallTemporary56" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1083, 4762)
+
+[node name="WallTemporary57" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1197, 4763)
+
+[node name="WallTemporary58" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1318, 4763)
+
+[node name="WallTemporary59" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1442, 4760)
+
+[node name="WallTemporary60" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1566, 4758)
+
+[node name="WallTemporary61" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1687, 4763)
+
+[node name="WallTemporary62" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1808, 4763)
+
+[node name="WallTemporary63" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(1932, 4760)
+
+[node name="WallTemporary64" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2056, 4758)
+
+[node name="WallTemporary65" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-1732, 4777)
+
+[node name="WallTemporary66" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-1611, 4777)
+
+[node name="WallTemporary67" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-1487, 4774)
+
+[node name="WallTemporary68" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-1363, 4772)
+
+[node name="WallTemporary69" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-1242, 4777)
+
+[node name="WallTemporary70" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-1121, 4777)
+
+[node name="WallTemporary71" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-997, 4774)
+
+[node name="WallTemporary72" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-873, 4772)
+
+[node name="WallTemporary73" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-759, 4773)
+
+[node name="WallTemporary74" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-638, 4773)
+
+[node name="WallTemporary75" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-514, 4770)
+
+[node name="WallTemporary76" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-390, 4768)
+
+[node name="WallTemporary77" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-269, 4773)
+
+[node name="WallTemporary78" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-148, 4773)
+
+[node name="WallTemporary79" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(-24, 4770)
+
+[node name="WallTemporary80" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(100, 4768)
+
+[node name="WallTemporary81" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2161, 4747)
+
+[node name="WallTemporary82" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2282, 4747)
+
+[node name="WallTemporary83" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2406, 4744)
+
+[node name="WallTemporary84" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2530, 4742)
+
+[node name="WallTemporary85" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2651, 4747)
+
+[node name="WallTemporary86" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2772, 4747)
+
+[node name="WallTemporary87" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(2896, 4744)
+
+[node name="WallTemporary88" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3020, 4742)
+
+[node name="WallTemporary89" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3134, 4743)
+
+[node name="WallTemporary90" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3255, 4743)
+
+[node name="WallTemporary91" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3379, 4740)
+
+[node name="WallTemporary92" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3503, 4738)
+
+[node name="WallTemporary93" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3624, 4743)
+
+[node name="WallTemporary94" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3745, 4743)
+
+[node name="WallTemporary95" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3869, 4740)
+
+[node name="WallTemporary96" parent="tempmap/WallTempGroup4" instance=ExtResource("8_vknsq")]
+position = Vector2(3993, 4738)
+
+[node name="WallTempGroupBig" type="Node2D" parent="tempmap"]
+metadata/_edit_group_ = true
+
+[node name="WallTemporary" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(84, -1106)
+rotation = -0.512053
+
+[node name="WallTemporary2" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(205, -1106)
+
+[node name="WallTemporary3" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(329, -1109)
+
+[node name="WallTemporary4" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(453, -1111)
+
+[node name="WallTemporary5" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(574, -1106)
+
+[node name="WallTemporary6" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(695, -1106)
+
+[node name="WallTemporary7" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(819, -1109)
+
+[node name="WallTemporary8" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(943, -1111)
+
+[node name="WallTemporary9" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1057, -1110)
+
+[node name="WallTemporary10" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1178, -1110)
+
+[node name="WallTemporary11" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1302, -1113)
+
+[node name="WallTemporary12" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1426, -1115)
+
+[node name="WallTemporary13" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1547, -1110)
+
+[node name="WallTemporary14" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1668, -1110)
+
+[node name="WallTemporary15" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1792, -1113)
+
+[node name="WallTemporary16" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(1916, -1115)
+
+[node name="WallTemporary17" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1872, -1096)
+
+[node name="WallTemporary18" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1751, -1096)
+
+[node name="WallTemporary19" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1627, -1099)
+
+[node name="WallTemporary20" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1503, -1101)
+
+[node name="WallTemporary21" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1382, -1096)
+
+[node name="WallTemporary22" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1261, -1096)
+
+[node name="WallTemporary23" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1137, -1099)
+
+[node name="WallTemporary24" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-1013, -1101)
+
+[node name="WallTemporary25" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-899, -1100)
+
+[node name="WallTemporary26" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-778, -1100)
+
+[node name="WallTemporary27" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-654, -1103)
+
+[node name="WallTemporary28" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-530, -1105)
+
+[node name="WallTemporary29" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-409, -1100)
+
+[node name="WallTemporary30" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-288, -1100)
+
+[node name="WallTemporary31" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-164, -1103)
+
+[node name="WallTemporary32" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(-40, -1105)
+
+[node name="WallTemporary33" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2021, -1126)
+
+[node name="WallTemporary34" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2142, -1126)
+
+[node name="WallTemporary35" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2266, -1129)
+
+[node name="WallTemporary36" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2390, -1131)
+
+[node name="WallTemporary37" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2511, -1126)
+
+[node name="WallTemporary38" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2632, -1126)
+
+[node name="WallTemporary39" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2756, -1129)
+
+[node name="WallTemporary40" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2880, -1131)
+
+[node name="WallTemporary41" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(2994, -1130)
+
+[node name="WallTemporary42" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3115, -1130)
+
+[node name="WallTemporary43" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3239, -1133)
+
+[node name="WallTemporary44" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3363, -1135)
+
+[node name="WallTemporary45" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3484, -1130)
+
+[node name="WallTemporary46" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3605, -1130)
+
+[node name="WallTemporary47" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3729, -1133)
+
+[node name="WallTemporary48" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3853, -1135)
+
+[node name="WallTemporary97" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5761, -1106)
+
+[node name="WallTemporary98" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5882, -1106)
+
+[node name="WallTemporary99" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6006, -1109)
+
+[node name="WallTemporary100" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6130, -1111)
+
+[node name="WallTemporary101" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6251, -1106)
+
+[node name="WallTemporary102" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6372, -1106)
+
+[node name="WallTemporary103" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6496, -1109)
+
+[node name="WallTemporary104" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6620, -1111)
+
+[node name="WallTemporary105" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6734, -1110)
+
+[node name="WallTemporary106" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6855, -1110)
+
+[node name="WallTemporary107" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(6979, -1113)
+
+[node name="WallTemporary108" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7103, -1115)
+
+[node name="WallTemporary109" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7224, -1110)
+
+[node name="WallTemporary110" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7345, -1110)
+
+[node name="WallTemporary111" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7469, -1113)
+
+[node name="WallTemporary112" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7593, -1115)
+
+[node name="WallTemporary113" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3805, -1096)
+
+[node name="WallTemporary114" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(3926, -1096)
+
+[node name="WallTemporary115" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4050, -1099)
+
+[node name="WallTemporary116" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4174, -1101)
+
+[node name="WallTemporary117" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4295, -1096)
+
+[node name="WallTemporary118" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4416, -1096)
+
+[node name="WallTemporary119" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4540, -1099)
+
+[node name="WallTemporary120" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4664, -1101)
+
+[node name="WallTemporary121" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4778, -1100)
+
+[node name="WallTemporary122" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(4899, -1100)
+
+[node name="WallTemporary123" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5023, -1103)
+
+[node name="WallTemporary124" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5147, -1105)
+
+[node name="WallTemporary125" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5268, -1100)
+
+[node name="WallTemporary126" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5389, -1100)
+
+[node name="WallTemporary127" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5513, -1103)
+
+[node name="WallTemporary128" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(5637, -1105)
+
+[node name="WallTemporary129" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7698, -1126)
+
+[node name="WallTemporary130" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7819, -1126)
+
+[node name="WallTemporary131" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(7943, -1129)
+
+[node name="WallTemporary132" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8067, -1131)
+
+[node name="WallTemporary133" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8188, -1126)
+
+[node name="WallTemporary134" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8309, -1126)
+
+[node name="WallTemporary135" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8433, -1129)
+
+[node name="WallTemporary136" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8557, -1131)
+
+[node name="WallTemporary137" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8671, -1130)
+
+[node name="WallTemporary138" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8792, -1130)
+
+[node name="WallTemporary139" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(8916, -1133)
+
+[node name="WallTemporary140" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(9040, -1135)
+
+[node name="WallTemporary141" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(9161, -1130)
+
+[node name="WallTemporary142" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(9282, -1130)
+
+[node name="WallTemporary143" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(9406, -1133)
+
+[node name="WallTemporary144" parent="tempmap/WallTempGroupBig" instance=ExtResource("8_vknsq")]
+position = Vector2(9530, -1135)
+
+[node name="WallTempGroupBig2" type="Node2D" parent="tempmap"]
+position = Vector2(8503, 787)
+rotation = 1.57079
+metadata/_edit_group_ = true
+
+[node name="WallTemporary" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(84, -1106)
+rotation = -0.512053
+
+[node name="WallTemporary2" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(205, -1106)
+
+[node name="WallTemporary3" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(329, -1109)
+
+[node name="WallTemporary4" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(453, -1111)
+
+[node name="WallTemporary5" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(574, -1106)
+
+[node name="WallTemporary6" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(695, -1106)
+
+[node name="WallTemporary7" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(819, -1109)
+
+[node name="WallTemporary8" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(943, -1111)
+
+[node name="WallTemporary9" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1057, -1110)
+
+[node name="WallTemporary10" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1178, -1110)
+
+[node name="WallTemporary11" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1302, -1113)
+
+[node name="WallTemporary12" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1426, -1115)
+
+[node name="WallTemporary13" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1547, -1110)
+
+[node name="WallTemporary14" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1668, -1110)
+
+[node name="WallTemporary15" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1792, -1113)
+
+[node name="WallTemporary16" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(1916, -1115)
+
+[node name="WallTemporary17" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1872, -1096)
+
+[node name="WallTemporary18" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1751, -1096)
+
+[node name="WallTemporary19" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1627, -1099)
+
+[node name="WallTemporary20" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1503, -1101)
+
+[node name="WallTemporary21" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1382, -1096)
+
+[node name="WallTemporary22" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1261, -1096)
+
+[node name="WallTemporary23" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1137, -1099)
+
+[node name="WallTemporary24" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-1013, -1101)
+
+[node name="WallTemporary25" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-899, -1100)
+
+[node name="WallTemporary26" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-778, -1100)
+
+[node name="WallTemporary27" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-654, -1103)
+
+[node name="WallTemporary28" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-530, -1105)
+
+[node name="WallTemporary29" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-409, -1100)
+
+[node name="WallTemporary30" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-288, -1100)
+
+[node name="WallTemporary31" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-164, -1103)
+
+[node name="WallTemporary32" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(-40, -1105)
+
+[node name="WallTemporary33" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2021, -1126)
+
+[node name="WallTemporary34" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2142, -1126)
+
+[node name="WallTemporary35" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2266, -1129)
+
+[node name="WallTemporary36" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2390, -1131)
+
+[node name="WallTemporary37" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2511, -1126)
+
+[node name="WallTemporary38" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2632, -1126)
+
+[node name="WallTemporary39" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2756, -1129)
+
+[node name="WallTemporary40" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2880, -1131)
+
+[node name="WallTemporary41" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(2994, -1130)
+
+[node name="WallTemporary42" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3115, -1130)
+
+[node name="WallTemporary43" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3239, -1133)
+
+[node name="WallTemporary44" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3363, -1135)
+
+[node name="WallTemporary45" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3484, -1130)
+
+[node name="WallTemporary46" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3605, -1130)
+
+[node name="WallTemporary47" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3729, -1133)
+
+[node name="WallTemporary48" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3853, -1135)
+
+[node name="WallTemporary97" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5761, -1106)
+
+[node name="WallTemporary98" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5882, -1106)
+
+[node name="WallTemporary99" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6006, -1109)
+
+[node name="WallTemporary100" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6130, -1111)
+
+[node name="WallTemporary101" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6251, -1106)
+
+[node name="WallTemporary102" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6372, -1106)
+
+[node name="WallTemporary103" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6496, -1109)
+
+[node name="WallTemporary104" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6620, -1111)
+
+[node name="WallTemporary105" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6734, -1110)
+
+[node name="WallTemporary106" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6855, -1110)
+
+[node name="WallTemporary107" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(6979, -1113)
+
+[node name="WallTemporary108" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7103, -1115)
+
+[node name="WallTemporary109" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7224, -1110)
+
+[node name="WallTemporary110" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7345, -1110)
+
+[node name="WallTemporary111" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7469, -1113)
+
+[node name="WallTemporary112" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7593, -1115)
+
+[node name="WallTemporary113" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3805, -1096)
+
+[node name="WallTemporary114" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(3926, -1096)
+
+[node name="WallTemporary115" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4050, -1099)
+
+[node name="WallTemporary116" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4174, -1101)
+
+[node name="WallTemporary117" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4295, -1096)
+
+[node name="WallTemporary118" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4416, -1096)
+
+[node name="WallTemporary119" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4540, -1099)
+
+[node name="WallTemporary120" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4664, -1101)
+
+[node name="WallTemporary121" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4778, -1100)
+
+[node name="WallTemporary122" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(4899, -1100)
+
+[node name="WallTemporary123" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5023, -1103)
+
+[node name="WallTemporary124" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5147, -1105)
+
+[node name="WallTemporary125" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5268, -1100)
+
+[node name="WallTemporary126" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5389, -1100)
+
+[node name="WallTemporary127" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5513, -1103)
+
+[node name="WallTemporary128" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(5637, -1105)
+
+[node name="WallTemporary129" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7698, -1126)
+
+[node name="WallTemporary130" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7819, -1126)
+
+[node name="WallTemporary131" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(7943, -1129)
+
+[node name="WallTemporary132" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8067, -1131)
+
+[node name="WallTemporary133" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8188, -1126)
+
+[node name="WallTemporary134" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8309, -1126)
+
+[node name="WallTemporary135" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8433, -1129)
+
+[node name="WallTemporary136" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8557, -1131)
+
+[node name="WallTemporary137" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8671, -1130)
+
+[node name="WallTemporary138" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8792, -1130)
+
+[node name="WallTemporary139" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(8916, -1133)
+
+[node name="WallTemporary140" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(9040, -1135)
+
+[node name="WallTemporary141" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(9161, -1130)
+
+[node name="WallTemporary142" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(9282, -1130)
+
+[node name="WallTemporary143" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(9406, -1133)
+
+[node name="WallTemporary144" parent="tempmap/WallTempGroupBig2" instance=ExtResource("8_vknsq")]
+position = Vector2(9530, -1135)
+
+[node name="WallTempGroup5" type="Node2D" parent="tempmap"]
+position = Vector2(8618, 6488)
+rotation = 1.57079
+metadata/_edit_group_ = true
+
+[node name="WallTemporary49" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(224, 4767)
+
+[node name="WallTemporary50" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(345, 4767)
+
+[node name="WallTemporary51" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(469, 4764)
+
+[node name="WallTemporary52" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(593, 4762)
+
+[node name="WallTemporary53" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(714, 4767)
+
+[node name="WallTemporary54" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(835, 4767)
+
+[node name="WallTemporary55" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(959, 4764)
+
+[node name="WallTemporary56" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1083, 4762)
+
+[node name="WallTemporary57" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1197, 4763)
+
+[node name="WallTemporary58" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1318, 4763)
+
+[node name="WallTemporary59" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1442, 4760)
+
+[node name="WallTemporary60" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1566, 4758)
+
+[node name="WallTemporary61" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1687, 4763)
+
+[node name="WallTemporary62" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1808, 4763)
+
+[node name="WallTemporary63" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(1932, 4760)
+
+[node name="WallTemporary64" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2056, 4758)
+
+[node name="WallTemporary65" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-1732, 4777)
+
+[node name="WallTemporary66" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-1611, 4777)
+
+[node name="WallTemporary67" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-1487, 4774)
+
+[node name="WallTemporary68" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-1363, 4772)
+
+[node name="WallTemporary69" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-1242, 4777)
+
+[node name="WallTemporary70" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-1121, 4777)
+
+[node name="WallTemporary71" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-997, 4774)
+
+[node name="WallTemporary72" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-873, 4772)
+
+[node name="WallTemporary73" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-759, 4773)
+
+[node name="WallTemporary74" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-638, 4773)
+
+[node name="WallTemporary75" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-514, 4770)
+
+[node name="WallTemporary76" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-390, 4768)
+
+[node name="WallTemporary77" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-269, 4773)
+
+[node name="WallTemporary78" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-148, 4773)
+
+[node name="WallTemporary79" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(-24, 4770)
+
+[node name="WallTemporary80" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(100, 4768)
+
+[node name="WallTemporary81" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2161, 4747)
+
+[node name="WallTemporary82" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2282, 4747)
+
+[node name="WallTemporary83" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2406, 4744)
+
+[node name="WallTemporary84" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2530, 4742)
+
+[node name="WallTemporary85" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2651, 4747)
+
+[node name="WallTemporary86" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2772, 4747)
+
+[node name="WallTemporary87" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(2896, 4744)
+
+[node name="WallTemporary88" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3020, 4742)
+
+[node name="WallTemporary89" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3134, 4743)
+
+[node name="WallTemporary90" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3255, 4743)
+
+[node name="WallTemporary91" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3379, 4740)
+
+[node name="WallTemporary92" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3503, 4738)
+
+[node name="WallTemporary93" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3624, 4743)
+
+[node name="WallTemporary94" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3745, 4743)
+
+[node name="WallTemporary95" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3869, 4740)
+
+[node name="WallTemporary96" parent="tempmap/WallTempGroup5" instance=ExtResource("8_vknsq")]
+position = Vector2(3993, 4738)
+
+[node name="tempobstacless" type="Node2D" parent="tempmap"]
+
+[node name="WallTemporary49" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1607, 2903)
+
+[node name="WallTemporary50" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1614, 3021)
+
+[node name="WallTemporary51" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1481, 2881)
+
+[node name="WallTemporary52" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-155, 2924)
+
+[node name="WallTemporary53" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-159, 2807)
+
+[node name="WallTemporary54" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-29, 2902)
+
+[node name="WallTemporary55" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1095, 2116)
+
+[node name="WallTemporary56" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1099, 1999)
+
+[node name="WallTemporary57" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-969, 1993)
+
+[node name="WallTemporary58" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2198, 3998)
+
+[node name="WallTemporary59" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2068, 3992)
+
+[node name="WallTemporary60" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1945, 3988)
+
+[node name="WallTemporary61" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1815, 3982)
+
+[node name="WallTemporary62" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-494, 3555)
+
+[node name="WallTemporary63" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-501, 3673)
+
+[node name="WallTemporary64" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-484, 3757)
+
+[node name="WallTemporary65" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-491, 3875)
+
+[node name="WallTemporary66" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1214, 2337)
+
+[node name="WallTemporary67" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1207, 2455)
+
+[node name="WallTemporary68" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1224, 2539)
+
+[node name="WallTemporary69" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1217, 2657)
+
+[node name="WallTemporary70" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4132, 1636)
+
+[node name="WallTemporary71" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4125, 1754)
+
+[node name="WallTemporary72" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4258, 1614)
+
+[node name="WallTemporary73" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5584, 1657)
+
+[node name="WallTemporary74" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5580, 1540)
+
+[node name="WallTemporary75" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5710, 1635)
+
+[node name="WallTemporary76" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4644, 849)
+
+[node name="WallTemporary77" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4640, 732)
+
+[node name="WallTemporary78" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4770, 726)
+
+[node name="WallTemporary79" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3541, 2731)
+
+[node name="WallTemporary80" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3671, 2725)
+
+[node name="WallTemporary81" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3794, 2721)
+
+[node name="WallTemporary82" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3924, 2715)
+
+[node name="WallTemporary83" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5245, 2288)
+
+[node name="WallTemporary84" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5238, 2406)
+
+[node name="WallTemporary85" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5255, 2490)
+
+[node name="WallTemporary86" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5248, 2608)
+
+[node name="WallTemporary87" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6953, 1070)
+
+[node name="WallTemporary88" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6946, 1188)
+
+[node name="WallTemporary89" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6963, 1272)
+
+[node name="WallTemporary90" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6956, 1390)
+
+[node name="WallTemporary91" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1864, 2488)
+
+[node name="WallTemporary92" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1857, 2606)
+
+[node name="WallTemporary93" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1990, 2466)
+
+[node name="WallTemporary94" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3316, 2509)
+
+[node name="WallTemporary95" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3312, 2392)
+
+[node name="WallTemporary96" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3442, 2487)
+
+[node name="WallTemporary97" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2376, 1701)
+
+[node name="WallTemporary98" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2372, 1584)
+
+[node name="WallTemporary99" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2502, 1578)
+
+[node name="WallTemporary100" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1273, 3583)
+
+[node name="WallTemporary101" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1403, 3577)
+
+[node name="WallTemporary102" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1526, 3573)
+
+[node name="WallTemporary103" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1656, 3567)
+
+[node name="WallTemporary104" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2977, 3140)
+
+[node name="WallTemporary105" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2970, 3258)
+
+[node name="WallTemporary106" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2987, 3342)
+
+[node name="WallTemporary107" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2980, 3460)
+
+[node name="WallTemporary108" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4685, 1922)
+
+[node name="WallTemporary109" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4678, 2040)
+
+[node name="WallTemporary110" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4695, 2124)
+
+[node name="WallTemporary111" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4688, 2242)
+
+[node name="WallTemporary112" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3144, 1125)
+
+[node name="WallTemporary113" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3151, 1243)
+
+[node name="WallTemporary114" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3018, 1103)
+
+[node name="WallTemporary115" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1692, 1146)
+
+[node name="WallTemporary116" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1696, 1029)
+
+[node name="WallTemporary117" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1566, 1124)
+
+[node name="WallTemporary118" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2632, 338)
+
+[node name="WallTemporary119" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2636, 221)
+
+[node name="WallTemporary120" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2506, 215)
+
+[node name="WallTemporary121" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3735, 2220)
+
+[node name="WallTemporary122" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3605, 2214)
+
+[node name="WallTemporary123" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3482, 2210)
+
+[node name="WallTemporary124" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-3352, 2204)
+
+[node name="WallTemporary125" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2031, 1777)
+
+[node name="WallTemporary126" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2038, 1895)
+
+[node name="WallTemporary127" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2021, 1979)
+
+[node name="WallTemporary128" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-2028, 2097)
+
+[node name="WallTemporary129" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-323, 559)
+
+[node name="WallTemporary130" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-330, 677)
+
+[node name="WallTemporary131" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-313, 761)
+
+[node name="WallTemporary132" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-320, 879)
+
+[node name="WallTemporary133" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1995, 430)
+
+[node name="WallTemporary134" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1988, 548)
+
+[node name="WallTemporary135" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2121, 408)
+
+[node name="WallTemporary136" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3447, 451)
+
+[node name="WallTemporary137" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3443, 334)
+
+[node name="WallTemporary138" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3573, 429)
+
+[node name="WallTemporary139" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2507, -357)
+
+[node name="WallTemporary140" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2503, -474)
+
+[node name="WallTemporary141" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2633, -480)
+
+[node name="WallTemporary142" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1404, 1525)
+
+[node name="WallTemporary143" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1534, 1519)
+
+[node name="WallTemporary144" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1657, 1515)
+
+[node name="WallTemporary145" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1787, 1509)
+
+[node name="WallTemporary146" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3108, 1082)
+
+[node name="WallTemporary147" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3101, 1200)
+
+[node name="WallTemporary148" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3118, 1284)
+
+[node name="WallTemporary149" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(3111, 1402)
+
+[node name="WallTemporary150" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4816, -136)
+
+[node name="WallTemporary151" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4809, -18)
+
+[node name="WallTemporary152" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4826, 66)
+
+[node name="WallTemporary153" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4819, 184)
+
+[node name="WallTemporary154" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-824, 220)
+
+[node name="WallTemporary155" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-831, 338)
+
+[node name="WallTemporary156" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-698, 198)
+
+[node name="WallTemporary157" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(628, 241)
+
+[node name="WallTemporary158" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(624, 124)
+
+[node name="WallTemporary159" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(754, 219)
+
+[node name="WallTemporary160" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-312, -567)
+
+[node name="WallTemporary161" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-316, -684)
+
+[node name="WallTemporary162" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-186, -690)
+
+[node name="WallTemporary163" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1415, 1315)
+
+[node name="WallTemporary164" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1285, 1309)
+
+[node name="WallTemporary165" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1162, 1305)
+
+[node name="WallTemporary166" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-1032, 1299)
+
+[node name="WallTemporary167" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(289, 872)
+
+[node name="WallTemporary168" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(282, 990)
+
+[node name="WallTemporary169" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(299, 1074)
+
+[node name="WallTemporary170" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(292, 1192)
+
+[node name="WallTemporary171" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1997, -346)
+
+[node name="WallTemporary172" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(1990, -228)
+
+[node name="WallTemporary173" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2007, -144)
+
+[node name="WallTemporary174" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(2000, -26)
+
+[node name="WallTemporary175" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6151, 600)
+
+[node name="WallTemporary176" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6144, 718)
+
+[node name="WallTemporary177" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6277, 578)
+
+[node name="WallTemporary178" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7603, 621)
+
+[node name="WallTemporary179" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7599, 504)
+
+[node name="WallTemporary180" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7729, 599)
+
+[node name="WallTemporary181" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6663, -187)
+
+[node name="WallTemporary182" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6659, -304)
+
+[node name="WallTemporary183" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6789, -310)
+
+[node name="WallTemporary184" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5560, 1695)
+
+[node name="WallTemporary185" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5690, 1689)
+
+[node name="WallTemporary186" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5813, 1685)
+
+[node name="WallTemporary187" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5943, 1679)
+
+[node name="WallTemporary188" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7264, 1252)
+
+[node name="WallTemporary189" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7257, 1370)
+
+[node name="WallTemporary190" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7274, 1454)
+
+[node name="WallTemporary191" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7267, 1572)
+
+[node name="WallTemporary192" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8972, 34)
+
+[node name="WallTemporary193" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8965, 152)
+
+[node name="WallTemporary194" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8982, 236)
+
+[node name="WallTemporary195" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8975, 354)
+
+[node name="WallTemporary196" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5535, 4769)
+
+[node name="WallTemporary197" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5528, 4887)
+
+[node name="WallTemporary198" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5661, 4747)
+
+[node name="WallTemporary199" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6987, 4790)
+
+[node name="WallTemporary200" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6983, 4673)
+
+[node name="WallTemporary201" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7113, 4768)
+
+[node name="WallTemporary202" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6047, 3982)
+
+[node name="WallTemporary203" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6043, 3865)
+
+[node name="WallTemporary204" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6173, 3859)
+
+[node name="WallTemporary205" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4944, 5864)
+
+[node name="WallTemporary206" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5074, 5858)
+
+[node name="WallTemporary207" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5197, 5854)
+
+[node name="WallTemporary208" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5327, 5848)
+
+[node name="WallTemporary209" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6648, 5421)
+
+[node name="WallTemporary210" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6641, 5539)
+
+[node name="WallTemporary211" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6658, 5623)
+
+[node name="WallTemporary212" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6651, 5741)
+
+[node name="WallTemporary213" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8356, 4203)
+
+[node name="WallTemporary214" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8349, 4321)
+
+[node name="WallTemporary215" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8366, 4405)
+
+[node name="WallTemporary216" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8359, 4523)
+
+[node name="WallTemporary217" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(-278, 501)
+
+[node name="WallTemporary218" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5558, 7908)
+
+[node name="WallTemporary219" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5691, 7768)
+
+[node name="WallTemporary220" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7017, 7811)
+
+[node name="WallTemporary221" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7013, 7694)
+
+[node name="WallTemporary222" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7143, 7789)
+
+[node name="WallTemporary223" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6077, 7003)
+
+[node name="WallTemporary224" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6073, 6886)
+
+[node name="WallTemporary225" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6203, 6880)
+
+[node name="WallTemporary226" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(4974, 8885)
+
+[node name="WallTemporary227" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5104, 8879)
+
+[node name="WallTemporary228" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5227, 8875)
+
+[node name="WallTemporary229" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5357, 8869)
+
+[node name="WallTemporary230" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6678, 8442)
+
+[node name="WallTemporary231" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6671, 8560)
+
+[node name="WallTemporary232" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6688, 8644)
+
+[node name="WallTemporary233" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6681, 8762)
+
+[node name="WallTemporary234" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8386, 7224)
+
+[node name="WallTemporary235" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8379, 7342)
+
+[node name="WallTemporary236" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8396, 7426)
+
+[node name="WallTemporary237" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8389, 7544)
+
+[node name="WallTemporary238" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5880, 8360)
+
+[node name="WallTemporary239" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5873, 8478)
+
+[node name="WallTemporary240" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6006, 8338)
+
+[node name="WallTemporary241" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7332, 8381)
+
+[node name="WallTemporary242" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7328, 8264)
+
+[node name="WallTemporary243" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7458, 8359)
+
+[node name="WallTemporary244" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6392, 7573)
+
+[node name="WallTemporary245" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6388, 7456)
+
+[node name="WallTemporary246" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6518, 7450)
+
+[node name="WallTemporary247" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5289, 9455)
+
+[node name="WallTemporary248" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5419, 9449)
+
+[node name="WallTemporary249" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5542, 9445)
+
+[node name="WallTemporary250" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(5672, 9439)
+
+[node name="WallTemporary251" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6993, 9012)
+
+[node name="WallTemporary252" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6986, 9130)
+
+[node name="WallTemporary253" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(7003, 9214)
+
+[node name="WallTemporary254" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(6996, 9332)
+
+[node name="WallTemporary255" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8701, 7794)
+
+[node name="WallTemporary256" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8694, 7912)
+
+[node name="WallTemporary257" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8711, 7996)
+
+[node name="WallTemporary258" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
+position = Vector2(8704, 8114)
 
 [editable path="Player"]
 [editable path="Nightmare2"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xktwg3dhlfs"]
+
+[ext_resource type="Texture2D" uid="uid://d2a6ickdgot17" path="res://godot_icon.svg" id="1_gpmck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_42pk2"]
+size = Vector2(118, 119)
+
+[node name="WallTemporary" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gpmck")
+
+[node name="Node" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_42pk2")

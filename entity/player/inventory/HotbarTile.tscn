@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bvyroo11di3xv" path="res://entity/player/inventory/hotbar_tile.png" id="1_ulig7"]
 
 [node name="HotbarTile" type="Panel"]
+z_index = -1
 
 [node name="FrameSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ulig7")
@@ -11,6 +12,7 @@ texture = ExtResource("1_ulig7")
 position = Vector2(-2, -1)
 
 [node name="Button" type="Button" parent="."]
+z_index = -1
 layout_mode = 0
 offset_left = -32.0
 offset_top = -32.0
