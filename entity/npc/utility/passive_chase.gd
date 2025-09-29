@@ -47,14 +47,8 @@ func process_state(delta) -> void:
 	# - stop moving
 	# - attack
 	if parent.position.distance_to(parent.player.position) < attack_range:
-		
-		# also check that if weapons animation player PLAYING return *dirty fix*😇
-		if parent.equipped_pivot_point.equipped.animation_player.is_playing():
-			#NOTE serendipidous😇, the thing is this returns the entire function. Which also prevents the enemy from changing direction will animation playing. would actually be a good thing
-			return
-			
-		
 		parent.velocity = Vector2.ZERO
+		return
 		
 	# remember the `parent.player` is assigned the player once on_body_entered detects player
 	var velocity = parent.position.direction_to(parent.player.position)

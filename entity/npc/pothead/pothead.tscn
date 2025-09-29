@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://potheadykkpc"]
+[gd_scene load_steps=21 format=3 uid="uid://potheadykkpc"]
 
 [ext_resource type="Script" uid="uid://potheadu50nh" path="res://entity/npc/pothead/pothead.gd" id="1_wrgxl"]
 [ext_resource type="Texture2D" uid="uid://dqq1icp6351jh" path="res://entity/npc/pothead/pothead.png" id="2_2bmf2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dt3cwphjg017k" path="res://entity/npc/utility/idle.gd" id="8_jdqik"]
 [ext_resource type="Script" uid="uid://blth2g81jexsg" path="res://entity/npc/utility/roam.gd" id="9_autnr"]
 [ext_resource type="Script" uid="uid://c1v26pmpic6fw" path="res://entity/npc/utility/passive_chase.gd" id="10_2bmf2"]
+[ext_resource type="Script" uid="uid://bi4l82pakk8bd" path="res://entity/npc/utility/chase.gd" id="11_so537"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u6yxl"]
 
@@ -51,10 +52,6 @@ radius = 195.88
 position = Vector2(416, 219)
 motion_mode = 1
 script = ExtResource("1_wrgxl")
-property_overwrites = null
-max_health = null
-strength = null
-equipped_offset_to_offset = null
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_u6yxl")
@@ -146,9 +143,10 @@ script = ExtResource("9_autnr")
 [node name="PassiveChase" type="Node" parent="States"]
 script = ExtResource("10_2bmf2")
 
+[node name="Chase" type="Node" parent="States"]
+script = ExtResource("11_so537")
+
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_autnr")
-
-[node name="Camera2D" type="Camera2D" parent="."]

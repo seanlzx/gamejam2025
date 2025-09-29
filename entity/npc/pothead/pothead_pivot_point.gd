@@ -48,13 +48,6 @@ func _ready() -> void:
 	# TODO temporary for testing
 	#if Input.is_action_just_pressed("hotbar_0"):
 
-	if RNG.randi_range(1,10) < 3:
-		var sworg: Item = preload("res://entity/item/tool/sworg/sworg.tscn").instantiate()
-		equip(sworg)
-	else:
-		var sword: Item = preload("res://entity/item/tool/sword/sword.tscn").instantiate()
-		equip(sword)
-
 func _process(delta: float) -> void:
 	
 	# the fix was simple, just use get_global_mouse_position() NOT get_viewport.get_mouse_position()

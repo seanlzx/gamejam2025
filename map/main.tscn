@@ -21,8 +21,10 @@ script = ExtResource("1_vthes")
 [node name="Pot" parent="." instance=ExtResource("2_42pk2")]
 
 [node name="RudimentaryBackgroundSettings" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 104.0
+offset_top = -197.0
+offset_right = 144.0
+offset_bottom = -174.0
 script = ExtResource("1_ukg08")
 metadata/_edit_use_anchors_ = true
 
@@ -2131,7 +2133,7 @@ position = Vector2(8704, 8114)
 [node name="Pot2" parent="." instance=ExtResource("2_42pk2")]
 
 [node name="Pothead" parent="." instance=ExtResource("10_fxpqp")]
-position = Vector2(574, -395)
+position = Vector2(-1811, 338)
 
 [editable path="Player"]
 [editable path="Nightmare2"]

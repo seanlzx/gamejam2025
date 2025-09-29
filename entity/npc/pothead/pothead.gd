@@ -7,6 +7,7 @@ extends "res://entity/npc/npc.gd"
 @onready var detection_area: Area2D = $DetectionArea
 @onready var detection_shape: CollisionShape2D = $DetectionArea/CollisionShape2D
 @onready var equipped_pivot_point: RigidBody2D = $EquippedPivotPoint
+@onready var sprite_2d: Sprite2D = $RigidBody2D/Sprite2D
 
 ## Quite a risky way to get the player character
 
@@ -72,7 +73,8 @@ func _ready():
 	detection_area.body_exited.connect(on_body_exited)
 	
 	# NOTE quick dirty fix to get the NPCs to attack upon spawning to the equipment to recognize them as the owner
-	equipped_pivot_point.equipped.primary_action(0, self)
+	# NOTE not necessary here as pothead DOES NOT spawn with equipment
+	#equipped_pivot_point.equipped.primary_action(0, self)
 
 	entity_name = "Pothead"
 	entity_description = "He has a pot on his head, and he wants noodles"
@@ -87,38 +89,38 @@ func _ready():
 			height = 25,
 			options = [
 				{
-					text = "Pay rent first",
+					text = "Rent?",
 					height = 25,
 					# array of arguments to put into function
 					results_arg = [1],
 					# function to run
 					results = "dialog_processor"
 				},
-				{
-					text = "some other time " + entity_name,
-					height = 25,
-					# array of arguments to put into function
-					results_arg = [2],
-					# function to run
-					results = "dialog_processor"
-				},
-				{
-					text = "2. click me for testing purposes",
-					height = 25,
-					# array of arguments to put into function
-					results_arg = [2],
-					# function to run
-					results = "dialog_processor"
-				}
+				#{
+					#text = "some other time " + entity_name,
+					#height = 25,
+					## array of arguments to put into function
+					#results_arg = [2],
+					## function to run
+					#results = "dialog_processor"
+				#},
+				#{
+					#text = "2. click me for testing purposes",
+					#height = 25,
+					## array of arguments to put into function
+					#results_arg = [2],
+					## function to run
+					#results = "dialog_processor"
+				#}
 			],
 		},
 		{
 			id = 1,
-			text = "I said I need noodles",
+			text = "I nood noodles",
 			height = 25,
 			options = [
 				{
-					text = "I said pay rent first",
+					text = "Pay rent",
 					height = 25,
 					results_arg = [2],
 					results = "dialog_processor"
@@ -127,46 +129,45 @@ func _ready():
 		},
 		{
 			id = 2,
-			text = "I said I need noodles, or else",
+			text = "I need needles",
 			height = 25,
 			options = [
 				{
-					text = "I said pay rent first, or else",
-					height = 25,
-					results_arg = [ConstNpcState.chase],
-					results = "change_state"
-				},
-				{
-					text = "let's start from the beginnning",
-					height = 25,
-					results_arg = [0],
-					results = "dialog_processor"
-				},
-							{
-					text = "Do you have a quest for me?",
-					height = 25,
-					results_arg = [3],
-					results = "dialog_processor"
-				},
-			],
-		},
-		{
-			id = 3,
-			text = "I have a pot on my head, I want noodles",
-			height = 25,
-			options = [
-				{
-					text = "you have a pot on my head, you want noodles",
+					text = "Pay rent first!!",
 					height = 25,
 					results_arg = [],
-					results = "end_dialog"
+					results = "aggro"
 				},
+				#{
+					#text = "let's start from the beginnning",
+					#height = 25,
+					#results_arg = [0],
+					#results = "dialog_processor"
+				#},
+							#{
+					#text = "Do you have a quest for me?",
+					#height = 25,
+					#results_arg = [3],
+					#results = "dialog_processor"
+				#},
 			],
-		}
+		},
+		#{
+			#id = 3,
+			#text = "I have a pot on my head, I want noodles",
+			#height = 25,
+			#options = [
+				#{
+					#text = "you have a pot on my head, you want noodles",
+					#height = 25,
+					#results_arg = [],
+					#results = "end_dialog"
+				#},
+			#],
+		#}
 	]
 	
 	# TODO dialog_data(1) for test purposes, remove once not needed
-	dialog_processor(0)
 
 func _process(delta) -> void:
 		
@@ -223,3 +224,16 @@ func on_body_exited(body) -> void:
 	if body.get_node_or_null("ScriptPlayerMovement") != null:
 		print("NPC lost player")
 		change_state(ConstNpcState.roam)
+
+func aggro():
+	health_value_bar.color = Color.RED
+	await get_tree().create_timer(2).timeout
+	end_dialog()
+	change_state(ConstNpcState.idle)
+	
+	sprite_2d.frame = 1
+	await get_tree().create_timer(2).timeout
+	
+	equipped_pivot_point.equip(load("res://entity/item/tool/pot/pot.tscn").instantiate())
+	
+	change_state(ConstNpcState.chase)

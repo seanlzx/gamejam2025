@@ -86,34 +86,6 @@ func take_damage(damage):
 	update_health(health - damage)
 	generate_damage_particles(damage)
 	
-func generate_damage_particles(damage):
-	var label = Label.new()
-	var rigidBody = RigidBody2D.new()
-	label.text = str(int(damage))
-	label.rotation = randf_range(-PI / 6, PI /6)
-	# this is to make the color darker when more damage done
-	label.set("theme_override_colors/font_color", Color((100-damage)/150, 0, 0))
-	label.set("theme_override_font_sizes/font_size", clamp(damage*0.3,15,30))
-	
-	rigidBody.add_child(label)
-	rigidBody.linear_velocity = Vector2(randi_range(-50,50),randi_range(-50,50))
-	rigidBody.gravity_scale = 0
-	
-	
-	var on_timer_timeout_lambda = func(garbage):
-		if is_instance_valid(garbage):
-			garbage.queue_free()
-	
-	var timer := Timer.new()
-	timer.wait_time = 1 + (damage / 100) * 2
-	timer.one_shot = true
-	timer.timeout.connect(on_timer_timeout_lambda.bind(rigidBody))
-	
-	# NOTE the order of this add_child and timer.start MATTERS
-	add_child(rigidBody)
-	rigidBody.add_child(timer)
-	timer.start()
-	
 
 func update_health(health_arg):
 	health = health_arg

@@ -67,6 +67,7 @@ func dialog_processor(dialog_id):
 	label.set("theme_override_font_sizes/font_size", FONT_SIZE)
 	label.size.x = LABEL_WIDTH
 	label.position.x += (DIALOG_PANEL_WIDTH-LABEL_WIDTH)/2
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	
 	# derived setup
 	label.text = dialog.text
