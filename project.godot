@@ -36,8 +36,9 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
-"res://entity/item/tool/": "yellow",
+"res://entity/item/tool/": "pink",
 "res://entity/item/utiltity/": "gray",
+"res://entity/npc/": "teal",
 "res://entity/player/": "purple",
 "res://entity/utility/": "gray",
 "res://global/": "green",

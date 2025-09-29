@@ -48,7 +48,6 @@ func _ready() -> void:
 	# TODO temporary for testing
 	#if Input.is_action_just_pressed("hotbar_0"):
 
-	# NOTE this is the only thing that needs to change NPC to NPC
 	if RNG.randi_range(1,10) < 3:
 		var sworg: Item = preload("res://entity/item/tool/sworg/sworg.tscn").instantiate()
 		equip(sworg)

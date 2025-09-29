@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://djymhucupuyhm"]
+[gd_scene load_steps=12 format=3 uid="uid://djymhucupuyhm"]
 
 [ext_resource type="PackedScene" uid="uid://bshy7rvjsswcb" path="res://entity/player/player.tscn" id="1_2g53n"]
 [ext_resource type="Script" uid="uid://d1oeko658s64p" path="res://map/rudimentary_background.gd" id="1_ukg08"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://v4so162ykkpc" path="res://entity/npc/nightmare/nightmare.tscn" id="6_vthes"]
 [ext_resource type="PackedScene" uid="uid://fou42r7imcty" path="res://entity/item/tool/bow/bow.tscn" id="7_1ob52"]
 [ext_resource type="PackedScene" uid="uid://c4xktwg3dhlfs" path="res://tests/wall_temporary.tscn" id="8_vknsq"]
+[ext_resource type="PackedScene" uid="uid://potheadykkpc" path="res://entity/npc/pothead/pothead.tscn" id="10_fxpqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vknsq"]
 resource_local_to_scene = true
@@ -2126,6 +2127,11 @@ position = Vector2(8711, 7996)
 
 [node name="WallTemporary258" parent="tempmap/tempobstacless" instance=ExtResource("8_vknsq")]
 position = Vector2(8704, 8114)
+
+[node name="Pot2" parent="." instance=ExtResource("2_42pk2")]
+
+[node name="Pothead" parent="." instance=ExtResource("10_fxpqp")]
+position = Vector2(574, -395)
 
 [editable path="Player"]
 [editable path="Nightmare2"]
