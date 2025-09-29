@@ -50,6 +50,8 @@ func _ready():
 	
 
 func _process(delta) -> void:
+	if dead:
+		return
 	for i : int in range(hotbar.number_start, hotbar.number_end):
 		if Input.is_action_just_pressed("hotbar_" +str(i)):
 			hotbar.selected_number(i)
@@ -118,6 +120,8 @@ func update_health(health_arg):
 		death()
 	
 func death():
+	# this prevent characters body from moving after dying
+	velocity = Vector2.ZERO
 	# as players body is still on ground and it's pretty funny to see the NPCs attack a dead body, have this if statement to prevent death titlecard creation
 	if dead : 
 		return 

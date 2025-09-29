@@ -11,6 +11,8 @@ var move_speed = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if character.dead:
+		return
 	#if Input.is_action_just_pressed("hotbar_1"):
 		#print("DisplayServer.window_get_position(): " + str(DisplayServer.window_get_position()))
 		#print("character.get_global_mouse_position(): " + str(character.get_global_mouse_position()))

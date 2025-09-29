@@ -62,6 +62,7 @@ func tertiary_action(delta, character_arg : CharacterBody2D):
 	animation_player.play("stab")
 	
 func impact(rigid_body):
+	print(str(rigid_body) +"20250930 sworg impact on floor")
 	var collision_point = global_position
 	var relative_velocity = linear_velocity - rigid_body.linear_velocity
 	var impact_force = relative_velocity.length() * damage * impact_damage_multiplier

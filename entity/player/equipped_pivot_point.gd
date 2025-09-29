@@ -45,6 +45,9 @@ func _ready() -> void:
 	tempItem.queue_free()
 
 func _process(delta: float) -> void:
+	if character.dead : 
+		return 
+	
 	if equipped is Item:
 		InputActions(delta)
 	

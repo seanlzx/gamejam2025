@@ -86,7 +86,6 @@ func take_damage(damage):
 	update_health(health - damage)
 	generate_damage_particles(damage)
 	
-# TODO not a priority
 func generate_damage_particles(damage):
 	var label = Label.new()
 	var rigidBody = RigidBody2D.new()

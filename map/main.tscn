@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://djymhucupuyhm"]
+[gd_scene load_steps=11 format=3 uid="uid://djymhucupuyhm"]
 
 [ext_resource type="PackedScene" uid="uid://bshy7rvjsswcb" path="res://entity/player/player.tscn" id="1_2g53n"]
 [ext_resource type="Script" uid="uid://d1oeko658s64p" path="res://map/rudimentary_background.gd" id="1_ukg08"]
 [ext_resource type="Script" uid="uid://cc5henrqm54bs" path="res://map/main.gd" id="1_vthes"]
+[ext_resource type="PackedScene" uid="uid://d3ln70gf0x8s0" path="res://entity/item/tool/pot/pot.tscn" id="2_42pk2"]
 [ext_resource type="PackedScene" uid="uid://dg2ay566pku3b" path="res://entity/item/tool/sword/sword.tscn" id="5_kdw7h"]
 [ext_resource type="PackedScene" uid="uid://b04mveu6yed4d" path="res://entity/item/tool/sworg/sworg.tscn" id="5_vthes"]
 [ext_resource type="PackedScene" uid="uid://v4so162ykkpc" path="res://entity/npc/nightmare/nightmare.tscn" id="6_vthes"]
@@ -15,6 +16,8 @@ radius = 195.88
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vthes")
+
+[node name="Pot" parent="." instance=ExtResource("2_42pk2")]
 
 [node name="RudimentaryBackgroundSettings" type="Label" parent="."]
 offset_right = 40.0
