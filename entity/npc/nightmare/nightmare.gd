@@ -90,7 +90,6 @@ func take_damage(damage):
 func update_health(health_arg):
 	health = health_arg
 	health_value_bar.size.x = HEALTH_VALUE_BAR_ORIGINAL_LENGTH * (health/max_health)
-	print (str(HEALTH_VALUE_BAR_ORIGINAL_LENGTH)+" * (" +str(health)+"/"+str(max_health)+")")
 	if (health < 0):
 		death()
 	

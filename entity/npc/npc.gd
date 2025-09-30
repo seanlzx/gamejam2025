@@ -22,6 +22,7 @@ var entity_description = "noDescription"
 	ConstNpcState.roam : $States/Roam,
 	ConstNpcState.chase : $States/Chase,
 	ConstNpcState.passive_chase : $States/PassiveChase,
+	ConstNpcState.follow_player : $States/FollowPlayer,
 } 
 
 func change_state(state):
@@ -46,7 +47,7 @@ func dialog_processor(dialog_id):
 	var move_to_center = DIALOG_PANEL_WIDTH/2
 	const LABEL_WIDTH : int = 380
 	const MARGIN : int = 5
-	const FONT_SIZE : int = 8
+	const FONT_SIZE : int = 10
 	
 	var dialog = dialog_data.filter(func(arg): return arg.id == dialog_id)[0]
 	
@@ -62,9 +63,14 @@ func dialog_processor(dialog_id):
 	current_child_node_y += MARGIN
 	
 	# TODO this is suppose to label but make it a button for testing purposes
-	var label : Label = Label.new()
+	var label : RichTextLabel = RichTextLabel.new()
+	label.bbcode_enabled = true
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	label.set("theme_override_font_sizes/font_size", FONT_SIZE)
+	label.set("theme_override_font_sizes/normal_font_size", FONT_SIZE)
+	label.set("theme_override_font_sizes/italics_font_size", FONT_SIZE)
+	label.set("theme_override_font_sizes/bold_font_size", FONT_SIZE)
+	label.set("theme_override_font_sizes/bold_italics_font_size", FONT_SIZE)
+	label.set("theme_override_font_sizes/mono_font_size", FONT_SIZE)
 	label.size.x = LABEL_WIDTH
 	label.position.x += (DIALOG_PANEL_WIDTH-LABEL_WIDTH)/2
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -96,20 +102,36 @@ func dialog_processor(dialog_id):
 		
 		# generic setup
 		var button : Button = Button.new()
-		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		#button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		button.size.x = LABEL_WIDTH
-		button.set("theme_override_font_sizes/font_size", FONT_SIZE)
 		# to center the button
-		button.position.x += (400-380)/2
+		button.position.x = (DIALOG_PANEL_WIDTH-LABEL_WIDTH)/2
 #
 		# derived setup
-		button.text = option.text
+		#button.text = option.text
 		button.size.y = option.height
 		## - button modifications
 
 		## button move down
 		current_child_node_y += MARGIN
 		button.position.y = current_child_node_y
+		
+		## rich text for button
+		var richButtonLabel : RichTextLabel = RichTextLabel.new()
+		richButtonLabel.bbcode_enabled = true
+		richButtonLabel.position.x = (DIALOG_PANEL_WIDTH-LABEL_WIDTH)/2
+		richButtonLabel.set("theme_override_font_sizes/normal_font_size", FONT_SIZE)
+		richButtonLabel.set("theme_override_font_sizes/italics_font_size", FONT_SIZE)
+		richButtonLabel.set("theme_override_font_sizes/bold_font_size", FONT_SIZE)
+		richButtonLabel.set("theme_override_font_sizes/bold_italics_font_size", FONT_SIZE)
+		richButtonLabel.set("theme_override_font_sizes/mono_font_size", FONT_SIZE)
+		richButtonLabel.size.x = LABEL_WIDTH
+		richButtonLabel.size.y = option.height
+		richButtonLabel.text = option.text
+		richButtonLabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		richButtonLabel.position.y = current_child_node_y
+		
+		
 		current_child_node_y += option.height
 		
 		## !!!! actually make the buttons functional
@@ -118,6 +140,8 @@ func dialog_processor(dialog_id):
 			callv(option.results, option.results_arg)
 		button.pressed.connect(run_wrapper)
 		
+		# order is important for button to remain clickeable
+		dialog_panel.add_child(richButtonLabel)
 		dialog_panel.add_child(button)
 		
 		

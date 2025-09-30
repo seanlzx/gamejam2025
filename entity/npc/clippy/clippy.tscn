@@ -1,22 +1,22 @@
-[gd_scene load_steps=21 format=3 uid="uid://potheadykkpc"]
+[gd_scene load_steps=22 format=3 uid="uid://clippyqut5s6s"]
 
-[ext_resource type="Script" uid="uid://potheadu50nh" path="res://entity/npc/pothead/pothead.gd" id="1_wrgxl"]
-[ext_resource type="Texture2D" uid="uid://dqq1icp6351jh" path="res://entity/npc/pothead/pothead.png" id="2_2bmf2"]
+[ext_resource type="Script" uid="uid://clippyu50nh" path="res://entity/npc/clippy/clippy.gd" id="1_wrgxl"]
+[ext_resource type="Texture2D" uid="uid://dma8vh2ngevi4" path="res://entity/npc/clippy/clippy.png" id="2_7yho4"]
 [ext_resource type="PackedScene" uid="uid://cqit8fru4blgx" path="res://entity/utility/placeholder_collision_shape.tscn" id="2_vjsh6"]
-[ext_resource type="Script" uid="uid://potheadajaym" path="res://entity/npc/pothead/script_pothead_movement.gd" id="3_iacbj"]
+[ext_resource type="Script" uid="uid://clippyajaym" path="res://entity/npc/clippy/script_clippy_movement.gd" id="3_iacbj"]
 [ext_resource type="Script" uid="uid://coi05qmmgci12" path="res://entity/utility/script_ragdoll.gd" id="5_mbebr"]
 [ext_resource type="Script" uid="uid://bynmbr4p8hrc5" path="res://entity/utility/script_animation.gd" id="6_scwyk"]
-[ext_resource type="Script" uid="uid://potheadktubp" path="res://entity/npc/pothead/pothead_pivot_point.gd" id="6_wrgxl"]
+[ext_resource type="Script" uid="uid://clippyktubp" path="res://entity/npc/clippy/clippy_pivot_point.gd" id="6_wrgxl"]
 [ext_resource type="Script" uid="uid://dt3cwphjg017k" path="res://entity/npc/utility/idle.gd" id="8_jdqik"]
 [ext_resource type="Script" uid="uid://blth2g81jexsg" path="res://entity/npc/utility/roam.gd" id="9_autnr"]
 [ext_resource type="Script" uid="uid://c1v26pmpic6fw" path="res://entity/npc/utility/passive_chase.gd" id="10_2bmf2"]
 [ext_resource type="Script" uid="uid://bi4l82pakk8bd" path="res://entity/npc/utility/chase.gd" id="11_so537"]
+[ext_resource type="Script" uid="uid://c1w3mnbhfxkko" path="res://entity/npc/utility/follows_player.gd" id="12_478ai"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u6yxl"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdqik"]
-radius = 13.0
-height = 56.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_478ai"]
+size = Vector2(32.7028, 33.6171)
 
 [sub_resource type="Animation" id="Animation_vknsq"]
 length = 0.001
@@ -48,7 +48,9 @@ _data = {
 resource_local_to_scene = true
 radius = 195.88
 
-[node name="Pothead" type="CharacterBody2D"]
+[node name="Clippy" type="CharacterBody2D"]
+position = Vector2(856, 464)
+scale = Vector2(1.00565, 1)
 motion_mode = 1
 script = ExtResource("1_wrgxl")
 
@@ -56,12 +58,12 @@ script = ExtResource("1_wrgxl")
 physics_material_override = SubResource("PhysicsMaterial_u6yxl")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("2_2bmf2")
-hframes = 2
+texture = ExtResource("2_7yho4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(1, 5)
-shape = SubResource("CapsuleShape2D_jdqik")
+position = Vector2(0.351379, 0.808533)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_478ai")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
 root_node = NodePath("../..")
@@ -69,9 +71,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_wrgxl")
 }
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PackedVector2Array(-21, -12, -21, 14, 0, 25, 21, 13, 20, -12, 1, -22)
+
 [node name="PlaceholderCollisionShape2D" parent="." instance=ExtResource("2_vjsh6")]
 
-[node name="ScriptPotheadMovement" type="Node" parent="."]
+[node name="ScriptClippyMovement" type="Node" parent="."]
 script = ExtResource("3_iacbj")
 
 [node name="ScriptRagdoll" type="Node" parent="."]
@@ -145,7 +150,11 @@ script = ExtResource("10_2bmf2")
 [node name="Chase" type="Node" parent="States"]
 script = ExtResource("11_so537")
 
+[node name="FollowPlayer" type="Node" parent="States"]
+script = ExtResource("12_478ai")
+
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_autnr")

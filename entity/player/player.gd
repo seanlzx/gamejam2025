@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 ## 1. Importing Scenes 
 
@@ -11,6 +11,8 @@ extends CharacterBody2D
 @onready var health_label: Label = $HUD/HealthBar/Label
 @onready var hud: CanvasLayer = $HUD
 @onready var overhead_label: Label = $OverheadLabel
+@onready var coordinates_label: Label = $HUD/Coordinates
+@onready var quests_label: RichTextLabel = $HUD/Quests
 
 
 ## 3.  CONSTANTS
@@ -35,22 +37,28 @@ var HEALTH_VALUE_BAR_ORIGINAL_LENGTH : float
 var health : float = ConstDefault.player_max_health
 var energy : float = ConstDefault.player_max_energy
 var dead : bool = false
-
-
-
-
+var black_screen: ColorRect
+var _quest_array: Array[Quest] = []
 
 
 ## 6. Built-in Methods 
 func _ready():
-	intro_screen()
+	# TODO disabled temporarily, reenable
+
 	carryout_property_overwrites()
 	HEALTH_VALUE_BAR_ORIGINAL_LENGTH = health_value_bar.size.x
 	# NOTE: unfortunately I prob should realized that canvas items can't be easily readjusted
 	# will have to imperatively anchor the inventory children to the ground so that it can handle changing resolutions
+	update_health(health)
+	quests_label.bbcode_enabled = true
+	quests_label.fit_content = true
 	
-
+	intro_screen()
+	
+	
 func _process(delta) -> void:
+	check_quests()
+	
 	if dead:
 		return
 	for i : int in range(hotbar.number_start, hotbar.number_end):
@@ -67,6 +75,14 @@ func _process(delta) -> void:
 
 	hotbar.equipped_process(delta, self)
 
+	# TODO kill blackscreen for debug purposes, probably should just keep in final product
+	if Input.is_action_just_pressed("hotbar_0"):
+		if is_instance_valid(black_screen):
+			# NOTE do remove child rather than queue free as timers still runnign in black_screen
+			remove_child(black_screen)
+
+	coordinates_label.text = "Coords: " + str(int(position.x)) + "/" + str(int(position.y))
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
@@ -81,6 +97,60 @@ func carryout_property_overwrites() -> void:
 func take_damage(damage):
 	update_health(health - damage)
 	generate_damage_particles(damage)
+
+
+#region Quests
+func add_quest(quest : Quest):
+	if _quest_array.find_custom(
+		func(existing_quest): return existing_quest.id == quest.id
+	) != -1: 
+		return
+	
+	var og_quest_name = quest.quest_name
+	var og_small_description = quest.small_description
+	
+	var fade_in = func (quest : Quest):
+		quest.quest_name =  "[color=#999999]" +quest.quest_name + "[/color]"
+		quest.small_description = "[color=#999999]" + quest.small_description + "[/color]"
+		_quest_array.append(quest)
+		await get_tree().create_timer(3).timeout
+		quest.quest_name = og_quest_name
+		quest.small_description = og_small_description
+	
+	fade_in.call(quest)
+	#await get_tree().create_timer(3).timeout
+	#actually_add.call(quest)
+
+func remove_quest(quest : Quest):
+	var index : int = _quest_array.find_custom( 
+		func(existing_quest): return existing_quest.id == quest.id
+	)
+	
+	if index == -1: 
+		return
+	
+	var strikethrough = func (quest : Quest):
+		_quest_array[index].quest_name = "[s][color=#999999]" + _quest_array[index].quest_name + "[/color][/s]"
+		_quest_array[index].small_description = "[s][color=#999999]" + _quest_array[index].small_description + "[/color][/s]"
+
+			
+	var actually_remove = func (quest : Quest):
+		_quest_array.remove_at(index)
+			
+	strikethrough.call(quest)
+	await get_tree().create_timer(3).timeout
+	actually_remove.call(quest)
+
+
+func check_quests():
+	quests_label.text = "[font_size=30][b]Quests:[/b][/font_size]"
+	
+	if _quest_array.size() > 0:
+		for quest in _quest_array:
+			quests_label.text += "[indent][indent][hint=" + quest.big_description + "][b]" + quest.quest_name + "[/b][/hint][/indent][/indent]\n" 
+			quests_label.text += "[indent][indent][indent][indent][hint=" + quest.big_description + "]" + quest.small_description + "[/hint][/indent][/indent][/indent][/indent]\n" 
+	
+#endregion
 	
 # TODO not a priority
 func generate_damage_particles(damage):
@@ -116,7 +186,6 @@ func update_health(health_arg):
 	health = health_arg
 	health_value_bar.size.x = HEALTH_VALUE_BAR_ORIGINAL_LENGTH * (health/max_health)
 	health_label.text = str(int(health)) + "/" + str(int(max_health))
-	print (str(HEALTH_VALUE_BAR_ORIGINAL_LENGTH)+" * (" +str(health)+"/"+str(max_health)+")")
 	if (health < 0):
 		death()
 	
@@ -163,22 +232,32 @@ func death_menu():
 	overhead_label.text = 'RIP'
 
 func intro_screen():
-	var black_screen : ColorRect = ColorRect.new()
+	black_screen = ColorRect.new()
 	black_screen.color = Color(0, 0, 0, 1)
 	black_screen.size = Vector2(2403, 1536)
 	black_screen.position = Vector2(-1030, -709)
 	black_screen.z_index = 1
 	
 	var number_of_lines = 10
-	var line_array : Array[Label] = []
+	var line_array : Array[RichTextLabel] = []
 	var line_position_y = 450
 	for i in range(number_of_lines):
-		var line : Label = Label.new()
+		var line : RichTextLabel = RichTextLabel.new()
 		line.scale = Vector2(2, 2)
 		line.position = Vector2(800, line_position_y)
+		line.size = Vector2(1000,50)
+		line.bbcode_enabled = true
+		line.fit_content = true
 		line_position_y += 50
 		line_array.append(line) 
 		black_screen.add_child(line)
+		
+	var skiptext = RichTextLabel.new()
+	skiptext.text = "[color=#777777]press 0 to skip intro[/color]"
+	skiptext.size = Vector2(200,50)
+	skiptext.position = Vector2(1200,900)
+	skiptext.bbcode_enabled = true
+	black_screen.add_child(skiptext)
 		
 	add_child(black_screen)
 	
@@ -190,7 +269,7 @@ func intro_screen():
 	line_array[0].text = "I.. I"
 	
 	await get_tree().create_timer(0.8).timeout
-	line_array[1].text = "Yes?"
+	line_array[1].text = "[color=#777777]Yes?"
 	
 	await get_tree().create_timer(1.5).timeout
 	line_array[2].text = "I.."
@@ -199,10 +278,10 @@ func intro_screen():
 	line_array[2].text = "I.. I need..."
 	
 	await get_tree().create_timer(0.8).timeout
-	line_array[3].text = "Yes?!"
+	line_array[3].text = "[color=#777777]Yes?![/color]"
 	
 	await get_tree().create_timer(0.3).timeout
-	line_array[3].text = "Yes?! Yes?!"
+	line_array[3].text = "[color=#777777]Yes?! Yes?![/color]"
 	
 	await get_tree().create_timer(1.5).timeout
 	line_array[4].text = "I need"
@@ -211,10 +290,10 @@ func intro_screen():
 	line_array[4].text = "I need mo..."
 	
 	await get_tree().create_timer(0.3).timeout
-	line_array[5].text = "YES?!?!??!?!"
+	line_array[5].text = "[color=#777777]YES?!?!??!?![/color]"
 	
 	await get_tree().create_timer(0.3).timeout
-	line_array[5].text = "YES?!?!??!?! YESSSS?!?!??!"
+	line_array[5].text = "[color=#777777]YES?!?!??!?! YESSSS?!?!??![/color]"
 	
 	await get_tree().create_timer(1).timeout
 	line_array[6].text = "I"
@@ -227,26 +306,47 @@ func intro_screen():
 	#region
 	
 	await get_tree().create_timer(2).timeout
+	
+	var line_vectory := []
 	for line in line_array:
-		line.velocity = Vector2(randi_range(100,150),randi_range(100,150))
+		line_vectory.append(Vector2(randi_range(-10,10),randi_range(-10,10)))
 	
 	black_screen.color = Color(0, 0, 0, 0.9)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.8)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.7)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.6)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.5)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.4)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.3)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.2)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1).timeout
 	black_screen.color = Color(0, 0, 0, 0.1)
-	await get_tree().create_timer(0.25).timeout
+	for i in range(number_of_lines):
+		line_array[i].position += line_vectory[i]
+	await get_tree().create_timer(0.1
+	).timeout
 	
 	black_screen.queue_free()

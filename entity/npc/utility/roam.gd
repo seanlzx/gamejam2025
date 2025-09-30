@@ -29,7 +29,7 @@ var detection_radius : int
 
 
 func enter_state() -> void:
-	print(str(parent) + " entered roaming state")
+	#print(str(parent) + " entered roaming state")
 	## setup roaming 
 	var speed = RNG.randi_range(rand_speed_start_range, rand_speed_end_range)
 	var velocity = Vector2(speed, 0.0)
@@ -67,7 +67,7 @@ func enter_state() -> void:
 		else:
 			parent.change_state(ConstNpcState.roam)
 			
-	print("roam.enter_state() exited")		
+	#print("roam.enter_state() exited")		
 
 # important to stop timer when state ends	
 func exit_state() -> void:

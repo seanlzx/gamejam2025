@@ -30,7 +30,6 @@ var HEALTH_VALUE_BAR_ORIGINAL_LENGTH : float
 var health : float = 200
 # this variable will be set when NPC detects player in on_body_entered
 var player : CharacterBody2D
-var pot : Item
 
 class LootStats:
 	# note
@@ -48,6 +47,9 @@ var loot_array : Array[LootStats] = [
 	LootStats.new(5.0, ConstDropsTscnPaths.pot)
 ]
 
+var idle_range_from: int = 5
+var idle_range_to: int = 10
+
 ## 5.2 Details
 
 ## 6. Built-in Methods 
@@ -58,9 +60,11 @@ var loot_array : Array[LootStats] = [
 # Stats 
 
 func _ready():
+	
+	
 	overhead_label = $OverheadLabel
 	
-	pot = load("res://entity/item/tool/pot/pot.tscn").instantiate()
+
 	
 	carryout_property_overwrites()
 	HEALTH_VALUE_BAR_ORIGINAL_LENGTH = health_value_bar.size.x
@@ -74,39 +78,38 @@ func _ready():
 	detection_area.body_exited.connect(on_body_exited)
 	
 	# NOTE quick dirty fix to get the NPCs to attack upon spawning to the equipment to recognize them as the owner
-	# NOTE not necessary here as pothead DOES NOT spawn with equipment
+	# NOTE not necessary here as limehold DOES NOT spawn with equipment
 	#equipped_pivot_point.equipped.primary_action(0, self)
 
-	entity_name = "Pothead"
-	entity_description = "He has a pot on his head, and he wants noodles"
+	entity_name = "Limehold"
+	entity_description = "He is a Lime"
 
 
 	dialog_data = [
 		{
 			# NOTE this id must be unique as it can be referenced by dialog_processor
 			id = 0,
-			text = "I need noodles",
+			text = "[i]He seems to be immersed in reading something[/i]",
 			# both the NPC dialogue and Player dialogue options are limited to 380 px width, and will wrap downwards, set the height of the box
 			height = 25,
 			options = [
 				{
-					text = "Rent?",
+					text = "Hello, are you Happiness?",
 					height = 25,
 					# array of arguments to put into function
 					results_arg = [1],
 					# function to run
 					results = "dialog_processor"
 				},
-
 			],
 		},
 		{
 			id = 1,
-			text = "I nood noodles",
+			text = "Isn't this book fascinating? I find it so. I really love coming here at this time of day.\n\nOf course, only unemployed people can make it on a Tuesday Afternoon. Maybe that's why I'm happy haha.\n\nHello, I’m Limehold. I believe you came here looking for Happiness, right? Well look no further, it’s me!",
 			height = 25,
 			options = [
 				{
-					text = "Pay rent",
+					text = "Yes, I enjoyed speaking to the uh, other yous. Forgive my directness but–",
 					height = 25,
 					results_arg = [2],
 					results = "dialog_processor"
@@ -115,11 +118,11 @@ func _ready():
 		},
 		{
 			id = 2,
-			text = "I need needles",
+			text = "I am overdue for rent, I believe you’re the good man charged in making this a timely return?",
 			height = 25,
 			options = [
 				{
-					text = "Pay rent first!!",
+					text = "Thanks for your understanding.",
 					height = 25,
 					results_arg = [3],
 					results = "dialog_processor"
@@ -128,27 +131,28 @@ func _ready():
 		},
 		{
 			id = 3,
-			text = "[i]Passes you $2[/i]",
+			text = "Actually I have a bit of a request. It isn’t too large.",
 			height = 25,
 			options = [
 				{
-					text = "Anymore?",
+					text = "Sure, I’d love to help you out.",
 					height = 25,
 					results_arg = [],
-					results = "aggro"
+					#TODO
+					results = "end_dialog"
 				},
 				{
-					text = "I'll get your spaghetti",
+					text = "Mhmm, got any more of those Artefacts first?",
 					height = 25,
 					results_arg = [],
+					#TODO
 					results = "end_dialog"
 				},
 			],
 		}
 	]
-	
-	# TODO dialog_data(1) for test purposes, remove once not needed
-
+	# TODO dialog_data(0) for test purposes, remove once not needed
+	dialog_processor(0)
 func _process(delta) -> void:
 		
 	process_state(delta)
@@ -196,8 +200,7 @@ func on_body_entered(body) -> void:
 		print("NPC detected player")
 		player = body
 		change_state(ConstNpcState.passive_chase)
-		if NPCState != ConstNpcState.chase:
-			dialog_processor(0)
+		dialog_processor(0)
 		
 func on_body_exited(body) -> void:
 	# check the body is a player. "if it works it's not stupid"
@@ -206,27 +209,14 @@ func on_body_exited(body) -> void:
 		change_state(ConstNpcState.roam)
 
 func aggro():
-	end_dialog()
-	await get_tree().create_timer(1).timeout
 	health_value_bar.color = Color.RED
 	await get_tree().create_timer(2).timeout
+	end_dialog()
 	change_state(ConstNpcState.idle)
 	
 	sprite_2d.frame = 1
 	await get_tree().create_timer(2).timeout
 	
-	if equipped_pivot_point.equipped is not Item:
-		equipped_pivot_point.equip(pot)
+	equipped_pivot_point.equip(load("res://entity/item/tool/pot/pot.tscn").instantiate())
 	
 	change_state(ConstNpcState.chase)
-
-	await get_tree().create_timer(10).timeout
-	deaggro()
-
-func deaggro():
-	health_value_bar.color = Color.BLUE
-	change_state(ConstNpcState.idle)
-	sprite_2d.frame = 0
-	
-	if equipped_pivot_point.equipped is Item:
-		equipped_pivot_point.unequip(pot)

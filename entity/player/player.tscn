@@ -155,6 +155,19 @@ offset_bottom = 24.9913
 text = "PLACEHOLDER KEEP ALL CAPS, BECAUSE ALL CAPS HAVE CONSTANT LINE HEIGHT"
 label_settings = SubResource("LabelSettings_wjhpj")
 
+[node name="Coordinates" type="Label" parent="HUD"]
+offset_top = 1.0
+offset_right = 123.0
+offset_bottom = 53.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="Quests" type="RichTextLabel" parent="HUD"]
+offset_left = 923.0
+offset_right = 1199.0
+offset_bottom = 23.0
+bbcode_enabled = true
+fit_content = true
+
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3

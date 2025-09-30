@@ -81,7 +81,7 @@ func generate_ragdoll_nodes() -> void:
 	elif rbcs.shape is CapsuleShape2D:
 		edge_to_center_length = rbcs.shape.height / 2
 	elif rbcs.shape is RectangleShape2D:
-		edge_to_center_length = rbcs.shape.y / 2
+		edge_to_center_length = rbcs.shape.size.y / 2
 	else:
 		push_error("the `generate_ragdoll_nodes()` function is only designed for CircleShape2D, CapsuleShape2D and RectangleShape2D. Due to difficulties calculating distance between center and edges for other shapes not of the aforementioned.")
 		get_tree().quit()

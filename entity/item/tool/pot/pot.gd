@@ -16,7 +16,7 @@ const gravity_scale_overwrite: float = 0.0
 # 5. Variables specific to this item
 # so far swing_speed is unused
 var swing_speed : float = 20
-var damage : int = 35
+var damage : int = 25
 
 var character : CharacterBody2D
 

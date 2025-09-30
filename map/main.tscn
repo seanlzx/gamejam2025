@@ -1,7 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://djymhucupuyhm"]
 
 [ext_resource type="PackedScene" uid="uid://bshy7rvjsswcb" path="res://entity/player/player.tscn" id="1_2g53n"]
-[ext_resource type="Script" uid="uid://d1oeko658s64p" path="res://map/rudimentary_background.gd" id="1_ukg08"]
 [ext_resource type="Script" uid="uid://cc5henrqm54bs" path="res://map/main.gd" id="1_vthes"]
 [ext_resource type="PackedScene" uid="uid://d3ln70gf0x8s0" path="res://entity/item/tool/pot/pot.tscn" id="2_42pk2"]
 [ext_resource type="PackedScene" uid="uid://dg2ay566pku3b" path="res://entity/item/tool/sword/sword.tscn" id="5_kdw7h"]
@@ -10,26 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://fou42r7imcty" path="res://entity/item/tool/bow/bow.tscn" id="7_1ob52"]
 [ext_resource type="PackedScene" uid="uid://c4xktwg3dhlfs" path="res://tests/wall_temporary.tscn" id="8_vknsq"]
 [ext_resource type="PackedScene" uid="uid://potheadykkpc" path="res://entity/npc/pothead/pothead.tscn" id="10_fxpqp"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vknsq"]
-resource_local_to_scene = true
-radius = 195.88
+[ext_resource type="PackedScene" uid="uid://drsnbkqut5s6s" path="res://entity/npc/limehold/limehold.tscn" id="11_1g66k"]
+[ext_resource type="PackedScene" uid="uid://clippyqut5s6s" path="res://entity/npc/clippy/clippy.tscn" id="12_3054m"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_vthes")
 
 [node name="Pot" parent="." instance=ExtResource("2_42pk2")]
 
-[node name="RudimentaryBackgroundSettings" type="Label" parent="."]
-offset_left = 104.0
-offset_top = -197.0
-offset_right = 144.0
-offset_bottom = -174.0
-script = ExtResource("1_ukg08")
-metadata/_edit_use_anchors_ = true
-
 [node name="Player" parent="." instance=ExtResource("1_2g53n")]
-position = Vector2(-561, -171)
+position = Vector2(-176, -58)
 
 [node name="Sword" parent="." instance=ExtResource("5_vthes")]
 
@@ -37,133 +26,7 @@ position = Vector2(-561, -171)
 
 [node name="Sword2" parent="." instance=ExtResource("5_kdw7h")]
 
-[node name="Nightmare" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(177, -57)
-
 [node name="Bow" parent="." instance=ExtResource("7_1ob52")]
-
-[node name="Nightmare2" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1429, -215)
-
-[node name="CollisionShape2D" parent="Nightmare2/DetectionArea" index="0"]
-shape = SubResource("CircleShape2D_vknsq")
-
-[node name="Nightmare3" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1192, -455)
-
-[node name="Nightmare4" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1293, -266)
-
-[node name="Nightmare5" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(983, -465)
-
-[node name="Nightmare6" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1114, -245)
-
-[node name="Nightmare7" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3701, 2057)
-
-[node name="Nightmare8" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3464, 1817)
-
-[node name="Nightmare9" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3565, 2006)
-
-[node name="Nightmare10" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3255, 1807)
-
-[node name="Nightmare11" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3386, 2027)
-
-[node name="Nightmare12" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2640, 3738)
-
-[node name="Nightmare13" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2403, 3498)
-
-[node name="Nightmare14" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2504, 3687)
-
-[node name="Nightmare15" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2194, 3488)
-
-[node name="Nightmare16" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2325, 3708)
-
-[node name="Nightmare17" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2240, 2068)
-
-[node name="Nightmare18" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2003, 1828)
-
-[node name="Nightmare19" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2104, 2017)
-
-[node name="Nightmare20" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1794, 1818)
-
-[node name="Nightmare21" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1925, 2038)
-
-[node name="Nightmare22" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3610, 3096)
-
-[node name="Nightmare23" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3373, 2856)
-
-[node name="Nightmare24" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3474, 3045)
-
-[node name="Nightmare25" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3164, 2846)
-
-[node name="Nightmare26" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3295, 3066)
-
-[node name="Nightmare27" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3978, 4102)
-
-[node name="Nightmare28" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3741, 3862)
-
-[node name="Nightmare29" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3842, 4051)
-
-[node name="Nightmare30" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3532, 3852)
-
-[node name="Nightmare31" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3663, 4072)
-
-[node name="Nightmare32" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2394, 4357)
-
-[node name="Nightmare33" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2157, 4117)
-
-[node name="Nightmare34" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2258, 4306)
-
-[node name="Nightmare35" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(1948, 4107)
-
-[node name="Nightmare36" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(2079, 4327)
-
-[node name="Nightmare37" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3587, 4375)
-
-[node name="Nightmare38" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3350, 4135)
-
-[node name="Nightmare39" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3451, 4324)
-
-[node name="Nightmare40" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3141, 4125)
-
-[node name="Nightmare41" parent="." instance=ExtResource("6_vthes")]
-position = Vector2(3272, 4345)
 
 [node name="tempmap" type="Node2D" parent="."]
 scale = Vector2(0.441341, 0.502503)
@@ -2133,7 +1996,135 @@ position = Vector2(8704, 8114)
 [node name="Pot2" parent="." instance=ExtResource("2_42pk2")]
 
 [node name="Pothead" parent="." instance=ExtResource("10_fxpqp")]
-position = Vector2(-1811, 338)
+position = Vector2(2664, 549)
 
-[editable path="Player"]
-[editable path="Nightmare2"]
+[node name="enemy_container" type="Node2D" parent="."]
+
+[node name="Nightmare2" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3797, 1234)
+
+[node name="Nightmare3" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3560, 994)
+
+[node name="Nightmare4" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3661, 1183)
+
+[node name="Nightmare5" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3351, 984)
+
+[node name="Nightmare6" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3482, 1204)
+
+[node name="Nightmare7" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3701, 2057)
+
+[node name="Nightmare8" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3464, 1817)
+
+[node name="Nightmare9" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3565, 2006)
+
+[node name="Nightmare10" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3255, 1807)
+
+[node name="Nightmare11" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3386, 2027)
+
+[node name="Nightmare12" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2640, 3738)
+
+[node name="Nightmare13" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2403, 3498)
+
+[node name="Nightmare14" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2504, 3687)
+
+[node name="Nightmare15" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2194, 3488)
+
+[node name="Nightmare16" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2325, 3708)
+
+[node name="Nightmare17" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2240, 2068)
+
+[node name="Nightmare18" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2003, 1828)
+
+[node name="Nightmare19" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2104, 2017)
+
+[node name="Nightmare20" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(1794, 1818)
+
+[node name="Nightmare21" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(1925, 2038)
+
+[node name="Nightmare22" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3610, 3096)
+
+[node name="Nightmare23" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3373, 2856)
+
+[node name="Nightmare24" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3474, 3045)
+
+[node name="Nightmare25" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3164, 2846)
+
+[node name="Nightmare26" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3295, 3066)
+
+[node name="Nightmare27" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3978, 4102)
+
+[node name="Nightmare28" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3741, 3862)
+
+[node name="Nightmare29" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3842, 4051)
+
+[node name="Nightmare30" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3532, 3852)
+
+[node name="Nightmare31" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3663, 4072)
+
+[node name="Nightmare32" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2394, 4357)
+
+[node name="Nightmare33" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2157, 4117)
+
+[node name="Nightmare34" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2258, 4306)
+
+[node name="Nightmare35" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(1948, 4107)
+
+[node name="Nightmare36" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2079, 4327)
+
+[node name="Nightmare37" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3587, 4375)
+
+[node name="Nightmare38" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3350, 4135)
+
+[node name="Nightmare39" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3451, 4324)
+
+[node name="Nightmare40" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3141, 4125)
+
+[node name="Nightmare41" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(3272, 4345)
+
+[node name="Nightmare" parent="enemy_container" instance=ExtResource("6_vthes")]
+position = Vector2(2880, 1241)
+
+[node name="Limehold" parent="." instance=ExtResource("11_1g66k")]
+position = Vector2(2281, 581)
+
+[node name="Clippy" parent="." instance=ExtResource("12_3054m")]
+position = Vector2(-117, 96)
