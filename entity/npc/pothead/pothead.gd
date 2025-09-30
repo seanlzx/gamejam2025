@@ -96,22 +96,7 @@ func _ready():
 					# function to run
 					results = "dialog_processor"
 				},
-				#{
-					#text = "some other time " + entity_name,
-					#height = 25,
-					## array of arguments to put into function
-					#results_arg = [2],
-					## function to run
-					#results = "dialog_processor"
-				#},
-				#{
-					#text = "2. click me for testing purposes",
-					#height = 25,
-					## array of arguments to put into function
-					#results_arg = [2],
-					## function to run
-					#results = "dialog_processor"
-				#}
+
 			],
 		},
 		{
@@ -135,36 +120,24 @@ func _ready():
 				{
 					text = "Pay rent first!!",
 					height = 25,
+					results_arg = [3],
+					results = "dialog_processor"
+				},
+			],
+		},
+		{
+			id = 3,
+			text = "here's $2",
+			height = 25,
+			options = [
+				{
+					text = "Anymore?",
+					height = 25,
 					results_arg = [],
 					results = "aggro"
 				},
-				#{
-					#text = "let's start from the beginnning",
-					#height = 25,
-					#results_arg = [0],
-					#results = "dialog_processor"
-				#},
-							#{
-					#text = "Do you have a quest for me?",
-					#height = 25,
-					#results_arg = [3],
-					#results = "dialog_processor"
-				#},
 			],
-		},
-		#{
-			#id = 3,
-			#text = "I have a pot on my head, I want noodles",
-			#height = 25,
-			#options = [
-				#{
-					#text = "you have a pot on my head, you want noodles",
-					#height = 25,
-					#results_arg = [],
-					#results = "end_dialog"
-				#},
-			#],
-		#}
+		}
 	]
 	
 	# TODO dialog_data(1) for test purposes, remove once not needed

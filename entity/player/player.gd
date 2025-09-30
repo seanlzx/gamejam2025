@@ -43,6 +43,7 @@ var dead : bool = false
 
 ## 6. Built-in Methods 
 func _ready():
+	intro_screen()
 	carryout_property_overwrites()
 	HEALTH_VALUE_BAR_ORIGINAL_LENGTH = health_value_bar.size.x
 	# NOTE: unfortunately I prob should realized that canvas items can't be easily readjusted
@@ -160,3 +161,92 @@ func death_menu():
 	overhead_label.add_child(label)
 	overhead_label.add_child(label2)
 	overhead_label.text = 'RIP'
+
+func intro_screen():
+	var black_screen : ColorRect = ColorRect.new()
+	black_screen.color = Color(0, 0, 0, 1)
+	black_screen.size = Vector2(2403, 1536)
+	black_screen.position = Vector2(-1030, -709)
+	black_screen.z_index = 1
+	
+	var number_of_lines = 10
+	var line_array : Array[Label] = []
+	var line_position_y = 450
+	for i in range(number_of_lines):
+		var line : Label = Label.new()
+		line.scale = Vector2(2, 2)
+		line.position = Vector2(800, line_position_y)
+		line_position_y += 50
+		line_array.append(line) 
+		black_screen.add_child(line)
+		
+	add_child(black_screen)
+	
+	#region line sequencing 
+	await get_tree().create_timer(1.5).timeout
+	line_array[0].text = "I"
+	
+	await get_tree().create_timer(1.5).timeout
+	line_array[0].text = "I.. I"
+	
+	await get_tree().create_timer(0.8).timeout
+	line_array[1].text = "Yes?"
+	
+	await get_tree().create_timer(1.5).timeout
+	line_array[2].text = "I.."
+	
+	await get_tree().create_timer(1.5).timeout
+	line_array[2].text = "I.. I need..."
+	
+	await get_tree().create_timer(0.8).timeout
+	line_array[3].text = "Yes?!"
+	
+	await get_tree().create_timer(0.3).timeout
+	line_array[3].text = "Yes?! Yes?!"
+	
+	await get_tree().create_timer(1.5).timeout
+	line_array[4].text = "I need"
+	
+	await get_tree().create_timer(2).timeout
+	line_array[4].text = "I need mo..."
+	
+	await get_tree().create_timer(0.3).timeout
+	line_array[5].text = "YES?!?!??!?!"
+	
+	await get_tree().create_timer(0.3).timeout
+	line_array[5].text = "YES?!?!??!?! YESSSS?!?!??!"
+	
+	await get_tree().create_timer(1).timeout
+	line_array[6].text = "I"
+	
+	await get_tree().create_timer(0.2).timeout
+	line_array[6].text = "I NEED"
+	
+	await get_tree().create_timer(0.2).timeout
+	line_array[6].text = "I NEED MONEYYYY"
+	#region
+	
+	await get_tree().create_timer(2).timeout
+	for line in line_array:
+		line.velocity = Vector2(randi_range(100,150),randi_range(100,150))
+	
+	black_screen.color = Color(0, 0, 0, 0.9)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.8)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.7)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.6)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.5)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.4)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.3)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.2)
+	await get_tree().create_timer(0.25).timeout
+	black_screen.color = Color(0, 0, 0, 0.1)
+	await get_tree().create_timer(0.25).timeout
+	
+	black_screen.queue_free()

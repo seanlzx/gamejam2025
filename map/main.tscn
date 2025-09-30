@@ -29,7 +29,7 @@ script = ExtResource("1_ukg08")
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_2g53n")]
-position = Vector2(-144, -8)
+position = Vector2(-561, -171)
 
 [node name="Sword" parent="." instance=ExtResource("5_vthes")]
 
