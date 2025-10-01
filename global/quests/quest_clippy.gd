@@ -1,6 +1,7 @@
 extends Node
 
 @onready var player : Player = get_tree().root.get_node("Main/Player")
+@onready var limehold : Limehold = get_tree().root.get_node("Main/Limehold")
 
 
 var quest_array : Array[Quest] = [
@@ -50,12 +51,18 @@ func _ready():
 	## - function string
 	quest_array[1].infinite_loop_callable = "clippy1"
 	quest_array[2].infinite_loop_callable = "clippy2"
+	quest_array[3].infinite_loop_callable = "clippy3"
 
 ## the process checks if the player has any quests that has an infinite callable
 func _process(delta: float) -> void:
+	if player == null: 
+		return
 	if player._quest_array.size() > 0:
+		# if quest is not local than don't run it
 		for quest in player._quest_array:
-			if quest.infinite_loop_callable != null:
+			if quest not in self.quest_array:
+				continue
+			if quest.infinite_loop_callable != "":
 				callv(quest.infinite_loop_callable, quest.infinite_loop_callable_arg_array)
  
 
@@ -76,6 +83,13 @@ func clippy2():
 		player.remove_quest(quest_array[2])
 		# TODO
 		quest_array[2].dict_references.clippy.dialog_processor(4)
+		
+func clippy3():
+	if limehold == null:
+		return
+		
+	quest_array[3].small_description = str(int(limehold.position.x)) + " / " + str(int(limehold.position.y))
+	
 #endregion
 		
 	

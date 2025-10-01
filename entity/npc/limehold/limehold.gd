@@ -1,6 +1,7 @@
-extends "res://entity/npc/npc.gd"
+class_name Limehold extends "res://entity/npc/npc.gd"
 
 ## 1. Importing Scenes 🎬
+@onready var player : Player = get_tree().root.get_node("Main/Player")
 
 ## 2. Importing other nodes ⭕
 @onready var health_value_bar: ColorRect = $HUD/HealthBar/Value
@@ -29,7 +30,6 @@ var HEALTH_VALUE_BAR_ORIGINAL_LENGTH : float
 @export var strength: float = ConstDefault.npc_strength
 var health : float = 200
 # this variable will be set when NPC detects player in on_body_entered
-var player : CharacterBody2D
 
 class LootStats:
 	# note
@@ -68,7 +68,7 @@ func _ready():
 	
 	carryout_property_overwrites()
 	HEALTH_VALUE_BAR_ORIGINAL_LENGTH = health_value_bar.size.x
-	change_state(ConstNpcState.idle)
+	change_state(ConstNpcState.pace)
 	
 	# NOTE: this is necessary to ensure it's unique to each instance of enemy
 	# NOTE: duplicate the shape and reassign it back
@@ -106,7 +106,7 @@ func _ready():
 		{
 			id = 1,
 			text = "Isn't this book fascinating? I find it so. I really love coming here at this time of day.\n\nOf course, only unemployed people can make it on a Tuesday Afternoon. Maybe that's why I'm happy haha.\n\nHello, I’m Limehold. I believe you came here looking for Happiness, right? Well look no further, it’s me!",
-			height = 25,
+			height = 120,
 			options = [
 				{
 					text = "Yes, I enjoyed speaking to the uh, other yous. Forgive my directness but–",
@@ -119,7 +119,7 @@ func _ready():
 		{
 			id = 2,
 			text = "I am overdue for rent, I believe you’re the good man charged in making this a timely return?",
-			height = 25,
+			height = 35,
 			options = [
 				{
 					text = "Thanks for your understanding.",
@@ -137,22 +137,47 @@ func _ready():
 				{
 					text = "Sure, I’d love to help you out.",
 					height = 25,
-					results_arg = [],
+					results_arg = [4],
 					#TODO
-					results = "end_dialog"
+					results = "dialog_processor"
 				},
 				{
 					text = "Mhmm, got any more of those Artefacts first?",
 					height = 25,
-					results_arg = [],
+					results_arg = [5],
 					#TODO
-					results = "end_dialog"
+					results = "dialog_processor"
 				},
 			],
-		}
+		},
+		{
+			id = 4,
+			text = "This has been quite the trouble you see. These fake Limeholds below posturing for\nmy position as Happiness. They love to mislead anyone that unwittingly speaks to them!",
+			height = 75,
+			options = [
+				{
+					text = "...",
+					height = 25,
+					results_arg = [QuestLimehold.quest_array[0]],
+					results = "add_quest_and_end_dialog"
+				},
+			],
+		},
+		{
+			id = 5,
+			text = "Unfortunately, I got but one on my person.",
+			height = 35,
+			options = [
+				{
+					text = "...",
+					height = 25,
+					results_arg = [3],
+					results = "dialog_processor"
+				},
+			],
+		},
 	]
-	# TODO dialog_data(0) for test purposes, remove once not needed
-	dialog_processor(0)
+
 func _process(delta) -> void:
 		
 	process_state(delta)
@@ -182,6 +207,12 @@ func death():
 	drop_loot()
 	queue_free()
 
+func add_quest_and_end_dialog(quest : Quest, npc : NPC = null):
+	player.add_quest(quest)
+	quest.dict_references = { npc = self}
+	end_dialog()
+	change_state(ConstNpcState.pace)
+	
 func drop_loot():
 	for item in loot_array:
 		if RNG.randi_range(1, 100) <= item.chance:
@@ -199,15 +230,16 @@ func on_body_entered(body) -> void:
 	if body.get_node_or_null("ScriptPlayerMovement") != null:
 		print("NPC detected player")
 		player = body
-		change_state(ConstNpcState.passive_chase)
+		change_state(ConstNpcState.idle_only)
 		dialog_processor(0)
 		
 func on_body_exited(body) -> void:
 	# check the body is a player. "if it works it's not stupid"
 	if body.get_node_or_null("ScriptPlayerMovement") != null:
 		print("NPC lost player")
-		change_state(ConstNpcState.roam)
-
+		end_dialog()
+		change_state(ConstNpcState.pace)
+		
 func aggro():
 	health_value_bar.color = Color.RED
 	await get_tree().create_timer(2).timeout

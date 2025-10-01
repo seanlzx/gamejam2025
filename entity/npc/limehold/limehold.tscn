@@ -1,16 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://drsnbkqut5s6s"]
+[gd_scene load_steps=23 format=3 uid="uid://drsnbkqut5s6s"]
 
-[ext_resource type="Script" uid="uid://limeholdu50nh" path="res://entity/npc/limehold/limehold.gd" id="1_wrgxl"]
+[ext_resource type="Script" uid="uid://drsnbkquqq84x" path="res://entity/npc/limehold/limehold.gd" id="1_wrgxl"]
 [ext_resource type="Texture2D" uid="uid://b5hq25ibqmnn3" path="res://entity/npc/limehold/limehold.png" id="2_kq6xp"]
 [ext_resource type="PackedScene" uid="uid://cqit8fru4blgx" path="res://entity/utility/placeholder_collision_shape.tscn" id="2_vjsh6"]
-[ext_resource type="Script" uid="uid://limeholdajaym" path="res://entity/npc/limehold/script_limehold_movement.gd" id="3_iacbj"]
+[ext_resource type="Script" uid="uid://drsnbkqt44jg3" path="res://entity/npc/limehold/script_limehold_movement.gd" id="3_iacbj"]
 [ext_resource type="Script" uid="uid://coi05qmmgci12" path="res://entity/utility/script_ragdoll.gd" id="5_mbebr"]
 [ext_resource type="Script" uid="uid://bynmbr4p8hrc5" path="res://entity/utility/script_animation.gd" id="6_scwyk"]
-[ext_resource type="Script" uid="uid://limeholdktubp" path="res://entity/npc/limehold/limehold_pivot_point.gd" id="6_wrgxl"]
+[ext_resource type="Script" uid="uid://drsnbkqugf3r6" path="res://entity/npc/limehold/limehold_pivot_point.gd" id="6_wrgxl"]
 [ext_resource type="Script" uid="uid://dt3cwphjg017k" path="res://entity/npc/utility/idle.gd" id="8_jdqik"]
 [ext_resource type="Script" uid="uid://blth2g81jexsg" path="res://entity/npc/utility/roam.gd" id="9_autnr"]
 [ext_resource type="Script" uid="uid://c1v26pmpic6fw" path="res://entity/npc/utility/passive_chase.gd" id="10_2bmf2"]
 [ext_resource type="Script" uid="uid://bi4l82pakk8bd" path="res://entity/npc/utility/chase.gd" id="11_so537"]
+[ext_resource type="Script" uid="uid://dmjdwbk6uyd4m" path="res://entity/npc/utility/pace.gd" id="12_njval"]
+[ext_resource type="Script" uid="uid://cgs75y7ggkr1h" path="res://entity/npc/utility/idle_only.gd" id="13_r17oy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u6yxl"]
 
@@ -49,7 +51,7 @@ resource_local_to_scene = true
 radius = 195.88
 
 [node name="Limehold" type="CharacterBody2D"]
-position = Vector2(856, 464)
+position = Vector2(392, 192)
 motion_mode = 1
 script = ExtResource("1_wrgxl")
 
@@ -144,6 +146,12 @@ script = ExtResource("10_2bmf2")
 
 [node name="Chase" type="Node" parent="States"]
 script = ExtResource("11_so537")
+
+[node name="Pace" type="Node" parent="States"]
+script = ExtResource("12_njval")
+
+[node name="IdleOnly" type="Node" parent="States"]
+script = ExtResource("13_r17oy")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 

@@ -23,6 +23,8 @@ var entity_description = "noDescription"
 	ConstNpcState.chase : $States/Chase,
 	ConstNpcState.passive_chase : $States/PassiveChase,
 	ConstNpcState.follow_player : $States/FollowPlayer,
+	ConstNpcState.pace : $States/Pace,
+	ConstNpcState.idle_only : $States/IdleOnly,
 } 
 
 func change_state(state):

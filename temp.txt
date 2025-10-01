@@ -1,23 +1,25 @@
 
+Actually I have a bit of a request first before I pay rent. If it isn’t too large.
+Limehold
 
-And I’ll be Clippy.
-And you, Morgan, you need to get rent from those emotions. They’ve been living rent-free in\nyour head for too long now! Keep em’ in check with a cheque.
-Look, Encephalon City needs a Sheriff. And you're man for the job.
+(BRANCHING2) Morgan:
+Sure, I’d love to help you out
 
-What do I need from them?
-Morgan
+Mhmm, got any more of those Artefacts first?
 
-Simply, you’ll need to gather 3 artifacts, or something of equivalent value, in order to be done\nwith your duties. Simple enough?
+(BRANCHING2) Limehold
+Perfect! I really appreciate your assistance,
+
+Unfortunately, I got but one on my person. I hope that’s enough when paired with the kindness of your self!
+
+This has been quite the trouble you see. These fake Limeholds below posturing for\nmy position as Happiness. They love to mislead anyone that unwittingly speaks to them!
+Limehold
+
+That’s a real bother.
 Clippy
 
-Sure, but who do I collect from?
-Morgan
+Surely! I’ve been mistaken for them and they me for far too long now.\nThey keep asking the false Limeholds for advice and such.\nWould you be a darling and handle it for me?
+Limehold
 
-Happiness, Sadness, and–
-Clippy
-
-And?
-Morgan
-
-Not sure about their name yet. Let’s go with static for now.
-Clippy
+[Quest: ]
+[After Fighting off the fake limeholds, who now turned hostile, and interacting with Limehold again]

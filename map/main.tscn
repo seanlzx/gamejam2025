@@ -18,7 +18,7 @@ script = ExtResource("1_vthes")
 [node name="Pot" parent="." instance=ExtResource("2_42pk2")]
 
 [node name="Player" parent="." instance=ExtResource("1_2g53n")]
-position = Vector2(-176, -58)
+position = Vector2(-272, -32)
 
 [node name="Sword" parent="." instance=ExtResource("5_vthes")]
 
@@ -2124,7 +2124,7 @@ position = Vector2(3272, 4345)
 position = Vector2(2880, 1241)
 
 [node name="Limehold" parent="." instance=ExtResource("11_1g66k")]
-position = Vector2(2281, 581)
+position = Vector2(-1106, 492)
 
 [node name="Clippy" parent="." instance=ExtResource("12_3054m")]
 position = Vector2(-117, 96)

@@ -127,13 +127,13 @@ func _ready():
 		{
 			id = 3,
 			text = "Next, pick up the Sword with [code]F[/code] please. Press right-click to swing right, left-click to swing left, middle-click to jab!\nTry... Go Ahead... Swing at me a few times! I have a 100,000 health that regenerates!",
-			height = 35,
+			height = 75,
 			options = [
 			],
 		},
 		{
 			id = 4,
-			text = "Amazing work! Remember your swing speed directly affects damage. So swing your mouse real hard to deal lots of it! Press tab to open your inventory. Scroll wheel or number keys to select items on the hotbar (hotbar is the thing at the bottom of your screen)",
+			text = "Amazing work! Remember your swing speed directly affects damage. So swing your mouse real hard to deal lots of it! Press tab to open your inventory. Scroll wheel or number keys to select items on the hotbar (hotbar is the thing at the bottom of your screen). The bow can be shot with right-click.",
 			height = 50,
 			options = [
 				{
@@ -378,4 +378,4 @@ func three_quests():
 	player.add_quest(QuestClippy.quest_array[3])
 	player.add_quest(QuestClippy.quest_array[4])
 	player.add_quest(QuestClippy.quest_array[5])
-	
+	end_dialog()

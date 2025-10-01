@@ -30,11 +30,13 @@ var HEALTH_VALUE_BAR_ORIGINAL_LENGTH : float
 
 ## 5. Class 🏗️
 # Stats
-@export var max_health: float = ConstDefault.player_max_health
+# TODO put +2000 to health as currently don't have means to upgrade health
+@export var max_health: float = ConstDefault.player_max_health + 2000
 @export var max_energy: float = ConstDefault.player_max_energy
 @export var strength: float = ConstDefault.player_strength
 # status  (current value)
-var health : float = ConstDefault.player_max_health
+# TODO put +2000 to health as currently don't have means to upgrade health
+var health : float = ConstDefault.player_max_health + 2000
 var energy : float = ConstDefault.player_max_energy
 var dead : bool = false
 var black_screen: ColorRect
@@ -129,7 +131,10 @@ func remove_quest(quest : Quest):
 	if index == -1: 
 		return
 	
+	# NOTE if you add strikethrough but don't clear the quest immediately, than the few seconds the quest is still around, my quest_clippy.gd still thinks the quests in running. However a workaround would be to `infinite_loop_callable = null`
+	
 	var strikethrough = func (quest : Quest):
+		_quest_array[index].infinite_loop_callable = ""
 		_quest_array[index].quest_name = "[s][color=#999999]" + _quest_array[index].quest_name + "[/color][/s]"
 		_quest_array[index].small_description = "[s][color=#999999]" + _quest_array[index].small_description + "[/color][/s]"
 

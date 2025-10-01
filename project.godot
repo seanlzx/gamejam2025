@@ -23,6 +23,7 @@ ConstItemState="*res://global/constants/item_state.gd"
 ConstDropsTscnPaths="*res://global/constants/drops_tscn_paths.gd"
 ConstNpcState="*res://global/constants/npc_state.gd"
 QuestClippy="*res://global/quests/quest_clippy.gd"
+QuestLimehold="*res://global/quests/quest_limehold.gd"
 
 [debug]
 

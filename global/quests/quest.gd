@@ -7,7 +7,7 @@ var small_description : String
 ## WARNING Big description DOES NOT work with BBCode
 var big_description : String
 ## A string which identifies a callable function via callv
-var infinite_loop_callable : String
+var infinite_loop_callable : String = ""
 ## An array of arguments to put in infinite_loop_callable
 var infinite_loop_callable_arg_array : Array = []
 ## A way to retrieve any objects relevant to the script
