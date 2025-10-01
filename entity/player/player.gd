@@ -163,7 +163,7 @@ func remove_quest(quest : Quest):
 	richlabel.position = quests_label.position 
 	richlabel.position.x -= 400
 	await get_tree().create_timer(3).timeout
-	quests_label.remove_child(richlabel)
+	hud.remove_child(richlabel)
 	richlabel.position = quests_label.position 
 #endregion
 

@@ -23,4 +23,6 @@ func enter_state() -> void:
 	var duration = RNG.randi_range(rand_start_range, rand_end_range)
 	timer = get_tree().create_timer(duration)
 	await timer.timeout
-	parent.change_state(ConstNpcState.roam)
+	# NOTE hotfix right BEFORE SUBMISION PROBABLY FIX PROPERLY
+	if parent.NPCState == ConstNpcState.idle:
+		parent.change_state(ConstNpcState.roam)

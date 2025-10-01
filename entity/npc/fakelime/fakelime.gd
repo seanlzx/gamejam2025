@@ -252,6 +252,8 @@ func on_body_entered(body) -> void:
 	if body.get_node_or_null("ScriptPlayerMovement") != null:
 		print("NPC detected player")
 		player = body
+		if NPCState == ConstNpcState.chase:
+			return
 		change_state(ConstNpcState.idle_only)
 		dialog_processor(0)
 		
