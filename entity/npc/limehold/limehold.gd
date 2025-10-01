@@ -59,6 +59,8 @@ var idle_range_to: int = 10
 
 # Stats 
 
+var overwrite_dialog_data
+
 func _ready():
 	
 	
@@ -84,6 +86,40 @@ func _ready():
 	entity_name = "Limehold"
 	entity_description = "He is a Lime"
 
+	overwrite_dialog_data = [
+		{
+			# NOTE this id must be unique as it can be referenced by dialog_processor
+			id = 0,
+			text = "Thank you for playing our game Encephalon Adventures (haven't \n" + 
+				"even decided the final name), This game was written for HealthyGamerGG \n" + 
+				"gamejam 2025 as of writing this it's 2 hours before submission.\n" +
+				"\n" + 
+				"And the code monkey is tired and ran out of bananas. The other \n" + 
+				"teammates in the game. However provided a trove of content. Both \n" + 
+				"art and story. Do stay tuned to our itch.io account and other details\n" + 
+				"in the description. This project is not over... it's just begun\n" + 
+				"\n" + 
+				"There is still 2 hidden NPCs types left in map, do try and find them.\n" + 
+				"find and interact with them.\n" + 
+				"\n" + 
+				"Lead Code Monkey: https://github.com/seanlzx\n" + 
+				"Lead Art: https://gilraek.itch.io/\n" + 
+				"Art and Story: https://italianquagsire.itch.io/\n" + 
+				"Music and Audio (to be implemented): hongry\n",
+
+			# both the NPC dialogue and Player dialogue options are limited to 380 px width, and will wrap downwards, set the height of the box
+			height = 300,
+			options = [
+				{
+					text = "...?",
+					height = 25,
+					# array of arguments to put into function
+					results_arg = [QuestLimehold.quest_array[1]],
+					results = "end_quest_and_end_dialog"
+				},
+			],
+		},
+	]
 
 	dialog_data = [
 		{
@@ -212,7 +248,13 @@ func add_quest_and_end_dialog(quest : Quest, npc : NPC = null):
 	quest.dict_references = { npc = self}
 	end_dialog()
 	change_state(ConstNpcState.pace)
-	
+
+func end_quest_and_end_dialog(quest : Quest):
+	player.remove_quest(quest)
+	quest.dict_references = { npc = self}
+	end_dialog()
+	change_state(ConstNpcState.pace)
+
 func drop_loot():
 	for item in loot_array:
 		if RNG.randi_range(1, 100) <= item.chance:

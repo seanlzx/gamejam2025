@@ -51,7 +51,6 @@ resource_local_to_scene = true
 radius = 195.88
 
 [node name="Limehold" type="CharacterBody2D"]
-position = Vector2(392, 192)
 motion_mode = 1
 script = ExtResource("1_wrgxl")
 

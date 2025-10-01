@@ -49,8 +49,6 @@ resource_local_to_scene = true
 radius = 195.88
 
 [node name="Clippy" type="CharacterBody2D"]
-position = Vector2(856, 464)
-scale = Vector2(1.00565, 1)
 motion_mode = 1
 script = ExtResource("1_wrgxl")
 

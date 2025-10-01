@@ -1,0 +1,159 @@
+[gd_scene load_steps=23 format=3 uid="uid://be5i0go5axxf1"]
+
+[ext_resource type="Script" uid="uid://be5i0go46ked6" path="res://entity/npc/fakelime/fakelime.gd" id="1_wrgxl"]
+[ext_resource type="Texture2D" uid="uid://difm58oy0rw78" path="res://entity/npc/fakelime/fakelime.png" id="2_kq6xp"]
+[ext_resource type="PackedScene" uid="uid://cqit8fru4blgx" path="res://entity/utility/placeholder_collision_shape.tscn" id="2_vjsh6"]
+[ext_resource type="Script" uid="uid://be5i0go5kwnpc" path="res://entity/npc/fakelime/script_fakelime_movement.gd" id="3_iacbj"]
+[ext_resource type="Script" uid="uid://coi05qmmgci12" path="res://entity/utility/script_ragdoll.gd" id="5_mbebr"]
+[ext_resource type="Script" uid="uid://bynmbr4p8hrc5" path="res://entity/utility/script_animation.gd" id="6_scwyk"]
+[ext_resource type="Script" uid="uid://be5i0go4u771f" path="res://entity/npc/fakelime/fakelime_pivot_point.gd" id="6_wrgxl"]
+[ext_resource type="Script" uid="uid://dt3cwphjg017k" path="res://entity/npc/utility/idle.gd" id="8_jdqik"]
+[ext_resource type="Script" uid="uid://blth2g81jexsg" path="res://entity/npc/utility/roam.gd" id="9_autnr"]
+[ext_resource type="Script" uid="uid://c1v26pmpic6fw" path="res://entity/npc/utility/passive_chase.gd" id="10_2bmf2"]
+[ext_resource type="Script" uid="uid://bi4l82pakk8bd" path="res://entity/npc/utility/chase.gd" id="11_so537"]
+[ext_resource type="Script" uid="uid://dmjdwbk6uyd4m" path="res://entity/npc/utility/pace.gd" id="12_njval"]
+[ext_resource type="Script" uid="uid://cgs75y7ggkr1h" path="res://entity/npc/utility/idle_only.gd" id="13_r17oy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_u6yxl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jdqik"]
+radius = 16.1031
+height = 57.5856
+
+[sub_resource type="Animation" id="Animation_vknsq"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_vthes"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_1ob52"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 2
+
+[sub_resource type="Animation" id="Animation_wjhpj"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrgxl"]
+_data = {
+&"RESET": SubResource("Animation_vknsq"),
+&"idle": SubResource("Animation_vthes"),
+&"walk_left": SubResource("Animation_1ob52"),
+&"walk_right": SubResource("Animation_wjhpj")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bluh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_autnr"]
+resource_local_to_scene = true
+radius = 195.88
+
+[node name="Fakelime" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_wrgxl")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_u6yxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_kq6xp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(4, 2)
+rotation = -0.175859
+shape = SubResource("CapsuleShape2D_jdqik")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_wrgxl")
+}
+
+[node name="PlaceholderCollisionShape2D" parent="." instance=ExtResource("2_vjsh6")]
+
+[node name="ScriptFakelimeMovement" type="Node" parent="."]
+script = ExtResource("3_iacbj")
+
+[node name="ScriptRagdoll" type="Node" parent="."]
+script = ExtResource("5_mbebr")
+
+[node name="ScriptAnimation" type="Node" parent="."]
+script = ExtResource("6_scwyk")
+
+[node name="OverheadLabel" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -57.0
+offset_right = 17.0
+offset_bottom = -34.0
+metadata/_edit_use_anchors_ = true
+
+[node name="EquippedPivotPoint" type="RigidBody2D" parent="."]
+position = Vector2(1.49012e-08, -9)
+rotation = -0.0317145
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("6_wrgxl")
+
+[node name="PlaceholderCapsuleShape2D" type="CollisionShape2D" parent="EquippedPivotPoint"]
+position = Vector2(50, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0bluh")
+
+[node name="PinJoint1" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D"]
+position = Vector2(1.52205, 2.02413)
+node_b = NodePath("../..")
+
+[node name="PinJoint2" type="PinJoint2D" parent="EquippedPivotPoint/PlaceholderCapsuleShape2D"]
+
+[node name="HUD" type="ColorRect" parent="."]
+offset_left = -53.0
+offset_top = -37.0
+offset_right = -53.0
+offset_bottom = -37.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ColorRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 102.0
+offset_bottom = 14.0
+grow_vertical = 0
+scale = Vector2(0.958317, 0.277756)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Value" type="ColorRect" parent="HUD/HealthBar"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 8.00004
+color = Color(0, 0, 0.709804, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource("8_jdqik")
+
+[node name="Roam" type="Node" parent="States"]
+script = ExtResource("9_autnr")
+
+[node name="PassiveChase" type="Node" parent="States"]
+script = ExtResource("10_2bmf2")
+
+[node name="Chase" type="Node" parent="States"]
+script = ExtResource("11_so537")
+
+[node name="Pace" type="Node" parent="States"]
+script = ExtResource("12_njval")
+
+[node name="IdleOnly" type="Node" parent="States"]
+script = ExtResource("13_r17oy")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_autnr")

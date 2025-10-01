@@ -132,24 +132,43 @@ func remove_quest(quest : Quest):
 		return
 	
 	# NOTE if you add strikethrough but don't clear the quest immediately, than the few seconds the quest is still around, my quest_clippy.gd still thinks the quests in running. However a workaround would be to `infinite_loop_callable = null`
-	
-	var strikethrough = func (quest : Quest):
-		_quest_array[index].infinite_loop_callable = ""
-		_quest_array[index].quest_name = "[s][color=#999999]" + _quest_array[index].quest_name + "[/color][/s]"
-		_quest_array[index].small_description = "[s][color=#999999]" + _quest_array[index].small_description + "[/color][/s]"
+	# TODO as of 20251001 1025am the strikethru system is still broken
+	#var strikethrough = func (quest : Quest):
+		#_quest_array[index].infinite_loop_callable = ""
+		#_quest_array[index].quest_name = "[s][color=#999999]" + _quest_array[index].quest_name + "[/color][/s]"
+		#_quest_array[index].small_description = "[s][color=#999999]" + _quest_array[index].small_description + "[/color][/s]"
 
-			
+	
+	
+#region NOTE temporary strikethru alternative part 1/2
+	var tempsol1 = "[s][color=#999999]" + _quest_array[index].quest_name + "[/color][/s]\n"
+	var tempsol2 = "[s][color=#999999]" + _quest_array[index].small_description + "[/color][/s]"	
+#endregion
+	
+	
 	var actually_remove = func (quest : Quest):
 		_quest_array.remove_at(index)
 			
-	strikethrough.call(quest)
-	await get_tree().create_timer(3).timeout
+	#strikethrough.call(quest)
+	#await get_tree().create_timer(3).timeout
 	actually_remove.call(quest)
-
+	#region NOTE temporary strikethru alternative 2/2
+	var richlabel : RichTextLabel= RichTextLabel.new()
+	richlabel.bbcode_enabled = true
+	richlabel.fit_content = true
+	richlabel.size = Vector2(400,50)
+	richlabel.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	richlabel.text += tempsol1 +  tempsol2
+	hud.add_child(richlabel)
+	richlabel.position = quests_label.position 
+	richlabel.position.x -= 400
+	await get_tree().create_timer(3).timeout
+	quests_label.remove_child(richlabel)
+	richlabel.position = quests_label.position 
+#endregion
 
 func check_quests():
 	quests_label.text = "[font_size=30][b]Quests:[/b][/font_size]"
-	
 	if _quest_array.size() > 0:
 		for quest in _quest_array:
 			quests_label.text += "[indent][indent][hint=" + quest.big_description + "][b]" + quest.quest_name + "[/b][/hint][/indent][/indent]\n" 
